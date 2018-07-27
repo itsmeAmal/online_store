@@ -49,10 +49,6 @@
                 left: 0px;
                 width: 100%;
                 height: 200%;
-                top: 0px;
-                //background-image: url('images/1.jpg');
-                //background-repeat: repeat repeat;
-                //  background-position: center;
             }
             #main_big_image{
                 position: absolute;

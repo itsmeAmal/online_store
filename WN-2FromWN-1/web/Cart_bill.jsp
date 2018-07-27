@@ -61,14 +61,12 @@
                 width: 70px;
                 height: 70px;
                 top: 50px;
-                // background-color: #ffffff;
             }
             #invoice_total{
                 position: absolute;
                 left: 850px;
                 width: 300px;
                 height: 300px;
-                //background-color: #ffffff;
                 top: 0px;
                 /*                border-style: groove;*/
 

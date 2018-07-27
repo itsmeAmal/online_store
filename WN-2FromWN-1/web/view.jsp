@@ -79,8 +79,6 @@
                 width: 70px;
                 height: 70px;
                 top: 50px;
-
-                // background-color: #ffffff;
             }
 
         </style>
