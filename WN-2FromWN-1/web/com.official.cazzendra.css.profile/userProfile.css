@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 15, 2017, 7:00:56 PM
+    Author     : 4m4l
+*/
+body{
+    font-family: sans-serif;
+}
+#outerDiv{
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+}
+#photo{
+    position: absolute;
+    left: 20%;
+    width: 200px;
+    height: 200px;
+    background-color: #330033;
+    top: 10%;     
+}
+#userProfileName{
+    position: absolute;
+    left: 37%;
+    top: 20%;
+    width: 30%;
+    height: 50px;
+    font-size: 40px;
+    font-weight: 300;
+}
+#userEmail{
+    position: absolute;
+    left: 37%;
+    top: 27%;
+    width: 30%;
+    height: 30px;
+    font-size: 20px;
+}
+
