@@ -6,6 +6,7 @@
 package ifix.dao.Impl;
 
 import ifix.connection.DatabaseConnection2;
+import ifix.core.MethodStatus;
 import ifix.dao.userDao;
 import ifix.model.User;
 import java.sql.Connection;
@@ -22,7 +23,7 @@ public class userDaoImpl implements userDao {
     private String selectQuery = "SELECT user_id, user_name, user_address, user_contact, user_status, user_email, user_password  FROM user";
 
     @Override
-    public boolean addUser(User user) throws SQLException {
+    public MethodStatus addUser(User user) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("INSERT INTO user(user_name, user_address, user_contact, user_status, user_email, user_password) VALUES (?,?,?,?,?,?)");
         ps.setString(1, user.getUserName());
@@ -33,7 +34,7 @@ public class userDaoImpl implements userDao {
         ps.setString(6, user.getPassword());
         ps.executeUpdate();
         ps.close();
-        return true;
+        return MethodStatus.SUCCESS;
     }
 
     @Override

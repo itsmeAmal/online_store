@@ -6,6 +6,7 @@
 package ifix.servlets;
 
 import ifix.controller.userController;
+import ifix.core.MethodStatus;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -40,17 +41,21 @@ public class userAdd extends HttpServlet {
             String contact = request.getParameter("contact");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
+            MethodStatus op = userController.addUser(userName, address, contact, email, password);
+            if (op == MethodStatus.SUCCESS) {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Successfully added the user');");
+                out.println("location='userAdd.jsp';");
+                out.println("</script>");
 
-            boolean op = userController.addUser(userName, address, contact, email, password);
-
-            if (op) {
-                response.sendRedirect("userAdd.jsp");
-                System.out.println("11");
             } else {
-                response.sendRedirect("errorNoRecordFound.jsp");
-                System.out.println("22");
+                {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Email already exsist');");
+                    out.println("location='userAdd.jsp';");
+                    out.println("</script>");
+                }
             }
-
         } catch (Exception e) {
         }
     }
