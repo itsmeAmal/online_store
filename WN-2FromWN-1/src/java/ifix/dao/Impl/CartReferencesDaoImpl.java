@@ -74,4 +74,19 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         return true;
     }
 
+    public MethodStatus validateProductForOneLaptop(int laptopId, int userId) throws SQLException {
+        MethodStatus status = null;
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select *  from cart_references where cart_references_item_id=? "
+                + " and cart_references_user_id=?");
+        ps.setInt(1, laptopId);
+        ps.setInt(2, userId);
+        ResultSet rset = ps.executeQuery();
+        if (rset.next()) {
+            status = MethodStatus.DUPLICATE_PRIMARY_KEY;
+        } else {
+            status = MethodStatus.SUCCESS;
+        }
+        return status;
+    }
 }

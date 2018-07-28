@@ -36,4 +36,9 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().deleteCartRefRecord(Validations.getIntOrZeroFromString(userId));
     }
 
+    public static MethodStatus validateProductForOneLaptop(String LaptopId, String userId) throws SQLException {
+        return new CartReferencesDaoImpl().validateProductForOneLaptop(Validations.getIntOrZeroFromString(LaptopId),
+                Validations.getIntOrZeroFromString(userId));
+    }
+
 }

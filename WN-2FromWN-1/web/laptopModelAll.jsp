@@ -36,21 +36,27 @@
             %>
             <div class="container" style="position: absolute; left: 10%; top: 20%; width: 80%; height: max-content; background-color: #ffffff;">
                 <table class="table table-striped">
+                    <th style="font-size: large; font-weight: 600; color: #000000;" >Product Reference ID</th> 
                     <th>Product Image</th>
                     <th style="text-align: center;" >Item Description</th>
                     <th>Price</th>   
                     <th></th>   
-
-                    <%  while (rset.next()) {%>
-                    <tr class="table-responsive">                        
+                        <%  while (rset.next()) {
+                                HttpSession hs = request.getSession();
+                                hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
+                        %>
+                    <tr class="table-responsive">  
+                        <td style="width: 200px; height: 200px;"><%= rset.getInt("imageUpload_id")%> </td>
                         <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>"></td>
                         <td style="position:  relative; font-size: large; font-weight: 800; text-align: center; top: 30%;"  ><%= rset.getString("imageupload_item_desc")%>                         
                         </td>
                         <td style="font-size: large; font-weight: 800; color: #0000cc;" ><%= rset.getString("imageupload_price")%></td>
-                    <input type="hidden" name="itemId" value="<%=rset.getInt("imageUpload_id")%>"/>                    
+                    <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
                     <td>  <input class="btn btn-success" type="submit" value="Add to Cart"/> </td>
                     </tr>
-                    <%  }%>
+
+                    <%  }
+                    %>
                 </table>
             </div>
         </form>

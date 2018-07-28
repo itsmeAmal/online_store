@@ -42,18 +42,29 @@ public class CartReferences extends HttpServlet {
         try {
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
-            String itemId, userId;
+            String itemId;
             itemId = request.getParameter("itemId");
 
             HttpSession ht = request.getSession();
+            String laptopId = (String) ht.getAttribute("laptopId");
             if (ht.getAttribute("loggedIn") != null) {
                 String email = (String) ht.getAttribute("loggedIn");
                 User user = userController.getuserByUserEmail(email);
-                MethodStatus status = CartReferenceController.addcartReference(itemId, Integer.toString(user.getUserId()));
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Successfully added to cart');");
-                out.println("location='laptopModelAll.jsp';");
-                out.println("</script>");
+
+                MethodStatus validStatus = CartReferenceController.validateProductForOneLaptop(laptopId, Integer.toString(user.getUserId()));
+                if (validStatus == MethodStatus.SUCCESS) {
+                    MethodStatus status = CartReferenceController.addcartReference(laptopId, Integer.toString(user.getUserId()));
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Successfully added to cart');");
+                    out.println("location='laptopModelAll.jsp';");
+                    out.println("</script>");
+                } else if (validStatus == MethodStatus.DUPLICATE_PRIMARY_KEY) {
+                    out.println("<script type=\"text/javascript\">");
+                    out.println("alert('Cart items full, Please purchase cart items or clear your cart');");
+                    out.println("location='laptopModelAll.jsp';");
+                    out.println("</script>");
+                }
+
             } else if (ht.getAttribute("loggedIn") == null) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('You need to login first');");
