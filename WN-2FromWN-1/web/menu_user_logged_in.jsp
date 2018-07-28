@@ -41,7 +41,14 @@
                     </div>
                 </li>
 
-                <li><a href="logout">Logout</a></li>
+                <li><a href="logout">Logout</a>
+                    <div>
+                        <ul>
+                            <li><a href="logout">Logout</a></li>                           
+                        </ul>
+                    </div>
+
+                </li>
                 <li><a href="#">Products</a>
                     <div>
                         <ul>

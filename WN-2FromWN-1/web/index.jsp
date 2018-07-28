@@ -204,10 +204,7 @@
                 height: 30px;
                 /*                background-color: #33ffff;*/
             }
-
         </style>
-
-
         <%
             HttpSession ht = request.getSession();
             if (ht.getAttribute("loggedIn") != null) {
@@ -216,7 +213,6 @@
     <div style="position: absolute; left: 8%; width: 800px; height: 100px; top: 10%;">
         <%@include file="menu_user_logged_in.jsp" %>
     </div>
-
     <%    } else {
 
     %>
@@ -237,7 +233,6 @@
         <div id="user_logged"> 
             <%            HttpSession htt = request.getSession();
                 String email = (String) ht.getAttribute("loggedIn");
-
                 if (htt.getAttribute("loggedIn") != null) {
             %>
             <p style="color: #ffffff; font-family: monospace; font-size: 18px;"> you logged as :  <%= email%> </p>

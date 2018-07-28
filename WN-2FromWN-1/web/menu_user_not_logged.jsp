@@ -28,12 +28,8 @@
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="#">Account</a>
                     <div>
-
                         <ul>
-
                             <li><a href="userAdd.jsp">Create Account</a></li>
-
-
                         </ul>
                     </div>
                 </li>
