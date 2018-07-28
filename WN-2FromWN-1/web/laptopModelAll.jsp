@@ -36,10 +36,12 @@
           
             <div class="container" style="position: absolute; left: 10%; top: 20%; width: 80%; height: max-content; background-color: #ffffff;">
                 <table class="table table-striped">
+                    <th>Product Image</th>
                     <th>Item Description</th>
                     <th>Price</th>                    
                         <%  while (rset.next()) {%>
-                    <tr class="table-responsive">
+                    <tr class="table-responsive">                        
+                        <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>"></td>
                         <td><%= rset.getString("imageupload_item_desc")%></td>
                         <td><%= rset.getString("imageupload_price")%></td> 
                     <input type="hidden" name="hiddenId" value="<%=rset.getInt(1)%>" />
