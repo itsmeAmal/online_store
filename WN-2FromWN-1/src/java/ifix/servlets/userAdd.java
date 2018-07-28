@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 public class userAdd extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and
-     * <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -45,6 +45,8 @@ public class userAdd extends HttpServlet {
 
             if (op) {
                 response.sendRedirect("userAdd.jsp");
+            } else {
+                response.sendRedirect("errorNoRecordFound.jsp");
             }
 
         } catch (Exception e) {

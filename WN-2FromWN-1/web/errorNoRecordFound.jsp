@@ -39,7 +39,7 @@
             <div style="position: absolute; left: 10%; width: 80%; top: 10%; height: 80%; background-color: #ffffff;">
                 <div id="logo"></div>
                 <div style="position: absolute; left: 35%; width: 40%; top: 35%; height: 30%;">
-                    <h1>No records found...!</h1>
+                    <h1>Error....! </h1>
                 </div>
             </div>
 

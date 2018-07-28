@@ -31,7 +31,7 @@
 
                         <ul>
 
-                            <li><a href="user_account_reg.jsp">User</a></li>
+                            <li><a href="userAdd.jsp">User</a></li>
 
 
                         </ul>

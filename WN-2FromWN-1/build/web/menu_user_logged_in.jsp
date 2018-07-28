@@ -28,12 +28,8 @@
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="#">Register</a>
                     <div>
-
                         <ul>
-
-                            <li><a href="user_account_reg.jsp">User</a></li>
-
-
+                            <li><a href="userAdd.jsp">User</a></li>
                         </ul>
                     </div>
                 </li>
@@ -42,8 +38,7 @@
                         <ul>
                             <li><a href="acer.jsp">Acer</a></li>
                             <li><a href="dell.jsp">Dell</a></li>
-                            <li><a href="Apple.jsp">Apple</a></li>
-                            
+                            <li><a href="Apple.jsp">Apple</a></li>                           
                         </ul>
                     </div>
                 </li>

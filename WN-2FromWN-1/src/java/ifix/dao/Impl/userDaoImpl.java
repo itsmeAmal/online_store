@@ -31,7 +31,6 @@ public class userDaoImpl implements userDao {
         ps.setInt(4, user.getSatus());
         ps.setString(5, user.getEmail());
         ps.setString(6, user.getPassword());
-
         ps.executeUpdate();
         ps.close();
         return true;
