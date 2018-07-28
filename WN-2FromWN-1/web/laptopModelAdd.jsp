@@ -4,6 +4,9 @@
     Author     : 4m4l
 --%>
 
+<%@page import="java.io.FileOutputStream"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.DataInputStream"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,7 +34,62 @@
         </style>
     </head>
     <body>
-        <form action="fileupload" method="POST" enctype="multipart/form-data">
+        <form action="laptopModelAdd" method="POST" enctype="multipart/form-data">
+            <%
+            String saveFile = new String();
+            String contentType = request.getContentType();
+            if(contentType != null && contentType.indexOf("multipart/form-data") > 0){
+                DataInputStream in = new DataInputStream(request.getInputStream());
+                int formDataLength = request.getContentLength();
+                byte dataByte[] = new byte[formDataLength];
+                int byteRead = 0;
+                int totalBytesRead = 0;
+                
+                while (totalBytesRead < formDataLength) {  
+                    byteRead = in.read(dataByte, totalBytesRead, formDataLength);
+                    totalBytesRead += byteRead;
+                        
+                    }
+                String file = new String(dataByte);
+                saveFile = file.substring(file.indexOf("filename=\""+ 10));
+                saveFile = saveFile.substring(0, saveFile.indexOf("\n")); 
+                saveFile = saveFile.substring(saveFile.lastIndexOf("\\"), saveFile.indexOf("\""));
+                
+                int lastIndex = contentType.lastIndexOf("=");
+                String boundry = contentType.substring(lastIndex + 1 , contentType.length());
+                int pos;
+                
+                pos = file.indexOf("filename=\"");
+                
+                pos = file.indexOf("\n")+ 1;
+                pos = file.indexOf("\n")+ 1;
+                pos = file.indexOf("\n")+ 1;
+                
+                int boundryLocation = file.indexOf(boundry, pos) - 4;
+                
+                int startPos = ((file.substring(0, pos)).getBytes()).length;
+                int endPos = ((file.substring(0, boundryLocation)).getBytes()).length;
+                
+                saveFile = "C:/fileUploadDir/" + saveFile;
+                
+                File ff = new File(saveFile);
+                try {
+                        FileOutputStream fileOutputStream = new FileOutputStream(ff);
+                        fileOutputStream.write(dataByte, startPos, (endPos - startPos));
+                        fileOutputStream.flush();
+                        fileOutputStream.close();
+                        
+                    } catch (Exception e) {
+                        out.println(e);
+                    }
+                
+            }
+            
+            
+            %>
+            
+            
+            
             <div id="outerDiv">
                 <div style="position: absolute; left: 20%; top: 5%; width: 60%; height: 90%; background-color: #ffffff;">
                     <div id="logo"></div>
