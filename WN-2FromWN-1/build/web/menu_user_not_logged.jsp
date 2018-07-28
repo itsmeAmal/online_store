@@ -16,7 +16,7 @@
         <script type="text/javascript">
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button";//again because google chrome don't insert first hash into history
-            window.onhashchange = function() {
+            window.onhashchange = function () {
                 window.location.hash = "no-back-button";
             }
         </script>
@@ -37,36 +37,31 @@
                         </ul>
                     </div>
                 </li>
-<!--                <li><a href="#">Brands</a>
+                <li><a href="#">My Cart</a>
                     <div>
                         <ul>
-                            <li><a href="acer.jsp">Acer</a></li>
-                            <li><a href="dell.jsp">Dell</a></li>
-                            <li><a href="Apple.jsp">Apple</a></li>
-                            
+                            <li><a href="cartItemList.jsp">Cart Items</a></li>                           
                         </ul>
                     </div>
-                </li>-->
-                 <li><a href="#">Login</a>
+                </li>            
+                <li><a href="#">Login</a>
                     <div>
                         <ul>
                             <li><a href="login.jsp">Login</a></li>
-                            
-                            
                         </ul>
                     </div>
                 </li>
                 <li><a href="our_services.jsp">Our Services</a>
-<!--                    <div>
-                        <ul>
-                            <li><a href="#">Printers</a></li>
-                            <li><a href="#">Scanners</a></li>
-                            <li><a href="#">Routers</a></li>
-
-                        </ul>
-                    </div>-->
+                    <!--                    <div>
+                                            <ul>
+                                                <li><a href="#">Printers</a></li>
+                                                <li><a href="#">Scanners</a></li>
+                                                <li><a href="#">Routers</a></li>
+                    
+                                            </ul>
+                                        </div>-->
                 </li>
-<!--                <li><a href="login.jsp">Login</a></li>-->
+                <!--                <li><a href="login.jsp">Login</a></li>-->
                 <li><a href="view.jsp">All Products</a></li>
                 <li class="pad"></li>
             </ul>

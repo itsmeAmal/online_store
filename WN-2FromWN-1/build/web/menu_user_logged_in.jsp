@@ -33,15 +33,13 @@
                         </ul>
                     </div>
                 </li>
-<!--                <li><a href="#">Brands</a>
+                <li><a href="#">My Cart</a>
                     <div>
                         <ul>
-                            <li><a href="acer.jsp">Acer</a></li>
-                            <li><a href="dell.jsp">Dell</a></li>
-                            <li><a href="Apple.jsp">Apple</a></li>                           
+                            <li><a href="cartItemList.jsp">Cart Items</a></li>                           
                         </ul>
                     </div>
-                </li>-->
+                </li>
                 
                 <li><a href="our_services.jsp">Our Services</a>
 <!--                    <div>
