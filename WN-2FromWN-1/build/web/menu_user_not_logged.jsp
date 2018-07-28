@@ -51,18 +51,14 @@
                         </ul>
                     </div>
                 </li>
-                <li><a href="our_services.jsp">Our Services</a>
-                    <!--                    <div>
-                                            <ul>
-                                                <li><a href="#">Printers</a></li>
-                                                <li><a href="#">Scanners</a></li>
-                                                <li><a href="#">Routers</a></li>
-                    
-                                            </ul>
-                                        </div>-->
-                </li>
                 <!--                <li><a href="login.jsp">Login</a></li>-->
-                <li><a href="view.jsp">All Products</a></li>
+                <li><a href="#">Products</a>
+                    <div>
+                        <ul>
+                            <li><a href="sessionCart.jsp">Laptops</a></li>                           
+                        </ul>
+                    </div>
+                </li>
                 <li class="pad"></li>
             </ul>
         </div>
