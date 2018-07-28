@@ -13,7 +13,7 @@
         <script type="text/javascript">
             window.location.hash = "no-back-button";
             window.location.hash = "Again-No-back-button";//again because google chrome don't insert first hash into history
-            window.onhashchange = function() {
+            window.onhashchange = function () {
                 window.location.hash = "no-back-button";
             };
         </script>
@@ -210,100 +210,50 @@
 
         <%
             HttpSession ht = request.getSession();
-            if (ht.getAttribute("type") != null) {
-
-                String type = (String) ht.getAttribute("type");
-
-                String uname = (String) ht.getAttribute("uname");
-
-
+            if (ht.getAttribute("loggedIn") != null) {
+                String email = (String) ht.getAttribute("loggedIn");
         %>
-
-        <script type="text/javascript">
-            //alert("inside if......");
-
-        </script>
-
-        <%            if (type.equals("admin")) {
-    
-            
-            response.sendRedirect("admin_panel.jsp");
-            
-            
-    } else {
-    %>
     <div style="position: absolute; left: 8%; width: 800px; height: 100px; top: 10%;">
         <%@include file="menu_user_logged_in.jsp" %>
     </div>
 
-    <%
-        }
-
-
-    %>
-
     <%    } else {
 
     %>
-    <script>
-
-    </script>
-
     <div style="position: absolute; left: 8%; width: 800px; height: 100px; top: 10%;">
         <%@include file="menu_user_not_logged.jsp" %>
     </div>
     <%           }
-
     %>
 </head>
 <body>   
-    
-  <!--hidden input tag--> 
-  <input type="hidden" name="hdd1" value="index"/>
 
+    <!--hidden input tag--> 
+    <input type="hidden" name="hdd1" value="index"/>
     <div id="background_design"> 
-
         <div id="menu_space">  </div>
         <div id="cart_logo"> <a href="Cart_bill.jsp" style="position: absolute; background-image: url('images/cart.png'); width: 70px; height: 70px;"></a></div>
 
         <div id="user_logged"> 
             <%            HttpSession htt = request.getSession();
-                String uname2 = (String) htt.getAttribute("uname");
+                String email = (String) ht.getAttribute("loggedIn");
 
-                if (htt.getAttribute("uname") != null) {
+                if (htt.getAttribute("loggedIn") != null) {
             %>
-
-            <p style="color: #ffffff; font-family: monospace; font-size: 18px;"> you logged as :  <%= uname2%> </p>
-
+            <p style="color: #ffffff; font-family: monospace; font-size: 18px;"> you logged as :  <%= email%> </p>
             <%
-
                 }
             %>
-
         </div>
         <div id="header_my_thin_line"></div>
         <div id="hotline_contact_price_list">
             <div id="buy_online_or_call">
                 Buy Online or Call +9425 56 27 600
             </div>              
-        </v>
-        <div id="main_big_image">               
-        </div> 
-        <div id="box_1">OUR BRANDS</div>
-        <div id="box_2"> </div>
-        <div id="box_3"></div>
-        <div  id="box_4"></div>
-        <div id="box_5"></div>
-        <div id="box_6"></div>
-        <div id="box_7"> </div>
-        <div id="box_8"> </div>
-
-
-        <div id="box_break_btm">OTHER SERVICES </div>
-        <div id="bot_info_1"></div>
-        <div id="bot_info_2"></div>
-        <div id="bot_info_3"></div>
-    </div>
-    <div id="logo">  </div>
+            </v>
+            <div id="main_big_image">               
+            </div> 
+        </div>
+        <div id="logo">  </div>
 </body>
 </html>
