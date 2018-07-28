@@ -74,20 +74,17 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        <link rel=\"stylesheet\" href=\"com.official.cazzendra.css.common/bootstrap.min.css\">\n");
       out.write("    </head>\n");
       out.write("    <body style=\"background-color: #000000;\">\n");
-      out.write("        <div style=\"position: absolute; left: 0px; top: 0px; width: 100%; height: max-content; background-color: #000000; color: #ffffff;\">\n");
-      out.write("\n");
-      out.write("                <div id=\"logo\"></div>\n");
-      out.write("                ");
+      out.write("            <div id=\"logo\"></div>\n");
+      out.write("            ");
 
-                   
-                    ResultSet rset = imageUploadController.getAllProducts();
-                
+                ResultSet rset = imageUploadController.getAllProducts();
+            
       out.write("\n");
-      out.write("\n");
-      out.write("                <table id=\"userDetail\">\n");
-      out.write("                    <th>User Name</th>\n");
-      out.write("                    <th>Email</th>                    \n");
-      out.write("                    <th>Delete</th>\n");
+      out.write("          \n");
+      out.write("            <div class=\"container\" style=\"position: absolute; left: 10%; top: 20%; width: 80%; height: max-content; background-color: #ffffff;\">\n");
+      out.write("                <table class=\"table table-striped\">\n");
+      out.write("                    <th>Item Description</th>\n");
+      out.write("                    <th>Price</th>                    \n");
       out.write("                        ");
   while (rset.next()) {
       out.write("\n");

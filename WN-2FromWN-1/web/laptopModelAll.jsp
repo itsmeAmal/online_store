@@ -29,17 +29,15 @@
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
     </head>
     <body style="background-color: #000000;">
-        <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: max-content; background-color: #000000; color: #ffffff;">
-
-                <div id="logo"></div>
-                <%
-                   
-                    ResultSet rset = imageUploadController.getAllProducts();
-                %>
-
-                <table id="userDetail">
+            <div id="logo"></div>
+            <%
+                ResultSet rset = imageUploadController.getAllProducts();
+            %>
+          
+            <div class="container" style="position: absolute; left: 10%; top: 20%; width: 80%; height: max-content; background-color: #ffffff;">
+                <table class="table table-striped">
                     <th>Item Description</th>
-                    <th>Email</th>                    
+                    <th>Price</th>                    
                         <%  while (rset.next()) {%>
                     <tr class="table-responsive">
                         <td><%= rset.getString("imageupload_item_desc")%></td>
