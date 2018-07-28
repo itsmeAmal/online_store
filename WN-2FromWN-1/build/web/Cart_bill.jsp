@@ -4,9 +4,8 @@
     Author     : 4m4l
 --%>
 
+<%@page import="ifix.controller.Cart"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="servlets.CartItems"%>
-<%@page import="servlets.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
