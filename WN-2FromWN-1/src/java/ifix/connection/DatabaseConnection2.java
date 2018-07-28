@@ -24,7 +24,7 @@ public class DatabaseConnection2 {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(userDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/iFixLaptops", "root", "55555");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ifixlaptops", "root", "123");
         return con;
     }
 
