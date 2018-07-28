@@ -87,8 +87,8 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                    <th style=\"text-align: center;\" >Item Description</th>\n");
       out.write("                    <th>Price</th>   \n");
       out.write("                    <th></th>   \n");
-      out.write("                    \n");
-      out.write("                        ");
+      out.write("\n");
+      out.write("                    ");
   while (rset.next()) {
       out.write("\n");
       out.write("                    <tr class=\"table-responsive\">                        \n");
@@ -101,9 +101,8 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                        </td>\n");
       out.write("                        <td style=\"font-size: large; font-weight: 800; color: #0000cc;\" >");
       out.print( rset.getString("imageupload_price"));
-      out.write("</td> \n");
-      out.write("                        <td>  <input class=\"btn btn-success\" type=\"submit\" value=\"Add to Cart\"/> </td>\n");
-      out.write("                        \n");
+      out.write("</td>\n");
+      out.write("                   \n");
       out.write("                    <input type=\"hidden\" name=\"pid\" value=\"");
       out.print(rset.getInt("imageUpload_id"));
       out.write("\"/>\n");
@@ -111,9 +110,12 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.print(rset.getString("imageupload_item_desc"));
       out.write("\"/>\n");
       out.write("                    <input type=\"hidden\" name=\"up\" value=\"");
-      out.print(rset.getBigDecimal("imageupload_price"));
+      out.print(rset.getString("imageupload_price"));
       out.write("\"/>\n");
       out.write("                    <input type=\"hidden\" name=\"qty\" value=\"1\"/>\n");
+      out.write("                    <td>  <input class=\"btn btn-success\" type=\"submit\" value=\"Add to Cart\"/> </td>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("                    </tr>\n");
       out.write("                    ");
   }

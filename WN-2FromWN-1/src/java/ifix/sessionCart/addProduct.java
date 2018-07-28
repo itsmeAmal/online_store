@@ -42,6 +42,9 @@ public class addProduct extends HttpServlet {
             qty = request.getParameter("qty");
             up = request.getParameter("up");
 
+            out.print(pid);
+            out.print(qty);
+
             CartItem cit = new CartItem();
             cit.setPid(Integer.parseInt(pid));
             cit.setPname(pname);
@@ -55,11 +58,16 @@ public class addProduct extends HttpServlet {
 
             } else {
                 c = (cart) hs.getAttribute("myCart");
-
             }
-            c.addProductToCart(cit);
+            boolean status = c.addProductToCart(cit);
             hs.setAttribute("myCart", c);
-            response.sendRedirect("laptopModelAll.jsp");
+            if (status) {
+//                response.sendRedirect("laptopModelAll.jsp");
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Added to cart');");
+                out.println("location='laptopModelAll.jsp';");
+                out.println("</script>");
+            }
 
         }
     }

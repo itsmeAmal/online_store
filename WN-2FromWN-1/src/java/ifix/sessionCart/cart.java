@@ -29,7 +29,7 @@ public class cart {
         return old_citems;
     }
 
-    public void addProductToCart(CartItem new_citems) {
+    public boolean addProductToCart(CartItem new_citems) {
 
         for (int i = 0; i < old_citems.size(); i++) {
             CartItem ci = old_citems.get(i);
@@ -43,8 +43,8 @@ public class cart {
             }
 
         }
-
         old_citems.add(new_citems);
+        return true;
 
     }
 
