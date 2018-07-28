@@ -66,7 +66,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
 
     public boolean deleteCartRefRecord(int id) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
-        PreparedStatement ps = con.prepareStatement("delete from cart_references where cart_references_id=?");
+        PreparedStatement ps = con.prepareStatement("delete from cart_references where cart_references_user_id=?");
         ps.setInt(1, id);
         ps.executeUpdate();
         ps.close();
