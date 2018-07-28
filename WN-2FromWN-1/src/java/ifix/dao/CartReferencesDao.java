@@ -5,6 +5,7 @@
  */
 package ifix.dao;
 
+import ifix.core.MethodStatus;
 import ifix.model.CartReferences;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import java.sql.SQLException;
  */
 public interface CartReferencesDao {
 
-    boolean addReference(CartReferences cartReferences) throws SQLException;
+    MethodStatus addReference(CartReferences cartReferences) throws SQLException;
 
     ResultSet getAllCartReferences() throws SQLException;
 

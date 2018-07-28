@@ -6,6 +6,7 @@
 package ifix.controller;
 
 import ifix.core.CommonConstants;
+import ifix.core.MethodStatus;
 import ifix.core.Validations;
 import ifix.dao.Impl.CartReferencesDaoImpl;
 import ifix.model.CartReferences;
@@ -18,7 +19,7 @@ import java.sql.SQLException;
  */
 public class CartReferenceController {
 
-    public static boolean addcartReference(String itemId, String userId) throws SQLException {
+    public static MethodStatus addcartReference(String itemId, String userId) throws SQLException {
         CartReferences cartReferences = new CartReferences();
         cartReferences.setItemId(Validations.getIntOrZeroFromString(itemId));
         cartReferences.setQty(1);

@@ -6,6 +6,9 @@
 package ifix.servlets;
 
 import ifix.controller.CartReferenceController;
+import ifix.controller.userController;
+import ifix.core.MethodStatus;
+import ifix.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,14 +38,29 @@ public class CartReferences extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         try {
             response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             String itemId, userId;
             itemId = request.getParameter("itemId");
-            userId = request.getParameter("userId");
-            boolean status = CartReferenceController.addcartReference(itemId, userId);
+
+            HttpSession ht = request.getSession();
+            if (ht.getAttribute("loggedIn") != null) {
+                String email = (String) ht.getAttribute("loggedIn");
+                User user = userController.getuserByUserEmail(email);
+                MethodStatus status = CartReferenceController.addcartReference(itemId, Integer.toString(user.getUserId()));
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Successfully added to cart');");
+                out.println("location='laptopModelAll.jsp';");
+                out.println("</script>");
+            } else if (ht.getAttribute("loggedIn") == null) {
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('You need to login first');");
+                out.println("location='login.jsp';");
+                out.println("</script>");
+
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(CartReferences.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,7 +79,11 @@ public class CartReferences extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CartReferences.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -74,7 +97,11 @@ public class CartReferences extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CartReferences.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

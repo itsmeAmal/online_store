@@ -47,12 +47,8 @@
                         <td style="position:  relative; font-size: large; font-weight: 800; text-align: center; top: 30%;"  ><%= rset.getString("imageupload_item_desc")%>                         
                         </td>
                         <td style="font-size: large; font-weight: 800; color: #0000cc;" ><%= rset.getString("imageupload_price")%></td>
-                   
-                    <input type="hidden" name="itemId" value="<%=rset.getInt("imageUpload_id")%>"/>
-                    
-                    
+                    <input type="hidden" name="itemId" value="<%=rset.getInt("imageUpload_id")%>"/>                    
                     <td>  <input class="btn btn-success" type="submit" value="Add to Cart"/> </td>
-
                     </tr>
                     <%  }%>
                 </table>

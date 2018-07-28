@@ -6,6 +6,7 @@
 package ifix.dao.Impl;
 
 import ifix.connection.DatabaseConnection2;
+import ifix.core.MethodStatus;
 import ifix.dao.CartReferencesDao;
 import ifix.model.CartReferences;
 import java.sql.Connection;
@@ -24,7 +25,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
 
     @Override
 
-    public boolean addReference(CartReferences cartReferences) throws SQLException {
+    public MethodStatus addReference(CartReferences cartReferences) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("insert into cart_references(cart_references_id, cart_references_item_id,"
                 + " cart_references_qty, cart_references_status, cart_references_user_id) values (?,?,?,?,?)");
@@ -35,7 +36,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.setInt(5, cartReferences.getUserId());
         ps.executeUpdate();
         ps.close();
-        return true;
+        return MethodStatus.SUCCESS;
     }
 
     @Override
