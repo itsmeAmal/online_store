@@ -29,7 +29,7 @@
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
     </head>
     <body style="background-color: #000000;">
-        <form action="addProduct">
+        <form action="CartReferences">
             <div id="logo"></div>
             <%
                 ResultSet rset = imageUploadController.getAllProducts();
@@ -48,12 +48,10 @@
                         </td>
                         <td style="font-size: large; font-weight: 800; color: #0000cc;" ><%= rset.getString("imageupload_price")%></td>
                    
-                    <input type="hidden" name="pid" value="<%=rset.getInt("imageUpload_id")%>"/>
-                    <input type="hidden" name="pname" value="<%=rset.getString("imageupload_item_desc")%>"/>
-                    <input type="hidden" name="up" value="<%=rset.getString("imageupload_price")%>"/>
-                    <input type="hidden" name="qty" value="1"/>
+                    <input type="hidden" name="itemId" value="<%=rset.getInt("imageUpload_id")%>"/>
+                    
+                    
                     <td>  <input class="btn btn-success" type="submit" value="Add to Cart"/> </td>
-
 
                     </tr>
                     <%  }%>

@@ -55,10 +55,10 @@
     <body>
         <form action="login" method="post">
             <div id="background_color" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url('images/1.png');">
-                <div id="uname"> <input type="text" name="tf-1" class="form-control" placeholder="user name" /> </div>
-                <div id="pw"> <input type="text" name="tf-2" class="form-control" placeholder="password"/>  </div>
+                <div id="uname"> <input type="text" name="email" class="form-control" placeholder="user name" /> </div>
+                <div id="pw"> <input type="text" name="pw" class="form-control" placeholder="password"/>  </div>
                 <div id="btn"> <input type="submit" name="btn-1" value="Login" class="btn btn-info" style="width: 200px;"/> </div>
-                <div style="position: absolute; left: 35%; width: 200px; height: 30px; top: 50%; alignment-adjust: central;"> <a href="user_account_reg.jsp">or Create account</a></div>
+                <div style="position: absolute; left: 35%; width: 200px; height: 30px; top: 50%; alignment-adjust: central;"> <a href="userAdd.jsp">or Create account</a></div>
 
             </div>
         </form>

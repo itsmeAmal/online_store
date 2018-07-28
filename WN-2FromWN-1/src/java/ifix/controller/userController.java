@@ -5,11 +5,14 @@
  */
 package ifix.controller;
 
+import ifix.connection.DatabaseConnection2;
 import ifix.core.CommonConstants;
 import ifix.core.MethodStatus;
 import ifix.core.Validations;
 import ifix.dao.Impl.userDaoImpl;
 import ifix.model.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -41,7 +44,7 @@ public class userController {
     public static boolean updateUser(String name, String address, String contact, String password, String userId) throws SQLException {
         if (Validations.isNotEmpty(name)) {
             userDaoImpl useDaoImpl = new userDaoImpl();
-            User user = getuserByUserId(userId);
+            User user = getuserByUserEmail(userId);
             user.setUserName(name);
             user.setUserAddress(address);
             user.setContact(contact);
@@ -59,9 +62,9 @@ public class userController {
         return true;
     }
 
-    public static User getuserByUserId(String userId) throws SQLException {
+    public static User getuserByUserEmail(String email) throws SQLException {
         userDaoImpl userDaoImpl1 = new userDaoImpl();
-        return userDaoImpl1.getFirstUserFromResultset(userDaoImpl1.getUsersByOneAttribute("user_id", CommonConstants.sql.EQUAL, userId));
+        return userDaoImpl1.getFirstUserFromResultset(userDaoImpl1.getUsersByOneAttribute("user_email", CommonConstants.sql.EQUAL, email));
     }
 
     public static ResultSet getAllUsers() throws SQLException {
@@ -85,4 +88,23 @@ public class userController {
         }
         return status;
     }
+
+    public static MethodStatus isCorrectEmailAndPw(String email, String pw) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select user_id, user_name, "
+                + " user_address, user_contact, user_email, user_password, "
+                + " user_status from user where user_email=? and user_password=?");
+        ps.setString(1, email);
+        ps.setString(2, pw);
+        ResultSet rset = ps.executeQuery();
+        MethodStatus status = null;
+        if (rset.next()) {
+            status = MethodStatus.SUCCESS;
+        } else {
+            status = MethodStatus.FAILED;
+        }
+        return status;
+
+    }
+
 }
