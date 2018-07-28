@@ -45,8 +45,10 @@ public class userAdd extends HttpServlet {
 
             if (op) {
                 response.sendRedirect("userAdd.jsp");
+                System.out.println("11");
             } else {
                 response.sendRedirect("errorNoRecordFound.jsp");
+                System.out.println("22");
             }
 
         } catch (Exception e) {
