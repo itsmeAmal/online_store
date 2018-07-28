@@ -54,128 +54,43 @@ public final class sessionCart_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        <title>Products | iFix</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("    <center>\n");
-      out.write("        <h1>~~~ Shopping Cart ~~~</h1>\n");
-      out.write("        <form action=\"addProduct\">\n");
-      out.write("            <table>\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>Product ID</td>\n");
-      out.write("                    <td><input type=\"text\" name=\"pid\"/></td>\n");
-      out.write("                </tr>\n");
-      out.write("                <tr>\n");
+      out.write("        <div style=\"position: absolute; left: 10%; top: 5%; width: 80%; height: 90%; background-color: #000099;\">\n");
+      out.write("            <form action=\"addProduct\">\n");
+      out.write("                <table>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td>Product ID</td>\n");
+      out.write("                        <td><input type=\"text\" name=\"pid\"/></td>\n");
+      out.write("                    </tr>\n");
+      out.write("                    <tr>\n");
       out.write("\n");
-      out.write("                    <td>Product Name</td>\n");
-      out.write("                    <td><input type=\"text\" name=\"pname\"/></td>\n");
+      out.write("                        <td>Product Name</td>\n");
+      out.write("                        <td><input type=\"text\" name=\"pname\"/></td>\n");
       out.write("\n");
-      out.write("                </tr>\n");
-      out.write("                <tr>\n");
+      out.write("                    </tr>\n");
+      out.write("                    <tr>\n");
       out.write("\n");
-      out.write("                    <td>Unit Price</td>\n");
-      out.write("                    <td><input type=\"text\" name=\"up\"/></td>\n");
+      out.write("                        <td>Unit Price</td>\n");
+      out.write("                        <td><input type=\"text\" name=\"up\"/></td>\n");
       out.write("\n");
-      out.write("                </tr>\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>Quantity</td>\n");
-      out.write("                    <td><input type=\"text\" name=\"qty\"/></td>\n");
-      out.write("                </tr>\n");
+      out.write("                    </tr>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td>Quantity</td>\n");
+      out.write("                        <td><input type=\"text\" name=\"qty\"/></td>\n");
+      out.write("                    </tr>\n");
       out.write("\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>\n");
-      out.write("                        <input type=\"submit\" value=\"Add to Cart\"/>\n");
-      out.write("                    </td>\n");
-      out.write("                </tr>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td>\n");
+      out.write("                            <input type=\"submit\" value=\"Add to Cart\"/>\n");
+      out.write("                        </td>\n");
+      out.write("                    </tr>\n");
       out.write("\n");
-      out.write("            </table>    \n");
-      out.write("        </form>\n");
-      out.write("        ");
-
-            HttpSession hs = request.getSession();
-            //out.print(hs.getAttribute("myCart") == null);
-            if (hs.getAttribute("myCart") != null) {
-
-        
-      out.write("\n");
-      out.write("        ~~~ View Shopping Cart ~~~\n");
-      out.write("\n");
-      out.write("        <table border=\"1\" width=\"600\">\n");
-      out.write("            <tr>\n");
-      out.write("                <td>Product ID</td>\n");
-      out.write("                <td>Product Name</td>\n");
-      out.write("                <td>Quantity</td>\n");
-      out.write("                <td>Unit Price</td>\n");
-      out.write("                <td>Total</td>\n");
-      out.write("                <td>Remove</td>\n");
-      out.write("            </tr>\n");
-      out.write("            ");
-  cart c = (cart) hs.getAttribute("myCart");
-                //cast kara cart item ekakata, mkada methana attribute eka object ekak widiyata ena nisa, cart kiyanne cart type kenek nisa
-                List<CartItem> citems = c.getOld_citems();
-                // me list variable eke thamai values tika thiyanne
-                double tot = 0;
-
-                for (CartItem ci : citems) {
-                    //ci.getPid();
-                    //ci.getPname();
-                    //ci.getQty();
-                    //ci.getUprice();
-                    //ci.getQty() * ci.getUprice();
-                    tot += ci.getQty() * ci.getUprice();
-
-
-            
-      out.write("\n");
-      out.write("            ");
-
-            
-      out.write("\n");
-      out.write("\n");
-      out.write("            <form action=\"removeProduct\">\n");
-      out.write("                <tr>\n");
-      out.write("                    <td>");
-      out.print(ci.getPid());
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(ci.getPname());
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(ci.getQty());
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(ci.getUprice());
-      out.write("</td>\n");
-      out.write("                    <td>");
-      out.print(ci.getQty() * ci.getUprice());
-      out.write("</td>\n");
-      out.write("                    <td><input type=\"submit\" value=\"Remove\"></td>\n");
-      out.write("                </tr>\n");
-      out.write("\n");
-      out.write("                <input type=\"hidden\"  name=\"pid\" value=\"");
-      out.print(ci.getPid());
-      out.write("\"/>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("            </form>\n");
-      out.write("            ");
- }
-      out.write("\n");
-      out.write("        </table>\n");
-      out.write("        Your total balance is : ");
-      out.print(tot);
-      out.write("\n");
-      out.write("\n");
-      out.write("        ");
-
-            }
-        
-      out.write("\n");
-      out.write("        <h1>\n");
-      out.write("        </h1>\n");
-      out.write("    </center>\n");
-      out.write("</body>\n");
+      out.write("                </table>    \n");
+      out.write("            </form>       \n");
+      out.write("        </div>\n");
+      out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

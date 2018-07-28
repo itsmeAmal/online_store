@@ -39,9 +39,9 @@ public class removeProduct extends HttpServlet {
             cit.setPid(Integer.parseInt(pid));
             cart c = (cart) request.getSession().getAttribute("myCart");
             c.remveProduct(cit);
-            
+
             request.getSession().setAttribute("myCart", c);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("sessionCart.jsp");
         }
     }
 
