@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                 </li>
-                <li><a href="#">Brands</a>
+<!--                <li><a href="#">Brands</a>
                     <div>
                         <ul>
                             <li><a href="acer.jsp">Acer</a></li>
@@ -41,7 +41,7 @@
                             <li><a href="Apple.jsp">Apple</a></li>                           
                         </ul>
                     </div>
-                </li>
+                </li>-->
                 
                 <li><a href="our_services.jsp">Our Services</a>
 <!--                    <div>

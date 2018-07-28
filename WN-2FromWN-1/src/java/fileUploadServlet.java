@@ -85,7 +85,10 @@ public class fileUploadServlet extends HttpServlet {
         part.write(savepath + File.separator);
 
         try {
-            imageUploadController.addItem(fileName, savepath, itemDescription, price);
+            boolean status = imageUploadController.addItem(fileName, savepath, itemDescription, price);
+            if (status) {
+                response.sendRedirect("laptopImageUpload.jsp");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

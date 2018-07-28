@@ -26,18 +26,18 @@
         <div class="example">
             <ul id="nav">
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="#">Register</a>
+                <li><a href="#">Account</a>
                     <div>
 
                         <ul>
 
-                            <li><a href="userAdd.jsp">User</a></li>
+                            <li><a href="userAdd.jsp">Create Account</a></li>
 
 
                         </ul>
                     </div>
                 </li>
-                <li><a href="#">Brands</a>
+<!--                <li><a href="#">Brands</a>
                     <div>
                         <ul>
                             <li><a href="acer.jsp">Acer</a></li>
@@ -46,7 +46,7 @@
                             
                         </ul>
                     </div>
-                </li>
+                </li>-->
                  <li><a href="#">Login</a>
                     <div>
                         <ul>
