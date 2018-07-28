@@ -26,9 +26,11 @@ public class imageUploadDaoImpl implements imageUploadDao {
     public boolean addItem(ImageUpload imageUpload) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("insert into imageupload(imageUpload_path,"
-                + " imageUpload_file_name) values (?,?); ");
+                + " imageUpload_file_name, imageupload_item_desc, imageupload_price) values (?,?,?,?); ");
         ps.setString(1, imageUpload.getImgPath());
         ps.setString(2, imageUpload.getFileName());
+        ps.setString(3, imageUpload.getItemDescription());
+        ps.setBigDecimal(4, imageUpload.getPrice());
         ps.executeUpdate();
         ps.close();
         return true;

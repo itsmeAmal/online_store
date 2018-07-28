@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-import ifix.connection.DatabaseConnection2;
+import ifix.controller.imageUploadController;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -76,6 +75,9 @@ public class fileUploadServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
+        String itemDescription = request.getParameter("description");
+        String price = request.getParameter("price");
+
         Part part = request.getPart("file");
         String fileName = extractFileName(part);
         String savepath = "E:\\personel_git\\WN-2FromWN-1\\web\\uploadedImages" + File.separator + fileName;
@@ -83,15 +85,9 @@ public class fileUploadServlet extends HttpServlet {
         part.write(savepath + File.separator);
 
         try {
-            Connection con = DatabaseConnection2.getDatabaseConnection();
-            PreparedStatement ps = con.prepareStatement("insert into imageupload(imageUpload_path,"
-                    + " imageUpload_file_name) values (?,?); ");
-            ps.setString(1, fileName);
-            ps.setString(2, savepath);
-            ps.executeUpdate();
-            ps.close();
-
-        } catch (Exception e) {
+            imageUploadController.addItem(fileName, savepath, itemDescription, price);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
     }
