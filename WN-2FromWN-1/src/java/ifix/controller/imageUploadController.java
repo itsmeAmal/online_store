@@ -8,6 +8,7 @@ package ifix.controller;
 import ifix.core.Validations;
 import ifix.dao.Impl.imageUploadDaoImpl;
 import ifix.model.ImageUpload;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -29,5 +30,9 @@ public class imageUploadController {
             status = true;
         }
         return status;
+    }
+
+    public static ResultSet getAllProducts() throws SQLException {
+        return new imageUploadDaoImpl().getAllItems();
     }
 }
