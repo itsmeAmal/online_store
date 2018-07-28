@@ -74,18 +74,20 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        <link rel=\"stylesheet\" href=\"com.official.cazzendra.css.common/bootstrap.min.css\">\n");
       out.write("    </head>\n");
       out.write("    <body style=\"background-color: #000000;\">\n");
+      out.write("        <form action=\"addProduct\">\n");
       out.write("            <div id=\"logo\"></div>\n");
       out.write("            ");
 
                 ResultSet rset = imageUploadController.getAllProducts();
             
       out.write("\n");
-      out.write("          \n");
       out.write("            <div class=\"container\" style=\"position: absolute; left: 10%; top: 20%; width: 80%; height: max-content; background-color: #ffffff;\">\n");
       out.write("                <table class=\"table table-striped\">\n");
       out.write("                    <th>Product Image</th>\n");
-      out.write("                    <th>Item Description</th>\n");
-      out.write("                    <th>Price</th>                    \n");
+      out.write("                    <th style=\"text-align: center;\" >Item Description</th>\n");
+      out.write("                    <th>Price</th>   \n");
+      out.write("                    <th></th>   \n");
+      out.write("                    \n");
       out.write("                        ");
   while (rset.next()) {
       out.write("\n");
@@ -93,21 +95,32 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                        <td style=\"width: 200px; height: 200px;\"><image src=\"uploadedImages/");
       out.print( rset.getString("imageUpload_file_name"));
       out.write("\"></td>\n");
-      out.write("                        <td>");
+      out.write("                        <td style=\"position:  relative; font-size: large; font-weight: 800; text-align: center; top: 30%;\"  >");
       out.print( rset.getString("imageupload_item_desc"));
-      out.write("</td>\n");
-      out.write("                        <td>");
+      out.write("                         \n");
+      out.write("                        </td>\n");
+      out.write("                        <td style=\"font-size: large; font-weight: 800; color: #0000cc;\" >");
       out.print( rset.getString("imageupload_price"));
       out.write("</td> \n");
-      out.write("                    <input type=\"hidden\" name=\"hiddenId\" value=\"");
-      out.print(rset.getInt(1));
-      out.write("\" />\n");
+      out.write("                        <td>  <input class=\"btn btn-success\" type=\"submit\" value=\"Add to Cart\"/> </td>\n");
+      out.write("                        \n");
+      out.write("                    <input type=\"hidden\" name=\"pid\" value=\"");
+      out.print(rset.getInt("imageUpload_id"));
+      out.write("\"/>\n");
+      out.write("                    <input type=\"hidden\" name=\"pname\" value=\"");
+      out.print(rset.getString("imageupload_item_desc"));
+      out.write("\"/>\n");
+      out.write("                    <input type=\"hidden\" name=\"up\" value=\"");
+      out.print(rset.getBigDecimal("imageupload_price"));
+      out.write("\"/>\n");
+      out.write("                    <input type=\"hidden\" name=\"qty\" value=\"1\"/>\n");
       out.write("                    </tr>\n");
       out.write("                    ");
   }
       out.write("\n");
       out.write("                </table>\n");
       out.write("            </div>\n");
+      out.write("        </form>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

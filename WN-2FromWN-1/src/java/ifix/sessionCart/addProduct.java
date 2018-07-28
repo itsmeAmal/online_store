@@ -57,13 +57,9 @@ public class addProduct extends HttpServlet {
                 c = (cart) hs.getAttribute("myCart");
 
             }
-
-            //c.addpr.. kiyana ekata cart item add karaganna.. methana eka cart item ekak thiyanawa.. cit
             c.addProductToCart(cit);
-
             hs.setAttribute("myCart", c);
-
-            response.sendRedirect("sessionCart.jsp");
+            response.sendRedirect("laptopModelAll.jsp");
 
         }
     }
