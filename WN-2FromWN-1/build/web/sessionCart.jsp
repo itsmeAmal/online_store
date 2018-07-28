@@ -15,7 +15,7 @@
         <title>Products | iFix</title>
     </head>
     <body>
-        <div style="position: absolute; left: 10%; top: 5%; width: 80%; height: 90%; background-color: #000099;">
+        <div style="position: absolute; left: 10%; top: 5%; width: 80%; height: 90%; background-color: #000099; color: #ffffff;">
             <form action="addProduct">
                 <table>
                     <tr>

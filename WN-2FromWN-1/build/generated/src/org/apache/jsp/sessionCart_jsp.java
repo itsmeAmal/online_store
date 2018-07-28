@@ -57,7 +57,7 @@ public final class sessionCart_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Products | iFix</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
-      out.write("        <div style=\"position: absolute; left: 10%; top: 5%; width: 80%; height: 90%; background-color: #000099;\">\r\n");
+      out.write("        <div style=\"position: absolute; left: 10%; top: 5%; width: 80%; height: 90%; background-color: #000099; color: #ffffff;\">\r\n");
       out.write("            <form action=\"addProduct\">\r\n");
       out.write("                <table>\r\n");
       out.write("                    <tr>\r\n");

@@ -4,14 +4,12 @@
     Author     : 4m4l
 --%>
 
+<%@page import="ifix.controller.imageUploadController"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page import="ifix.controller.laptopPriceDetailController"%>
 <%@page import="ifix.dao.Impl.laptopPriceDetailDaoImpl"%>
 <%@page import="ifix.model.laptopPriceDetail"%>
 <%@page import="java.util.List"%>
-<%@page import="org.hibernate.Criteria"%>
-<%@page import="org.hibernate.Transaction"%>
-<%@page import="org.hibernate.Session"%>
-<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,36 +29,25 @@
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
     </head>
     <body style="background-color: #000000;">
-        <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;">
-            <div style="position: absolute; left: 10%; width: 80%; top: 5%; height: 100%;"></div>  
-            <div id="logo"></div>
-            <%
-                SessionFactory sf = ifix.hib.connection.connector.getSessionFactory();
-                Session ses = sf.openSession();
-                Transaction tr = ses.beginTransaction();
-                pojos.LaptopModel laptopModels = new pojos.LaptopModel();
-                Criteria cr = ses.createCriteria(pojos.LaptopModel.class);
-                List<pojos.LaptopModel> li = cr.list();
-                //------------------------------------
+        <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: max-content; background-color: #000000; color: #ffffff;">
 
-                for (pojos.LaptopModel laps : li) {
-            %>
-            <div style="position: relative; left: 20%; width: 60%; top: 30%; height: 300px; background-color: #ffffff; padding-top: 100px;">
-                <div style="position: absolute; left: 5%; width: 250px; height: 250px; top: 10%;"><img src="<%= laps.getLaptopModelImagePath()%>"></div>
-                <div style="position: absolute; left: 38%; width: 250px; height: 40px; top: 15%; font-family: inherit; font-weight: 400; font-size: 20px;"><%= laps.getLaptopModelLaptopId()%></div>
-                <div style="position: absolute; left: 38%; width: 250px; height: 40px; top: 25%;"><%= laps.getLaptopModelProcessor()%></div>
+                <div id="logo"></div>
                 <%
-                    laptopPriceDetail lapPriceDetail = laptopPriceDetailController.getLaptopPriceDetailByLaptopModelId(String.valueOf(laps.getLaptopModelLaptopId()));
+                   
+                    ResultSet rset = imageUploadController.getAllProducts();
                 %>
-                <div style="position: absolute; left: 38%; top: 35%; width: 250px; height: 40px;"> <%= lapPriceDetail.getLaptopPriceDetailSellingPrice()%> </div>
 
-
-                <div style="position: relative; left: 0%; top: 98%; width: 100%; height: 5px; background-color: #000000; padding-bottom: 0px;" ></div>
+                <table id="userDetail">
+                    <th>Item Description</th>
+                    <th>Email</th>                    
+                        <%  while (rset.next()) {%>
+                    <tr class="table-responsive">
+                        <td><%= rset.getString("imageupload_item_desc")%></td>
+                        <td><%= rset.getString("imageupload_price")%></td> 
+                    <input type="hidden" name="hiddenId" value="<%=rset.getInt(1)%>" />
+                    </tr>
+                    <%  }%>
+                </table>
             </div>
-            <%
-                }
-            %>
-
-        </div>
     </body>
 </html>
