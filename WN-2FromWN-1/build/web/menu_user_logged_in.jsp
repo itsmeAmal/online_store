@@ -45,7 +45,7 @@
                 <li><a href="#">Products</a>
                     <div>
                         <ul>
-                            <li><a href="sessionCart.jsp">Laptops</a></li>                           
+                            <li><a href="laptopModelAll.jsp">Laptops</a></li>                           
                         </ul>
                     </div>
                 </li>
