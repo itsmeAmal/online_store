@@ -58,6 +58,8 @@ public class CartReferences extends HttpServlet {
                     out.println("alert('Successfully added to cart');");
                     out.println("location='laptopModelAll.jsp';");
                     out.println("</script>");
+                    ht.setAttribute("itemId", "");
+                    System.out.println(ht.getAttribute("itemId"));
                 } else if (validStatus == MethodStatus.DUPLICATE_PRIMARY_KEY) {
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Cart items full, Please purchase cart items or clear your cart');");

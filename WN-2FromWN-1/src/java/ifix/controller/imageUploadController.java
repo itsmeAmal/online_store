@@ -5,6 +5,7 @@
  */
 package ifix.controller;
 
+import ifix.core.CommonConstants;
 import ifix.core.Validations;
 import ifix.dao.Impl.imageUploadDaoImpl;
 import ifix.model.ImageUpload;
@@ -34,5 +35,19 @@ public class imageUploadController {
 
     public static ResultSet getAllProducts() throws SQLException {
         return new imageUploadDaoImpl().getAllItems();
+    }
+
+    public static ImageUpload getLaptopById(String laptopId) throws SQLException {
+        ResultSet rset = new imageUploadDaoImpl().getItemByAttributes("imageUpload_id", CommonConstants.sql.EQUAL, laptopId);
+        ImageUpload imageUpload = null;
+        while (rset.next()) {
+            imageUpload = new ImageUpload();
+            imageUpload.setId(rset.getInt("imageUpload_id"));
+            imageUpload.setFileName(rset.getString("imageUpload_file_name"));
+            imageUpload.setImgPath(rset.getString("imageUpload_path"));
+            imageUpload.setPrice(rset.getBigDecimal("imageupload_price"));
+            imageUpload.setItemDescription(rset.getString("imageupload_item_desc"));
+        }
+        return imageUpload;
     }
 }
