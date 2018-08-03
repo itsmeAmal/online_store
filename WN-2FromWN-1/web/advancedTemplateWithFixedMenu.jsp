@@ -90,43 +90,7 @@
         </div>
 
         <div class="content" >
-            <form action="CartReferences">
-                <%
-                    ResultSet rset = imageUploadController.getAllProducts();
-                %>
-                <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
-                    <table class="table">                  
-                        <%  while (rset.next()) {
-                                HttpSession hs = request.getSession();
-                                hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
-                        %>
-                        <tr>  
-                            <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>">
-                                <div style="position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);"></div>
-                            </td>
-                            <td style="position:  relative; font-size: small; text-align: left; top: 30%;"><%= rset.getString("imageupload_item_desc")%>  
-                                <div style="position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
-                                </div>
-                                <div style="position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;">
-                                    <%= rset.getString("imageupload_price")%>
-                                </div>
-                            </td>                         
-                        <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
-                        <td>
-                            <div style="position: relative; left: 0px; top: 90px; width: 100%; height: 50px;">
-                                <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
-                            </div>
-                            <div style="position: relative; left: 0px; width: 100%; height: 50px; top: 85px;">
-                                <!--                                <input class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; "/>-->
-                                <a class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; height: 35px; color: #ffffff" href="productDetails.jsp">More</a>
-                            </div>
-                        </td>
-                        </tr>
-                        <%  }
-                        %>
-                    </table>
-                </div>
-            </form>                  
+                 
         </div>
         <!--header-->
         <div class="header" id="myHeader">
@@ -138,7 +102,7 @@
                 <input type="text" class="form-control" id="search" placeholder="SEARCH" />
             </div>
         </div>
-        <!--filter area-->
+        <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
                  border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>

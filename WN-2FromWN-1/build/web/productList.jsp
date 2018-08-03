@@ -79,7 +79,8 @@
         <title>Products</title>
     </head>
     <body>
-        <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center;">               
+        <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
+            Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm
         </div>
         <div class="top-container">          
             <h1>iFix Laptops.com</h1>
@@ -116,7 +117,8 @@
                                 <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
                             </div>
                             <div style="position: relative; left: 0px; width: 100%; height: 50px; top: 85px;">
-                                <input class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; "/>
+                                <!--                                <input class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; "/>-->
+                                <a class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; height: 35px; color: #ffffff" href="productDetails.jsp">More</a>
                             </div>
                         </td>
                         </tr>
