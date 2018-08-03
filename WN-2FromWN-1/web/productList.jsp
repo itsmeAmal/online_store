@@ -20,13 +20,13 @@
             font-family: Arial;
         }
         .top-container{
-            background-color: #999999;
+            /*background-color: #999999;*/
             padding: 30px;
             text-align: center;
         }
         .header{
             padding: 10px 16px;
-            background: #555;
+            background: #cccccc;
             color: #000000; 
             height: 70px;
         }
@@ -64,6 +64,14 @@
             .sidenav{padding-top: 100px;}
             .sidenav a{font-size: 18px;}
         }
+        .footer{
+            position: fixed;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            background-image: url(web.pos.ee.images/footer.PNG);
+            height: 50px;
+        }
     </style>
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
@@ -78,41 +86,34 @@
             </p>
 
         </div>
-        <div class="header" id="myHeader">
-            <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;">CATEGORIES</div>
-            <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;" >HOME</div>
-            <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
-                <input type="text" class="form-control" id="search" />
-            </div>
-        </div>
+
         <div class="content" >
             <form action="CartReferences">
                 <%
                     ResultSet rset = imageUploadController.getAllProducts();
                 %>
                 <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
-                    <table class="table table-striped">                  
+                    <table class="table">                  
                         <%  while (rset.next()) {
                                 HttpSession hs = request.getSession();
                                 hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
                         %>
-                        <tr class="table-responsive">  
+                        <tr>  
                             <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>">
                                 <div style="position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);"></div>
                             </td>
-                            <td style="position:  relative; font-size: large; font-weight: 800; text-align: center; top: 30%;"  ><%= rset.getString("imageupload_item_desc")%>                         
-                            </td>
-                            <td style="font-size: large; font-weight: 800; color: #0000cc;" ><%= rset.getString("imageupload_price")%>
-                            </td>
+                            <td style="position:  relative; font-size: small; text-align: left; top: 30%;"><%= rset.getString("imageupload_item_desc")%>   
+                                <div style="position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;">
+                                    <%= rset.getString("imageupload_price")%>
+                                </div>
+                            </td>                         
                         <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
                         <td>
-                            <div style="position: relative; left: 0px; top: 10px; width: 100%; height: 50px;">
+                            <div style="position: relative; left: 0px; top: 90px; width: 100%; height: 50px;">
                                 <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
                             </div>
-                            <div style="position: relative; left: 0px; width: 100%; height: 50px; top: 15px;">
-                                <input class="btn btn-info" type="submit" value="Buy Now" style="width: 100px; background-color: #00cc33; "/>
+                            <div style="position: relative; left: 0px; width: 100%; height: 50px; top: 85px;">
+                                <input class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; "/>
                             </div>
                         </td>
                         </tr>
@@ -122,22 +123,29 @@
                 </div>
             </form>                  
         </div>
+        <!--header-->
+        <div class="header" id="myHeader">
+            <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
+                 color: #ffffff; font-weight: 500;">CATEGORIES</div>
+            <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
+                 color: #ffffff; font-weight: 500;" >HOME</div>
+            <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
+                <input type="text" class="form-control" id="search" placeholder="SEARCH" />
+            </div>
+        </div>
         <!--filter area-->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
                  border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
             <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div>
+
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
                 <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
                 <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
                 <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
             </div>
-            <div></div>
-            <div></div>
-
         </div>
-
         <script type="text/javascript">
             window.onscroll = function () {
                 myFunction()
@@ -153,5 +161,6 @@
             }
 
         </script>
+        <div class="footer"></div>
     </body>
 </html>
