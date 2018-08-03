@@ -51,6 +51,7 @@
             padding: 8px 0;
             z-index: 1;
             overflow-x: hidden;
+            border-width: thin;
         }
         .sidenav a{
             padding: 6px 8px 6px 16px;
@@ -82,7 +83,7 @@
                  color: #ffffff; font-weight: 500;">CATEGORIES</div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" >HOME</div>
-            <div style="position: relative; left: 50%; top: -120%; width: 20%; height: 40px;" >
+            <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
                 <input type="text" class="form-control" id="search" />
             </div>
         </div>
@@ -123,10 +124,15 @@
         </div>
         <!--filter area-->
         <div class="sidenav" >
-            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px; border-bottom: groove;"></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
+                <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
+                <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
+                <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
+            </div>
             <div></div>
             <div></div>
 

@@ -96,6 +96,7 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            padding: 8px 0;\n");
       out.write("            z-index: 1;\n");
       out.write("            overflow-x: hidden;\n");
+      out.write("            border-width: thin;\n");
       out.write("        }\n");
       out.write("        .sidenav a{\n");
       out.write("            padding: 6px 8px 6px 16px;\n");
@@ -127,7 +128,7 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                 color: #ffffff; font-weight: 500;\">CATEGORIES</div>\n");
       out.write("            <div style=\"position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;\n");
       out.write("                 color: #ffffff; font-weight: 500;\" >HOME</div>\n");
-      out.write("            <div style=\"position: relative; left: 50%; top: -120%; width: 20%; height: 40px;\" >\n");
+      out.write("            <div style=\"position: relative; left: 54%; top: -120%; width: 20%; height: 40px;\" >\n");
       out.write("                <input type=\"text\" class=\"form-control\" id=\"search\" />\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
@@ -182,10 +183,15 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("        <!--filter area-->\n");
       out.write("        <div class=\"sidenav\" >\n");
-      out.write("            <div style=\"position: relative; left: 0px; width: 100%; top: 0px; height: 40px; border-bottom: groove;\"></div>\n");
-      out.write("            <div></div>\n");
-      out.write("            <div></div>\n");
-      out.write("            <div></div>\n");
+      out.write("            <div style=\"position: relative; left: 0px; width: 100%; top: 0px; height: 40px;\n");
+      out.write("                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;\">FILTER SELECTION</div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; \">BRANDS</div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; \">PRICE</div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; \">\n");
+      out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"Lower Price\" style=\" width: 210px;\"/><br>\n");
+      out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"Highest Price\" style=\" width: 210px;\"/><br>\n");
+      out.write("                <input type=\"submit\" class=\"btn btn-default\" value=\"FILTER\" style=\"width: 210px;\"/>\n");
+      out.write("            </div>\n");
       out.write("            <div></div>\n");
       out.write("            <div></div>\n");
       out.write("\n");
