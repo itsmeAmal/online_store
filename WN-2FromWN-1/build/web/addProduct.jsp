@@ -53,6 +53,43 @@
             overflow-x: hidden;
             border-width: thin;
         }
+        .sidenav-2{
+            position: fixed; 
+            left: 33%; 
+            top: 30%; 
+            width: 12%; 
+            height: 50%; 
+            border: groove;
+            padding: 8px 0;
+            z-index: 1;
+            overflow-x: hidden;
+            border-width: thin;
+        }
+        .sidenav-3{
+            position: fixed; 
+            left: 46%; 
+            top: 30%; 
+            width: 12%; 
+            height: 50%; 
+            border: groove;
+            padding: 8px 0;
+            z-index: 1;
+            overflow-x: hidden;
+            border-width: thin;
+        }
+        .sidenav-4{
+            position: fixed; 
+            left: 59%; 
+            top: 30%; 
+            width: 12%; 
+            height: 50%; 
+            border: groove;
+            padding: 8px 0;
+            z-index: 1;
+            overflow-x: hidden;
+            border-width: thin;
+        }
+
         .sidenav a{
             padding: 6px 8px 6px 16px;
             display: block; 
@@ -76,7 +113,7 @@
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Products</title>
+        <title>Product Management</title>
     </head>
     <body>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
@@ -90,7 +127,7 @@
         </div>
 
         <div class="content" >
-                 
+
         </div>
         <!--header-->
         <div class="header" id="myHeader">
@@ -105,15 +142,80 @@
         <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div>
-
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
-                <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
-                <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
-                <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">DETAIL</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRAND</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 5%; height: 50px;">
+                <select class="form-control" style="width: 210px;;">
+                    <option>APPLE</option>
+                    <option>DELL</option>
+                    <option>LENOVO</option>
+                    <option>HP</option>
+                    <option>SAMSUNG</option>
+                    <option>ACER</option>
+                    <option>SINGER</option>
+                    <option>PANASONIC</option>
+                    <option>COMPAQ</option>
+                </select>
             </div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">MODEL</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 12%; height: 20px; color: #999999; ">
+                <input type="text" class="form-control" placeholder="MODEL" style=" width: 210px;"/><br>
+            </div>
+            <div style="position: relative; left: 5px; width: 80%; top: 22%; height: 20px; color: #999999; ">PRICE</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 24%; height: 20px; color: #999999; ">
+                <input type="text" class="form-control" placeholder="PRICE" style=" width: 210px;"/><br>
+            </div>
+        </div>
+        <div class="sidenav-2">
+            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">RAM</div>
+            <div style="position: relative;left: 10%; top: 5%; width: 30%; height: 20px; font-family: Arial;">
+                <input type="radio" name="ram" value="2 GB" checked="checked" >2 GB <br>
+                <input type="radio" name="ram" value="4 GB" >4 GB <br>
+                <input type="radio" name="ram" value="6 GB" >6 GB <br>
+                <input type="radio" name="ram" value="8 GB" >8 GB <br>
+                <input type="radio" name="ram" value="16 GB" >16 GB <br>
+            </div>
+            <div style="position: relative; top: 30%; width: 100%; border-bottom:  groove;height: 50px; border-width: 
+                 thin; border-top: groove; border-top-width: thin; text-align: center; padding-top: 7px; color: #999999; font-weight: 700; font-family: Arial; ">
+                INTERNAL STORAGE
+            </div>
+            <div style="position: relative;left: 10%; top: 35%; width: 50%; height: 20px; font-family: Arial;">
+                <input type="radio" name="storage" value="500 GB" checked="checked" >500 GB <br>
+                <input type="radio" name="storage" value="1 TB" >1 TB <br>
+                <input type="radio" name="storage" value="2 TB" >2 TB <br>
+                <input type="radio" name="storage" value="128 GB SSD" >128 GB SSD <br>
+                <input type="radio" name="storage" value="256 GB SSD" >256 GB SSD <br>
+                <input type="radio" name="storage" value="512 GB SSD" >512 GB SSD <br>
+            </div>
+        </div>
+        <div class="sidenav-3">
+            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">PROCESSOR</div>
+            <div style="position: relative;left: 10%; top: 5%; width: 50%; height: 20px; font-family: Arial;">
+                <input type="radio" name="processor" value="CELERON" checked="checked" >CELERON <br>
+                <input type="radio" name="processor" value="PENTIUM" >PENTIUM <br>
+                <input type="radio" name="processor" value="DUAL CORE" >DUAL CORE <br>
+                <input type="radio" name="processor" value="CORE i3" >CORE i3<br>
+                <input type="radio" name="processor" value="CORE i5" >CORE i5<br>
+                <input type="radio" name="processor" value="CORE i7" >CORE i7<br>
+            </div>
+            <div style="position: relative; top: 30%; width: 100%; border-bottom:  groove;height: 50px; border-width: 
+                 thin; border-top: groove; border-top-width: thin; text-align: center; padding-top: 7px; color: #999999; font-weight: 700; font-family: Arial; ">
+                OPERATING SYSTEM
+            </div>
+            <div style="position: relative;left: 10%; top: 35%; width: 50%; height: 20px; font-family: Arial;">
+                <input type="radio" name="OS" value="WINDOWS 7" checked="checked" >WINDOWS 7 <br>
+                <input type="radio" name="OS" value="WINDOWS 8" >WINDOWS 8 <br>
+                <input type="radio" name="OS" value="WINDOWS 8.1" >WINDOWS 8.1 <br>
+                <input type="radio" name="OS" value="WINDOWS 10" >WINDOWS 10 <br>
+                <input type="radio" name="OS" value="UBUNTU" >UBUNTU <br>
+                <input type="radio" name="OS" value="NONE" >NONE <br>
+            </div>
+
+        </div>
+        <div class="sidenav-4">
+            
         </div>
         <script type="text/javascript">
             window.onscroll = function () {
