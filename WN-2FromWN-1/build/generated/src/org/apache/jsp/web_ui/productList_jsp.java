@@ -1,4 +1,4 @@
-package org.apache.jsp;
+package org.apache.jsp.web_ui;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,7 +10,7 @@ import ifix.dao.Impl.laptopPriceDetailDaoImpl;
 import ifix.model.laptopPriceDetail;
 import java.util.List;
 
-public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -58,41 +58,70 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
+      out.write("\n");
+      out.write("    <style>\n");
+      out.write("        body{\n");
+      out.write("            margin: 0;\n");
+      out.write("            font-family: Arial;\n");
+      out.write("        }\n");
+      out.write("        .top-container{\n");
+      out.write("            background-color: #999999;\n");
+      out.write("            padding: 30px;\n");
+      out.write("            text-align: center;\n");
+      out.write("        }\n");
+      out.write("        .header{\n");
+      out.write("            padding: 10px 16px;\n");
+      out.write("            background: #555;\n");
+      out.write("            color: #000000;           \n");
+      out.write("        }\n");
+      out.write("        .content{\n");
+      out.write("            padding: 16px;\n");
+      out.write("        }\n");
+      out.write("        .sticky{\n");
+      out.write("            position: fixed;\n");
+      out.write("            top: 0px;\n");
+      out.write("            width: 100%;\n");
+      out.write("        }\n");
+      out.write("        .sticky + .content{\n");
+      out.write("            padding-top: 102px;\n");
+      out.write("        }\n");
+      out.write("    </style>\n");
       out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Models | iFix</title>\n");
-      out.write("        <style>\n");
-      out.write("            #logo{\n");
-      out.write("                position: absolute;\n");
-      out.write("                left: 65%;\n");
-      out.write("                width: 322px;\n");
-      out.write("                height: 67px;\n");
-      out.write("                top: 10%;\n");
-      out.write("                background-image: url(\"com.official.cazzendra.images.logos/3.png\");\n");
-      out.write("            }\n");
-      out.write("        </style>\n");
       out.write("        <link rel=\"stylesheet\" href=\"com.official.cazzendra.css.common/bootstrap.min.css\">\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>Products</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <form action=\"CartReferences\">\n");
+      out.write("        <div class=\"top-container\">\n");
+      out.write("            <h1>Scroll Down</h1>\n");
+      out.write("            <p>\n");
+      out.write("                Scroll down to see sticky effect\n");
+      out.write("            </p>\n");
+      out.write("\n");
+      out.write("        </div>\n");
+      out.write("        <div class=\"header\" id=\"myHeader\"><h2>My Header</h2></div>\n");
+      out.write("        <div class=\"content\" >\n");
+      out.write("               <form action=\"CartReferences\">\n");
       out.write("            <div id=\"logo\"></div>\n");
       out.write("            ");
 
                 ResultSet rset = imageUploadController.getAllProducts();
             
       out.write("\n");
-      out.write("            <div class=\"container\" style=\"position: absolute; left: 20%; top: 20%; width: 60%; height: max-content; background-color: #ffffff;\">\n");
+      out.write("            <div class=\"container\" style=\"position: absolute; left: 20%; top: 30%; width: 60%; height: max-content; background-color: #ffffff;\">\n");
       out.write("                <table class=\"table table-striped\">                  \n");
-      out.write("                    ");
+      out.write("                        ");
   while (rset.next()) {
-                            HttpSession hs = request.getSession();
-                            hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
-                    
+                                HttpSession hs = request.getSession();
+                                hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
+                        
       out.write("\n");
       out.write("                    <tr class=\"table-responsive\">  \n");
-      out.write("                        <td style=\"width: 200px; height: 200px;\"><image src=\"uploadedImages/");
+      out.write("                       \n");
+      out.write("                        <td style=\"width: 200px; height: 200px;\"> <image src='uploadedImages/");
       out.print( rset.getString("imageUpload_file_name"));
-      out.write("\">\n");
+      out.write("'>\n");
+      out.write("                            \n");
       out.write("                        </td>\n");
       out.write("                        <td style=\"position:  relative; font-size: large; font-weight: 800; text-align: center; top: 30%;\"  >");
       out.print( rset.getString("imageupload_item_desc"));
@@ -113,6 +142,21 @@ public final class laptopModelAll_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                </table>\n");
       out.write("            </div>\n");
       out.write("        </form>\n");
+      out.write("        </div>\n");
+      out.write("        <script type=\"text/javascript\">\n");
+      out.write("            window.onscroll = function () {\n");
+      out.write("                myFunction()};\n");
+      out.write("            var header = document.getElementById(\"myHeader\");\n");
+      out.write("            var sticky = header.offsetTop;\n");
+      out.write("            function myFunction() {\n");
+      out.write("                if (window.pageYOffset > sticky) {\n");
+      out.write("                    header.classList.add(\"sticky\");\n");
+      out.write("                } else {\n");
+      out.write("                    header.classList.remove(\"sticky\");\n");
+      out.write("                }\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("        </script>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
