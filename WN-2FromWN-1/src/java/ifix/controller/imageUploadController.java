@@ -18,7 +18,9 @@ import java.sql.SQLException;
  */
 public class imageUploadController {
 
-    public static boolean addItem(String fileName, String filePath, String itemDescription, String price) throws SQLException {
+    public static boolean addItem(String fileName, String filePath, String itemDescription, String price,
+            String model, String processor, String os, String graphics, String webcam, String memory,
+            String storage, String display) throws SQLException {
         boolean status = false;
         if (fileName != null && filePath != null) {
             ImageUpload imageUpload = new ImageUpload();
@@ -26,6 +28,14 @@ public class imageUploadController {
             imageUpload.setImgPath(filePath);
             imageUpload.setItemDescription(itemDescription);
             imageUpload.setPrice(Validations.getBigDecimalOrZeroFromString(price));
+            imageUpload.setModel(price);
+            imageUpload.setProcesser(processor);
+            imageUpload.setOs(os);
+            imageUpload.setGraphics(graphics);
+            imageUpload.setWebcam(webcam);
+            imageUpload.setMemory(memory);
+            imageUpload.setStorage(storage);
+            imageUpload.setDisplay(display);
             imageUploadDaoImpl daoImpl = new imageUploadDaoImpl();
             daoImpl.addItem(imageUpload);
             status = true;
@@ -47,6 +57,14 @@ public class imageUploadController {
             imageUpload.setImgPath(rset.getString("imageUpload_path"));
             imageUpload.setPrice(rset.getBigDecimal("imageupload_price"));
             imageUpload.setItemDescription(rset.getString("imageupload_item_desc"));
+            imageUpload.setModel(rset.getString("imageupload_model"));
+            imageUpload.setProcesser(rset.getString("imageupload_processor"));
+            imageUpload.setOs(rset.getString("imageupload_os"));
+            imageUpload.setGraphics(rset.getString("imageupload_graphics"));
+            imageUpload.setWebcam(rset.getString("imageupload_webcam"));
+            imageUpload.setMemory(rset.getString("imageupload_memory"));
+            imageUpload.setStorage(rset.getString("imageupload_storage"));
+            imageUpload.setDisplay(rset.getString("imageupload_display"));
         }
         return imageUpload;
     }

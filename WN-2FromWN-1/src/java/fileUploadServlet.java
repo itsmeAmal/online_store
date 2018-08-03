@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 
-import ifix.controller.imageUploadController;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -84,15 +82,14 @@ public class fileUploadServlet extends HttpServlet {
         File fileSaveDir = new File(savepath);
         part.write(savepath + File.separator);
 
-        try {
-            boolean status = imageUploadController.addItem(fileName, savepath, itemDescription, price);
-            if (status) {
-                response.sendRedirect("laptopImageUpload.jsp");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+//        try {
+//            boolean status = imageUploadController.addItem(fileName, savepath, itemDescription, price);
+//            if (status) {
+//                response.sendRedirect("laptopImageUpload.jsp");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
