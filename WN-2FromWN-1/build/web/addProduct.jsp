@@ -89,6 +89,18 @@
             overflow-x: hidden;
             border-width: thin;
         }
+        .sidenav-5{
+            position: fixed; 
+            left: 72%; 
+            top: 30%; 
+            width: 12%; 
+            height: 50%; 
+            border: groove;
+            padding: 8px 0;
+            z-index: 1;
+            overflow-x: hidden;
+            border-width: thin;
+        }
 
         .sidenav a{
             padding: 6px 8px 6px 16px;
@@ -215,6 +227,37 @@
 
         </div>
         <div class="sidenav-4">
+            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">GRAPHICS</div>
+            <div style="position: relative;left: 10%; top: 5%; width: 70%; height: 20px; font-family: Arial;">
+                <input type="radio" name="graphics" value="INTEL HD " checked="checked" >INTEL HD <br>
+                <input type="radio" name="graphics" value="AMD REDEON" >AMD REDEON <br>
+                <input type="radio" name="graphics" value="NVIDIA GEFORCE" >NVIDIA GEFORCE <br>
+            </div>
+            <div style="position: relative; top: 30%; width: 100%; border-bottom:  groove;height: 50px; border-width: 
+                 thin; border-top: groove; border-top-width: thin; text-align: center; padding-top: 7px; color: #999999; font-weight: 700; font-family: Arial; ">
+                DISPLAY SIZE
+            </div>
+            <div style="position: relative;left: 10%; top: 35%; width: 50%; height: 20px; font-family: Arial;">
+                <input type="radio" name="display" value="11.6'" checked="checked" >11.6' <br>
+                <input type="radio" name="display" value="13.3'" >13.3' <br>
+                <input type="radio" name="display" value="15.6'" >15.6' <br>
+                <input type="radio" name="display" value="17'" >17' <br>
+
+            </div>
+        </div>
+        <div class="sidenav-5">
+            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">IMAGE UPLOAD AND SAVE</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">IMAGE</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 5%; height: 50px;">
+                <input class="form-control" style=" width: 210px;" type="file" name="file"/>
+                
+            </div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">SAVE PRODUCT DETAILS</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 12%; height: 20px; color: #999999; ">
+                <input type="submit" class="btn btn-info" value="SAVE PRODUCT" style=" width: 210px;"/><br>
+            </div>
             
         </div>
         <script type="text/javascript">
