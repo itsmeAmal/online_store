@@ -66,7 +66,7 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        }\n");
       out.write("        .top-container{\n");
       out.write("            /*background-color: #999999;*/\n");
-      out.write("            padding: 30px;\n");
+      out.write("            padding: 10px;\n");
       out.write("            text-align: center;\n");
       out.write("        }\n");
       out.write("        .header{\n");
@@ -91,7 +91,7 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            left: 20%; \n");
       out.write("            top: 30%; \n");
       out.write("            width: 12%; \n");
-      out.write("            height: 60%; \n");
+      out.write("            height: 50%; \n");
       out.write("            border: groove;\n");
       out.write("            padding: 8px 0;\n");
       out.write("            z-index: 1;\n");
@@ -124,12 +124,13 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Products</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div class=\"top-container\">\n");
-      out.write("            <h1>iFix Laptops</h1>\n");
+      out.write("        <div style=\"position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center;\">               \n");
+      out.write("        </div>\n");
+      out.write("        <div class=\"top-container\">          \n");
+      out.write("            <h1>iFix Laptops.com</h1>\n");
       out.write("            <p>\n");
       out.write("                Something Different\n");
       out.write("            </p>\n");
-      out.write("\n");
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <div class=\"content\" >\n");
@@ -155,7 +156,9 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </td>\n");
       out.write("                            <td style=\"position:  relative; font-size: small; text-align: left; top: 30%;\">");
       out.print( rset.getString("imageupload_item_desc"));
-      out.write("   \n");
+      out.write("  \n");
+      out.write("                                <div style=\"position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)\">            \n");
+      out.write("                                </div>\n");
       out.write("                                <div style=\"position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;\">\n");
       out.write("                                    ");
       out.print( rset.getString("imageupload_price"));

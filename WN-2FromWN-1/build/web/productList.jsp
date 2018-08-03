@@ -21,7 +21,7 @@
         }
         .top-container{
             /*background-color: #999999;*/
-            padding: 30px;
+            padding: 10px;
             text-align: center;
         }
         .header{
@@ -46,7 +46,7 @@
             left: 20%; 
             top: 30%; 
             width: 12%; 
-            height: 60%; 
+            height: 50%; 
             border: groove;
             padding: 8px 0;
             z-index: 1;
@@ -79,12 +79,13 @@
         <title>Products</title>
     </head>
     <body>
-        <div class="top-container">
-            <h1>iFix Laptops</h1>
+        <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center;">               
+        </div>
+        <div class="top-container">          
+            <h1>iFix Laptops.com</h1>
             <p>
                 Something Different
             </p>
-
         </div>
 
         <div class="content" >
@@ -102,7 +103,9 @@
                             <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>">
                                 <div style="position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);"></div>
                             </td>
-                            <td style="position:  relative; font-size: small; text-align: left; top: 30%;"><%= rset.getString("imageupload_item_desc")%>   
+                            <td style="position:  relative; font-size: small; text-align: left; top: 30%;"><%= rset.getString("imageupload_item_desc")%>  
+                                <div style="position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
+                                </div>
                                 <div style="position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;">
                                     <%= rset.getString("imageupload_price")%>
                                 </div>
