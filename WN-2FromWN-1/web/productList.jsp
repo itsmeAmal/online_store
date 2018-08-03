@@ -41,6 +41,28 @@
         .sticky + .content{
             padding-top: 102px;
         }
+        .sidenav{
+            position: fixed; 
+            left: 20%; 
+            top: 30%; 
+            width: 12%; 
+            height: 60%; 
+            border: groove;
+            padding: 8px 0;
+            z-index: 1;
+            overflow-x: hidden;
+        }
+        .sidenav a{
+            padding: 6px 8px 6px 16px;
+            display: block; 
+        }
+        .sidenav a:hover{
+            color: #009999;
+        }
+        @media screen and (max-height:450px){
+            .sidenav{padding-top: 100px;}
+            .sidenav a{font-size: 18px;}
+        }
     </style>
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
@@ -69,7 +91,7 @@
                 <%
                     ResultSet rset = imageUploadController.getAllProducts();
                 %>
-                <div class="container" style="position: absolute; left: 20%; top: 30%; width: 60%; height: max-content; background-color: #ffffff;">
+                <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
                     <table class="table table-striped">                  
                         <%  while (rset.next()) {
                                 HttpSession hs = request.getSession();
@@ -91,8 +113,6 @@
                             <div style="position: relative; left: 0px; width: 100%; height: 50px; top: 15px;">
                                 <input class="btn btn-info" type="submit" value="Buy Now" style="width: 100px; background-color: #00cc33; "/>
                             </div>
-
-
                         </td>
                         </tr>
                         <%  }
@@ -101,11 +121,17 @@
                 </div>
             </form>                  
         </div>
-                    <!--filter area-->
-                    <div style="position: absolute; left: 5%; top: 40%; width: 15%; height: 40%; background-color: #0066cc;">
-                        
-                    </div>
-                    
+        <!--filter area-->
+        <div class="sidenav" >
+            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px; border-bottom: groove;"></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+        </div>
+
         <script type="text/javascript">
             window.onscroll = function () {
                 myFunction()
