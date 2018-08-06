@@ -168,7 +168,6 @@ public final class addUserAccount_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("               <input type=\"submit\" class=\"btn btn-success\" value=\"CREATE ACCOUNT\" style=\"width: 210px;\"/><br>\n");
       out.write("            </div>\n");
       out.write("            \n");
-      out.write("\n");
       out.write("        </div>\n");
       out.write("        <script type=\"text/javascript\">\n");
       out.write("            window.onscroll = function () {\n");

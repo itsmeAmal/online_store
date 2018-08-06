@@ -123,7 +123,6 @@
                <input type="submit" class="btn btn-success" value="CREATE ACCOUNT" style="width: 210px;"/><br>
             </div>
             
-
         </div>
         <script type="text/javascript">
             window.onscroll = function () {
