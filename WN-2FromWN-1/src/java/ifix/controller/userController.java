@@ -56,6 +56,15 @@ public class userController {
         }
     }
 
+    public static MethodStatus updateUserAccountImage(String fileName, String filePath, int userId) throws SQLException {
+        userDaoImpl daoImpl = new userDaoImpl();
+        User user = new User();
+        user.setImageName(fileName);
+        user.setImagePath(filePath);
+        user.setUserId(userId);
+        return daoImpl.updateUserImage(user);
+    }
+
     public static boolean removeUser(String userId) throws SQLException {
         userDaoImpl userDaoImpl = new userDaoImpl();
         userDaoImpl.deleteUser(Validations.getIntOrZeroFromString(userId));

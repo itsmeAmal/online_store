@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import ifix.controller.imageUploadController;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,18 +78,10 @@ public class updateUserAccount extends HttpServlet {
 
         Part part = request.getPart("file");
         String fileName = extractFileName(part);
-        String savepath = "E:\\personel_git\\WN-2FromWN-1\\web\\uploadedImages" + File.separator + fileName;
+        String savepath = "E:\\personel_git\\WN-2FromWN-1\\web\\userAccountImages" + File.separator + fileName;
         File fileSaveDir = new File(savepath);
         part.write(savepath + File.separator);
 
-        try {
-            boolean status = imageUploadController.addItem(fileName, savepath, itemDescription, price);
-            if (status) {
-                response.sendRedirect("laptopImageUpload.jsp");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

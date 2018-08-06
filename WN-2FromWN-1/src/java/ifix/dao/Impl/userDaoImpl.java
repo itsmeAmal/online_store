@@ -20,18 +20,22 @@ import java.sql.SQLException;
  */
 public class userDaoImpl implements userDao {
 
-    private String selectQuery = "SELECT user_id, user_name, user_address, user_contact, user_status, user_email, user_password  FROM user";
+    private String selectQuery = "SELECT user_id, user_name, user_address, user_contact, user_status, user_email, "
+            + " user_password, user_img_path, user_img_name FROM user";
 
     @Override
     public MethodStatus addUser(User user) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
-        PreparedStatement ps = con.prepareStatement("INSERT INTO user(user_name, user_address, user_contact, user_status, user_email, user_password) VALUES (?,?,?,?,?,?)");
+        PreparedStatement ps = con.prepareStatement("INSERT INTO user(user_name, user_address, user_contact, user_status, "
+                + " user_email, user_password, user_img_path, user_img_name) VALUES (?,?,?,?,?,?,?,?)");
         ps.setString(1, user.getUserName());
         ps.setString(2, user.getUserAddress());
         ps.setString(3, user.getContact());
         ps.setInt(4, user.getSatus());
         ps.setString(5, user.getEmail());
         ps.setString(6, user.getPassword());
+        ps.setString(7, user.getImagePath());
+        ps.setString(8, user.getImageName());
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;
@@ -40,13 +44,16 @@ public class userDaoImpl implements userDao {
     @Override
     public boolean updateUser(User user) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
-        PreparedStatement ps = con.prepareStatement("UPDATE user SET user_name=?, user_address=?, user_contact=?, user_status=?, user_password=? WHERE user_id=?");
+        PreparedStatement ps = con.prepareStatement("UPDATE user SET user_name=?, user_address=?, user_contact=?, "
+                + " user_status=?, user_password=?, user_img_path=?, user_img_name=? WHERE user_id=?");
         ps.setString(1, user.getUserName());
         ps.setString(2, user.getUserAddress());
         ps.setString(3, user.getContact());
         ps.setInt(4, user.getSatus());
         ps.setString(5, user.getPassword());
         ps.setInt(6, user.getUserId());
+        ps.setString(7, user.getImagePath());
+        ps.setString(8, user.getImageName());
         ps.executeUpdate();
         ps.close();
         return true;
@@ -107,5 +114,16 @@ public class userDaoImpl implements userDao {
         ResultSet rset = getUsersByOneAttribute("user_name", " LIKE ", userName);
         User user = getFirstUserFromResultset(rset);
         return user;
+    }
+
+    public MethodStatus updateUserImage(User user) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update user set user_img_path=?, user_img_name=? where user_id=?");
+        ps.setString(1, user.getImagePath());
+        ps.setString(2, user.getImageName());
+        ps.setInt(3, user.getUserId());
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
     }
 }
