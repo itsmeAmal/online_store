@@ -76,7 +76,7 @@
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Products</title>
+        <title>Create an account</title>
     </head>
     <body>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
@@ -105,17 +105,24 @@
         <!--add detail -->
         <div class="sidenav" >
 
-            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">Create an account</div>
+            <div style="position: relative; left: 30px; width: 80%; top: 10px; height: 20px; color: #999999; ">Create an account</div>
 
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">EMAIL</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 13%; height: 20px; color: #999999; ">
+            <div style="position: relative; left: 30px; width: 80%; top: 10%; height: 20px; color: #999999; ">EMAIL</div>
+            <div style="position: relative; left: 30px; width: 80%; top: 13%; height: 20px; color: #999999; ">
                 <input type="text" class="form-control" placeholder="john@demo.com" style=" width: 210px;"/><br>
             </div>
-            <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">EMAIL</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 23%; height: 20px; color: #999999; ">
-                <input type="text" class="form-control" placeholder="john@demo.com" style=" width: 210px;"/><br>
+            <div style="position: relative; left: 30px; width: 80%; top: 20%; height: 20px; color: #999999; ">NAME</div>
+            <div style="position: relative; left: 30px; width: 80%; top: 23%; height: 20px; color: #999999; ">
+                <input type="text" class="form-control" placeholder="john" style=" width: 210px;"/><br>
             </div>
-            <!--<input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>-->
+            <div style="position: relative; left: 30px; width: 80%; top: 30%; height: 20px; color: #999999; ">PASSWORD</div>
+            <div style="position: relative; left: 30px; width: 80%; top: 33%; height: 20px; color: #999999; ">
+                <input type="password" class="form-control" placeholder="*******" style=" width: 210px;"/><br>
+            </div>
+            <div style="position: relative; left: 30px; width: 80%; top: 50%; height: 20px; color: #999999; ">
+               <input type="submit" class="btn btn-success" value="CREATE ACCOUNT" style="width: 210px;"/><br>
+            </div>
+            
 
         </div>
         <script type="text/javascript">
