@@ -56,12 +56,12 @@ public class userController {
         }
     }
 
-    public static MethodStatus updateUserAccountImage(String fileName, String filePath, int userId) throws SQLException {
+    public static MethodStatus updateUserAccountImage(String fileName, String filePath, String userId) throws SQLException {
         userDaoImpl daoImpl = new userDaoImpl();
         User user = new User();
         user.setImageName(fileName);
         user.setImagePath(filePath);
-        user.setUserId(userId);
+        user.setUserId(Validations.getIntOrZeroFromString(userId));
         return daoImpl.updateUserImage(user);
     }
 

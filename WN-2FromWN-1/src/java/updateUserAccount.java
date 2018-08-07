@@ -4,9 +4,13 @@
  * and open the template in the editor.
  */
 
+import ifix.controller.userController;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -68,19 +72,26 @@ public class updateUserAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
 
-        String itemDescription = request.getParameter("description");
-        String price = request.getParameter("price");
+            String userId = request.getParameter("id");
+            String price = request.getParameter("price");
+            Part part = request.getPart("file");
 
-        Part part = request.getPart("file");
-        String fileName = extractFileName(part);
-        String savepath = "E:\\personel_git\\WN-2FromWN-1\\web\\userAccountImages" + File.separator + fileName;
-        File fileSaveDir = new File(savepath);
-        part.write(savepath + File.separator);
+            String fileName = extractFileName(part);
+            String savepath = "E:\\personel_git\\WN-2FromWN-1\\web\\userAccountImages" + File.separator + fileName;
+            File fileSaveDir = new File(savepath);
+            part.write(savepath + File.separator);
+
+            userController.updateUserAccountImage(fileName, savepath, userId);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(updateUserAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

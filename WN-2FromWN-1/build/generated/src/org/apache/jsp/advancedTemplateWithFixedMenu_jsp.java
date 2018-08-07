@@ -10,7 +10,7 @@ import ifix.dao.Impl.laptopPriceDetailDaoImpl;
 import ifix.model.laptopPriceDetail;
 import java.util.List;
 
-public final class addUserAccount_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class advancedTemplateWithFixedMenu_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -88,9 +88,9 @@ public final class addUserAccount_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        }\n");
       out.write("        .sidenav{\n");
       out.write("            position: fixed; \n");
-      out.write("            left: 30%; \n");
+      out.write("            left: 20%; \n");
       out.write("            top: 30%; \n");
-      out.write("            width: 40%; \n");
+      out.write("            width: 12%; \n");
       out.write("            height: 50%; \n");
       out.write("            border: groove;\n");
       out.write("            padding: 8px 0;\n");
@@ -121,7 +121,7 @@ public final class addUserAccount_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("    <head>\n");
       out.write("        <link rel=\"stylesheet\" href=\"com.official.cazzendra.css.common/bootstrap.min.css\">\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Create an account</title>\n");
+      out.write("        <title>Products</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div style=\"position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;\">               \n");
@@ -135,7 +135,7 @@ public final class addUserAccount_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <div class=\"content\" >\n");
-      out.write("\n");
+      out.write("                 \n");
       out.write("        </div>\n");
       out.write("        <!--header-->\n");
       out.write("        <div class=\"header\" id=\"myHeader\">\n");
@@ -149,25 +149,16 @@ public final class addUserAccount_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("        </div>\n");
       out.write("        <!--add detail -->\n");
       out.write("        <div class=\"sidenav\" >\n");
+      out.write("            <div style=\"position: relative; left: 0px; width: 100%; top: 0px; height: 40px;\n");
+      out.write("                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;\">FILTER SELECTION</div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; \">BRANDS</div>\n");
       out.write("\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 10px; height: 20px; color: #999999; \">Create an account</div>\n");
-      out.write("\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 10%; height: 20px; color: #999999; \">EMAIL</div>\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 13%; height: 20px; color: #999999; \">\n");
-      out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"john@demo.com\" style=\" width: 210px;\"/><br>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; \">PRICE</div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; \">\n");
+      out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"Lower Price\" style=\" width: 210px;\"/><br>\n");
+      out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"Highest Price\" style=\" width: 210px;\"/><br>\n");
+      out.write("                <input type=\"submit\" class=\"btn btn-default\" value=\"FILTER\" style=\"width: 210px;\"/>\n");
       out.write("            </div>\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 20%; height: 20px; color: #999999; \">NAME</div>\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 23%; height: 20px; color: #999999; \">\n");
-      out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"john\" style=\" width: 210px;\"/><br>\n");
-      out.write("            </div>\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 30%; height: 20px; color: #999999; \">PASSWORD</div>\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 33%; height: 20px; color: #999999; \">\n");
-      out.write("                <input type=\"password\" class=\"form-control\" placeholder=\"*******\" style=\" width: 210px;\"/><br>\n");
-      out.write("            </div>\n");
-      out.write("            <div style=\"position: relative; left: 30px; width: 80%; top: 50%; height: 20px; color: #999999; \">\n");
-      out.write("               <input type=\"submit\" class=\"btn btn-success\" value=\"CREATE ACCOUNT\" style=\"width: 210px;\"/><br>\n");
-      out.write("            </div>\n");
-      out.write("            \n");
       out.write("        </div>\n");
       out.write("        <script type=\"text/javascript\">\n");
       out.write("            window.onscroll = function () {\n");
