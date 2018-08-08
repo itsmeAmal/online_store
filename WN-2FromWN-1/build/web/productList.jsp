@@ -23,6 +23,7 @@
             /*background-color: #999999;*/
             padding: 10px;
             text-align: center;
+            height: 120px;
         }
         .header{
             padding: 10px 16px;
@@ -82,7 +83,8 @@
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
             Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm
         </div>
-        <div class="top-container">          
+        <div class="top-container"> 
+            <div style="position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;">Hi <a href="userProfile.jsp">Amal</a></div>
             <h1>iFix Laptops.com</h1>
             <p>
                 Something Different

@@ -23,7 +23,6 @@
             /*background-color: #999999;*/
             padding: 10px;
             text-align: center;
-            height: 120px;
         }
         .header{
             padding: 10px 16px;
@@ -46,10 +45,10 @@
             position: fixed; 
             left: 20%; 
             top: 30%; 
-            width: 12%; 
-            height: 50%; 
+            width: 16%; 
+            height: 60%; 
             border: groove;
-            padding: 8px 0;
+            padding: 8px 0;   
             z-index: 1;
             overflow-x: hidden;
             border-width: thin;
@@ -77,14 +76,14 @@
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Products</title>
+        <title>Profile</title>
     </head>
     <body>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
-            Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm
+            <div> Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm </div> 
+           
         </div>
-        <div class="top-container"> 
-            <div style="position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;">Hi <a href="userProfile.jsp">Amal</a></div>
+        <div class="top-container">          
             <h1>iFix Laptops.com</h1>
             <p>
                 Something Different
@@ -92,43 +91,7 @@
         </div>
 
         <div class="content" >
-            <form action="CartReferences">
-                <%
-                    ResultSet rset = imageUploadController.getAllProducts();
-                %>
-                <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
-                    <table class="table">                  
-                        <%  while (rset.next()) {
-                                HttpSession hs = request.getSession();
-                                hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
-                        %>
-                        <tr>  
-                            <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>">
-                                <div style="position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);"></div>
-                            </td>
-                            <td style="position:  relative; font-size: small; text-align: left; top: 30%;"><%= rset.getString("imageupload_item_desc")%>  
-                                <div style="position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
-                                </div>
-                                <div style="position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;">
-                                    <%= rset.getString("imageupload_price")%>
-                                </div>
-                            </td>                         
-                        <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
-                        <td>
-                            <div style="position: relative; left: 0px; top: 90px; width: 100%; height: 50px;">
-                                <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
-                            </div>
-                            <div style="position: relative; left: 0px; width: 100%; height: 50px; top: 85px;">
-                                <!--                                <input class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; "/>-->
-                                <a class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; height: 35px; color: #ffffff" href="productDetails.jsp">More</a>
-                            </div>
-                        </td>
-                        </tr>
-                        <%  }
-                        %>
-                    </table>
-                </div>
-            </form>                  
+
         </div>
         <!--header-->
         <div class="header" id="myHeader">
@@ -140,15 +103,18 @@
                 <input type="text" class="form-control" id="search" placeholder="SEARCH" />
             </div>
         </div>
-        <!--filter area-->
+        <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div>
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">PROFILE</div>
+            <div style="position: relative; left: 18%;; width: 200px; top: 10px; height: 200px; background-image: url(web.pos.ee.images/user.png); align-content: center; ">
 
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
+            </div>
+
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">Change Image</div>
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
-                <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
+                <!--<input type="file" class="form-control"  style=" width: 210px;"/><br>-->
+                <input class="form-control" style=" width: 210px;" type="file" name="file"/><br>
                 <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
                 <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
             </div>

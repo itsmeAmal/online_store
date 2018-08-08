@@ -78,10 +78,7 @@
             <div style="position: absolute; left: 55%; top: 42%; width: 300px; height: 100px;"><h4 style="color: #ff0000; font-weight: 600;"> RS : 49999.00</h4></div>
             <div style="position: absolute; left: 55%; top: 52%; width: 150px; height: 50px; background-image: url(web.pos.ee.images/add_to_cart.PNG)"></div>
             <div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>
-            <div style="position: absolute; left: 55%; top: 57%; width: 400px; height: 150px; background-image: url(web.pos.ee.images/delivery_info.PNG)" ></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div style="position: absolute; left: 55%; top: 57%; width: 400px; height: 150px; background-image: url(web.pos.ee.images/delivery_info.PNG)" ></div>        
         </div>
         <script type="text/javascript">
             window.onscroll = function () {

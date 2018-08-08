@@ -10,7 +10,7 @@ import ifix.dao.Impl.laptopPriceDetailDaoImpl;
 import ifix.model.laptopPriceDetail;
 import java.util.List;
 
-public final class advancedTemplateWithFixedMenu_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -68,6 +68,7 @@ public final class advancedTemplateWithFixedMenu_jsp extends org.apache.jasper.r
       out.write("            /*background-color: #999999;*/\n");
       out.write("            padding: 10px;\n");
       out.write("            text-align: center;\n");
+      out.write("            height: 120px;\n");
       out.write("        }\n");
       out.write("        .header{\n");
       out.write("            padding: 10px 16px;\n");
@@ -127,7 +128,8 @@ public final class advancedTemplateWithFixedMenu_jsp extends org.apache.jasper.r
       out.write("        <div style=\"position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;\">               \n");
       out.write("            Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm\n");
       out.write("        </div>\n");
-      out.write("        <div class=\"top-container\">          \n");
+      out.write("        <div class=\"top-container\"> \n");
+      out.write("            <div style=\"position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;\">Hi <a href=\"userProfile.jsp\">Amal</a></div>\n");
       out.write("            <h1>iFix Laptops.com</h1>\n");
       out.write("            <p>\n");
       out.write("                Something Different\n");
@@ -135,7 +137,57 @@ public final class advancedTemplateWithFixedMenu_jsp extends org.apache.jasper.r
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <div class=\"content\" >\n");
-      out.write("                 \n");
+      out.write("            <form action=\"CartReferences\">\n");
+      out.write("                ");
+
+                    ResultSet rset = imageUploadController.getAllProducts();
+                
+      out.write("\n");
+      out.write("                <div class=\"container\" style=\"position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;\">\n");
+      out.write("                    <table class=\"table\">                  \n");
+      out.write("                        ");
+  while (rset.next()) {
+                                HttpSession hs = request.getSession();
+                                hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
+                        
+      out.write("\n");
+      out.write("                        <tr>  \n");
+      out.write("                            <td style=\"width: 200px; height: 200px;\"><image src=\"uploadedImages/");
+      out.print( rset.getString("imageUpload_file_name"));
+      out.write("\">\n");
+      out.write("                                <div style=\"position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);\"></div>\n");
+      out.write("                            </td>\n");
+      out.write("                            <td style=\"position:  relative; font-size: small; text-align: left; top: 30%;\">");
+      out.print( rset.getString("imageupload_item_desc"));
+      out.write("  \n");
+      out.write("                                <div style=\"position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)\">            \n");
+      out.write("                                </div>\n");
+      out.write("                                <div style=\"position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;\">\n");
+      out.write("                                    ");
+      out.print( rset.getString("imageupload_price"));
+      out.write("\n");
+      out.write("                                </div>\n");
+      out.write("                            </td>                         \n");
+      out.write("                        <input type=\"hidden\" name=\"itemId\" value=\"");
+      out.print(rset.getString("imageUpload_id"));
+      out.write("\"/>                    \n");
+      out.write("                        <td>\n");
+      out.write("                            <div style=\"position: relative; left: 0px; top: 90px; width: 100%; height: 50px;\">\n");
+      out.write("                                <input class=\"btn btn-success\" type=\"submit\" value=\"Add to Cart\" style=\"width: 100px; background-color: #990099;\"/>\n");
+      out.write("                            </div>\n");
+      out.write("                            <div style=\"position: relative; left: 0px; width: 100%; height: 50px; top: 85px;\">\n");
+      out.write("                                <!--                                <input class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; \"/>-->\n");
+      out.write("                                <a class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; height: 35px; color: #ffffff\" href=\"productDetails.jsp\">More</a>\n");
+      out.write("                            </div>\n");
+      out.write("                        </td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        ");
+  }
+                        
+      out.write("\n");
+      out.write("                    </table>\n");
+      out.write("                </div>\n");
+      out.write("            </form>                  \n");
       out.write("        </div>\n");
       out.write("        <!--header-->\n");
       out.write("        <div class=\"header\" id=\"myHeader\">\n");
@@ -147,7 +199,7 @@ public final class advancedTemplateWithFixedMenu_jsp extends org.apache.jasper.r
       out.write("                <input type=\"text\" class=\"form-control\" id=\"search\" placeholder=\"SEARCH\" />\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("        <!--add detail -->\n");
+      out.write("        <!--filter area-->\n");
       out.write("        <div class=\"sidenav\" >\n");
       out.write("            <div style=\"position: relative; left: 0px; width: 100%; top: 0px; height: 40px;\n");
       out.write("                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;\">FILTER SELECTION</div>\n");

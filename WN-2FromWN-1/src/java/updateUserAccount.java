@@ -27,7 +27,7 @@ import javax.servlet.http.Part;
  *
  * @author Amal
  */
-@WebServlet(urlPatterns = {"/fileUploadServlet"})
+@WebServlet(urlPatterns = {"/updateUserAccount"})
 public class updateUserAccount extends HttpServlet {
 
     /**
