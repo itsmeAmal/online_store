@@ -137,68 +137,76 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("\n");
       out.write("        <div class=\"content\" >\n");
-      out.write("            <form action=\"CartReferences\">\n");
-      out.write("                ");
+      out.write("\n");
+      out.write("            ");
 
-                    ResultSet rset = imageUploadController.getAllProducts();
-                
+                ResultSet rset = imageUploadController.getAllProducts();
+            
       out.write("\n");
-      out.write("                <div class=\"container\" style=\"position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;\">\n");
-      out.write("                    <table class=\"table\">                  \n");
-      out.write("                        ");
+      out.write("            <div class=\"container\" style=\"position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;\">\n");
+      out.write("                <table class=\"table\">                  \n");
+      out.write("                    ");
   while (rset.next()) {
-                                HttpSession hs = request.getSession();
-                                hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
-                        
+                            HttpSession hs = request.getSession();
+                            hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
+                    
       out.write("\n");
-      out.write("                        <tr>  \n");
-      out.write("                            <td style=\"width: 200px; height: 200px;\"><image src=\"uploadedImages/");
+      out.write("                    <tr>  \n");
+      out.write("                        <td style=\"width: 200px; height: 200px;\"><image src=\"uploadedImages/");
       out.print( rset.getString("imageUpload_file_name"));
       out.write("\">\n");
-      out.write("                                <div style=\"position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);\"></div>\n");
-      out.write("                            </td>\n");
-      out.write("                            <td style=\"position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600;\">");
+      out.write("                            <div style=\"position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);\"></div>\n");
+      out.write("                        </td>\n");
+      out.write("                        <td style=\"position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600;\">");
       out.print( rset.getString("imageupload_item_desc"));
       out.write(' ');
       out.print( rset.getString("imageupload_model"));
       out.write(" \n");
-      out.write("                                <div style=\"position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;\"> ");
+      out.write("                            <div style=\"position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;\"> ");
       out.print( rset.getString("imageupload_processor"));
       out.write(" / ");
       out.print( rset.getString("imageupload_memory"));
-      out.write(" / ");
+      out.write(" / \n");
+      out.write("                                ");
       out.print( rset.getString("imageupload_storage"));
       out.write(" / ");
       out.print( rset.getString("imageupload_os"));
+      out.write(" / ");
+      out.print( rset.getString("imageupload_display"));
       out.write("</div>\n");
-      out.write("                                <div style=\"position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)\">            \n");
-      out.write("                                </div>\n");
-      out.write("                                <div style=\"position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;\">\n");
-      out.write("                                    ");
+      out.write("                            <div style=\"position: absolute; left: 10%; top: 60%; width: 325px; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)\">            \n");
+      out.write("                            </div>\n");
+      out.write("                            <div style=\"position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;\">\n");
+      out.write("                                ");
       out.print( rset.getString("imageupload_price"));
       out.write("\n");
-      out.write("                                </div>\n");
-      out.write("                            </td>                         \n");
-      out.write("                        <input type=\"hidden\" name=\"itemId\" value=\"");
+      out.write("                            </div>\n");
+      out.write("                        </td>                         \n");
+      out.write("                    <input type=\"hidden\" name=\"itemId\" value=\"");
       out.print(rset.getString("imageUpload_id"));
       out.write("\"/>                    \n");
-      out.write("                        <td>\n");
-      out.write("                            <div style=\"position: relative; left: 0px; top: 90px; width: 100%; height: 50px;\">\n");
+      out.write("                    <td>\n");
+      out.write("                        <form action=\"CartReferences\">\n");
+      out.write("                            <div style=\"position: relative; left: 40%; top: 90px; width: 100%; height: 50px;\">\n");
       out.write("                                <input class=\"btn btn-success\" type=\"submit\" value=\"Add to Cart\" style=\"width: 100px; background-color: #990099;\"/>\n");
       out.write("                            </div>\n");
-      out.write("                            <div style=\"position: relative; left: 0px; width: 100%; height: 50px; top: 85px;\">\n");
-      out.write("                                <!--                                <input class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; \"/>-->\n");
-      out.write("                                <a class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; height: 35px; color: #ffffff\" href=\"productDetails.jsp\">More</a>\n");
-      out.write("                            </div>\n");
-      out.write("                        </td>\n");
-      out.write("                        </tr>\n");
-      out.write("                        ");
-  }
-                        
+      out.write("                        </form>  \n");
+      out.write("                        <div style=\"position: relative; left: 40%; width: 100%; height: 50px; top: 85px;\">\n");
+      out.write("                            <form>\n");
       out.write("\n");
-      out.write("                    </table>\n");
-      out.write("                </div>\n");
-      out.write("            </form>                  \n");
+      out.write("                            </form>\n");
+      out.write("                                                            <input class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; \"/>\n");
+      out.write("                            <!--<a class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; height: 35px; color: #ffffff\" href=\"productDetails.jsp\">More</a>-->\n");
+      out.write("                        </div>\n");
+      out.write("                    </td>\n");
+      out.write("                    </tr>\n");
+      out.write("                    ");
+  }
+                    
+      out.write("\n");
+      out.write("                </table>\n");
+      out.write("            </div>\n");
+      out.write("\n");
       out.write("        </div>\n");
       out.write("        <!--header-->\n");
       out.write("        <div class=\"header\" id=\"myHeader\">\n");
