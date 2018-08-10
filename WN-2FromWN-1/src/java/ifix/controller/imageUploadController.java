@@ -22,24 +22,24 @@ public class imageUploadController {
             String model, String processor, String os, String graphics, String webcam, String memory,
             String storage, String display) throws SQLException {
         boolean status = false;
-        if (fileName != null && filePath != null) {
-            ImageUpload imageUpload = new ImageUpload();
-            imageUpload.setFileName(fileName);
-            imageUpload.setImgPath(filePath);
-            imageUpload.setItemDescription(itemDescription);
-            imageUpload.setPrice(Validations.getBigDecimalOrZeroFromString(price));
-            imageUpload.setModel(price);
-            imageUpload.setProcesser(processor);
-            imageUpload.setOs(os);
-            imageUpload.setGraphics(graphics);
-            imageUpload.setWebcam(webcam);
-            imageUpload.setMemory(memory);
-            imageUpload.setStorage(storage);
-            imageUpload.setDisplay(display);
-            imageUploadDaoImpl daoImpl = new imageUploadDaoImpl();
-            daoImpl.addItem(imageUpload);
-            status = true;
-        }
+//        if (fileName != null && filePath != null) {
+        ImageUpload imageUpload = new ImageUpload();
+        imageUpload.setFileName(fileName);
+        imageUpload.setImgPath(filePath);
+        imageUpload.setItemDescription(itemDescription);
+        imageUpload.setPrice(Validations.getBigDecimalOrZeroFromString(price));
+        imageUpload.setModel(model);
+        imageUpload.setProcesser(processor);
+        imageUpload.setOs(os);
+        imageUpload.setGraphics(graphics);
+        imageUpload.setWebcam(webcam);
+        imageUpload.setMemory(memory);
+        imageUpload.setStorage(storage);
+        imageUpload.setDisplay(display);
+        imageUploadDaoImpl daoImpl = new imageUploadDaoImpl();
+        daoImpl.addItem(imageUpload);
+        status = true;
+//        }
         return status;
     }
 

@@ -106,7 +106,8 @@
                             <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>">
                                 <div style="position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);"></div>
                             </td>
-                            <td style="position:  relative; font-size: small; text-align: left; top: 30%;"><%= rset.getString("imageupload_item_desc")%>  
+                            <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600;"><%= rset.getString("imageupload_item_desc")%> <%= rset.getString("imageupload_model")%> 
+                                <div style="position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;"> <%= rset.getString("imageupload_processor")%> / <%= rset.getString("imageupload_memory")%> / <%= rset.getString("imageupload_storage")%> / <%= rset.getString("imageupload_os")%></div>
                                 <div style="position: absolute; left: 10%; top: 60%; width: 85%; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
                                 </div>
                                 <div style="position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;">

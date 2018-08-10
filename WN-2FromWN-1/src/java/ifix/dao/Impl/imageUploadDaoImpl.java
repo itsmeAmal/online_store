@@ -28,12 +28,12 @@ public class imageUploadDaoImpl implements imageUploadDao {
     @Override
     public boolean addItem(ImageUpload imageUpload) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
-        PreparedStatement ps = con.prepareStatement("insert into imageupload(imageUpload_id, "
+        PreparedStatement ps = con.prepareStatement("insert into imageupload("
                 + " imageUpload_path, imageUpload_file_name, imageupload_item_desc, "
                 + " imageupload_price, imageupload_model, imageupload_processor, "
                 + " imageupload_os, imageupload_graphics, imageupload_webcam, "
                 + " imageupload_memory, imageupload_storage, imageupload_display) "
-                + " values (?,?,?,?,?,?,?,?,?,?,?,?,?); ");
+                + " values (?,?,?,?,?,?,?,?,?,?,?,?); ");
         ps.setString(1, imageUpload.getImgPath());
         ps.setString(2, imageUpload.getFileName());
         ps.setString(3, imageUpload.getItemDescription());
