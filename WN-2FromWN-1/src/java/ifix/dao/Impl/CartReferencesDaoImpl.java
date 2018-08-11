@@ -21,19 +21,20 @@ import java.sql.SQLException;
 public class CartReferencesDaoImpl implements CartReferencesDao {
 
     private String selectQuery = "select cart_references_id, cart_references_item_id, "
-            + "cart_references_qty, cart_references_status, cart_references_user_id from cart_references";
+            + " cart_references_qty, cart_references_status, cart_references_user_id, "
+            + " cart_references_item_price, cart_references_delivery_status from cart_references";
 
     @Override
-
     public MethodStatus addReference(CartReferences cartReferences) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("insert into cart_references(cart_references_id, cart_references_item_id,"
-                + " cart_references_qty, cart_references_status, cart_references_user_id) values (?,?,?,?,?)");
+                + " cart_references_qty, cart_references_status, cart_references_user_id, cart_references_item_price) values (?,?,?,?,?,?)");
         ps.setInt(1, cartReferences.getId());
         ps.setInt(2, cartReferences.getItemId());
         ps.setInt(3, cartReferences.getQty());
         ps.setInt(4, cartReferences.getStatus());
-        ps.setInt(5, cartReferences.getUserId());
+        ps.setString(5, Integer.toString(cartReferences.getUserId()));
+        ps.setBigDecimal(6, cartReferences.getPrice());
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;
@@ -63,6 +64,15 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.executeUpdate();
         ps.close();
         return true;
+    }
+
+    public MethodStatus updateSessionIdToUserId(String userSessionId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_user_id=? where cart_references_user_id=? ");
+        ps.setString(1, userSessionId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
     }
 
     public boolean deleteCartRefRecord(int id) throws SQLException {
