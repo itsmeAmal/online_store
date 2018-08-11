@@ -41,4 +41,8 @@ public class CartReferenceController {
                 Validations.getIntOrZeroFromString(userId));
     }
 
+    public static MethodStatus updateSessionIdToUserId(String userSessionId) throws SQLException {
+        return new CartReferencesDaoImpl().updateSessionIdToUserId(userSessionId);
+    }
+
 }

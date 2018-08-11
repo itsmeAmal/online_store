@@ -5,6 +5,8 @@
  */
 package ifix.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Amal
@@ -16,6 +18,7 @@ public class CartReferences {
     private int qty;
     private int status;
     private int userId;
+    private BigDecimal price;
 
     /**
      * @return the id
@@ -85,6 +88,20 @@ public class CartReferences {
      */
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    /**
+     * @return the price
+     */
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
 }
