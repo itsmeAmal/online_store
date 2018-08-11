@@ -68,4 +68,9 @@ public class imageUploadController {
         }
         return imageUpload;
     }
+
+    public static ResultSet getAllDistinctRbandNames() throws SQLException {
+        return new imageUploadDaoImpl().getAllDistinctBrandNames();
+    }
+
 }

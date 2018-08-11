@@ -135,11 +135,8 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                Something Different\n");
       out.write("            </p>\n");
       out.write("        </div>\n");
-      out.write("\n");
       out.write("        <div class=\"content\" >\n");
-      out.write("\n");
       out.write("            ");
-
                 ResultSet rset = imageUploadController.getAllProducts();
             
       out.write("\n");
@@ -147,8 +144,6 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <table class=\"table\">                  \n");
       out.write("                    ");
   while (rset.next()) {
-                            HttpSession hs = request.getSession();
-                            hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
                     
       out.write("\n");
       out.write("                    <tr>  \n");
@@ -162,6 +157,10 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(' ');
       out.print( rset.getString("imageupload_model"));
       out.write(" \n");
+      out.write("                            <p id=\"refCode\" style=\"position:  relative; font-size: x-small; text-align: left; top: 30%; left: 8%; font-weight: 100;\">Reference Code : ");
+      out.print( rset.getString("imageUpload_id"));
+      out.write("</p>                             \n");
+      out.write("\n");
       out.write("                            <div style=\"position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;\"> ");
       out.print( rset.getString("imageupload_processor"));
       out.write(" / ");
@@ -192,11 +191,12 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </div>\n");
       out.write("                        </form>  \n");
       out.write("                        <div style=\"position: relative; left: 40%; width: 100%; height: 50px; top: 85px;\">\n");
-      out.write("                            <form>\n");
-      out.write("\n");
+      out.write("                            <form action=\"redirectToProductDetail\" method=\"post\">\n");
+      out.write("                                <input type=\"hidden\" id=\"laptopId\" name=\"laptopId\" value=\"");
+      out.print(rset.getString("imageUpload_id"));
+      out.write("\">\n");
+      out.write("                                <input class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; \"/>\n");
       out.write("                            </form>\n");
-      out.write("                                                            <input class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; \"/>\n");
-      out.write("                            <!--<a class=\"btn btn-info\" type=\"submit\" value=\"More\" style=\"width: 100px; background-color: #00cc33; height: 35px; color: #ffffff\" href=\"productDetails.jsp\">More</a>-->\n");
       out.write("                        </div>\n");
       out.write("                    </td>\n");
       out.write("                    </tr>\n");
@@ -219,16 +219,37 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("        <!--filter area-->\n");
-      out.write("        <div class=\"sidenav\" >\n");
+      out.write("        <div class=\"sidenav\">\n");
       out.write("            <div style=\"position: relative; left: 0px; width: 100%; top: 0px; height: 40px;\n");
       out.write("                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;\">FILTER SELECTION</div>\n");
       out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; \">BRANDS</div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10px; height: 20px;\">\n");
+      out.write("                ");
+
+                    ResultSet set = imageUploadController.getAllDistinctRbandNames();
+                
       out.write("\n");
+      out.write("                <select id=\"brand\" class=\"form-control\" name=\"brand\" style=\"width: 210px;\">\n");
+      out.write("                    <option>ALL BRANDS</option>\n");
+      out.write("                    ");
+while (set.next()) {
+      out.write("\n");
+      out.write("                    <option>");
+      out.print(set.getString("imageupload_item_desc"));
+      out.write("</option> \n");
+      out.write("                    ");
+}
+      out.write("\n");
+      out.write("                </select>\n");
+      out.write("            </div>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px;\">\n");
+      out.write("                <input type=\"submit\" class=\"btn btn-default\" value=\"BRAND FILTER\" style=\"width: 210px;\"/>\n");
+      out.write("            </div>\n");
       out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; \">PRICE</div>\n");
       out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; \">\n");
       out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"Lower Price\" style=\" width: 210px;\"/><br>\n");
       out.write("                <input type=\"text\" class=\"form-control\" placeholder=\"Highest Price\" style=\" width: 210px;\"/><br>\n");
-      out.write("                <input type=\"submit\" class=\"btn btn-default\" value=\"FILTER\" style=\"width: 210px;\"/>\n");
+      out.write("                <input type=\"submit\" class=\"btn btn-default\" value=\"PRICE FILTER\" style=\"width: 210px;\"/>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("        <script type=\"text/javascript\">\n");
@@ -244,7 +265,6 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    header.classList.remove(\"sticky\");\n");
       out.write("                }\n");
       out.write("            }\n");
-      out.write("\n");
       out.write("        </script>\n");
       out.write("        <div class=\"footer\"></div>\n");
       out.write("    </body>\n");

@@ -4,6 +4,9 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.controller.imageUploadController"%>
+<%@page import="ifix.model.ImageUpload"%>
+<%@page import="ifix.core.Validations"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -69,12 +72,16 @@
             </div>
         </div>
         <div>
+            <%
+                HttpSession ses = request.getSession();
+                String ss = (String) ses.getAttribute("laptopId");
+            %>
             <div style="position: absolute; left: 25%; top: 30%; width: 500px; height: 500px; background-color: #cccccc;">              
             </div>
             <div style="position: absolute; left: 25%; top: 30%; width: 78px; height: 69px; background-image: url(web.pos.ee.images/13_off.PNG)">
             </div>
-            <div style="position: absolute; left: 55%; top: 30%; width: 20%; height: 100px;"><h3>LAPTOP MODEL NO AND DETAIL WITH DESCRIPTION </h3></div>
-            <div style="position: absolute; left: 55%; top: 37%; width: 20%; height: 100px;"><h4 style="color: #009900;">DESCRIPTION AS MODEL ID</h4></div>
+            <div style="position: absolute; left: 55%; top: 30%; width: 20%; height: 100px;"><h3><%= ss %> </h3></div>
+            <div style="position: absolute; left: 55%; top: 37%; width: 20%; height: 100px;"><h4 style="color: #009900;"></h4></div>
             <div style="position: absolute; left: 55%; top: 42%; width: 300px; height: 100px;"><h4 style="color: #ff0000; font-weight: 600;"> RS : 49999.00</h4></div>
             <div style="position: absolute; left: 55%; top: 52%; width: 150px; height: 50px; background-image: url(web.pos.ee.images/add_to_cart.PNG)"></div>
             <div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>

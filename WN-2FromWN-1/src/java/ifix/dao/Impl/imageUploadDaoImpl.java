@@ -99,4 +99,10 @@ public class imageUploadDaoImpl implements imageUploadDao {
         return new commonDaoImpl().getResultByAttribute(selectQuery, attribute, condition, value);
     }
 
+    public ResultSet getAllDistinctBrandNames() throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select distinct imageupload_item_desc from imageUpload");
+        return ps.executeQuery();
+    }
+
 }

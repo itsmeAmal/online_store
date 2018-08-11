@@ -90,23 +90,20 @@
                 Something Different
             </p>
         </div>
-
         <div class="content" >
-
-            <%
-                ResultSet rset = imageUploadController.getAllProducts();
+            <%                ResultSet rset = imageUploadController.getAllProducts();
             %>
             <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
                 <table class="table">                  
                     <%  while (rset.next()) {
-                            HttpSession hs = request.getSession();
-                            hs.setAttribute("laptopId", rset.getString("imageUpload_id"));
                     %>
                     <tr>  
                         <td style="width: 200px; height: 200px;"><image src="uploadedImages/<%= rset.getString("imageUpload_file_name")%>">
                             <div style="position: absolute; left: -40px; width: 80px; height: 60px; top: 0px; background-image: url(web.pos.ee.images/13_off.PNG);"></div>
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600;"><%= rset.getString("imageupload_item_desc")%> <%= rset.getString("imageupload_model")%> 
+                            <p id="refCode" style="position:  relative; font-size: x-small; text-align: left; top: 30%; left: 8%; font-weight: 100;">Reference Code : <%= rset.getString("imageUpload_id")%></p>                             
+
                             <div style="position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;"> <%= rset.getString("imageupload_processor")%> / <%= rset.getString("imageupload_memory")%> / 
                                 <%= rset.getString("imageupload_storage")%> / <%= rset.getString("imageupload_os")%> / <%= rset.getString("imageupload_display")%></div>
                             <div style="position: absolute; left: 10%; top: 60%; width: 325px; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
@@ -123,14 +120,10 @@
                             </div>
                         </form>  
                         <div style="position: relative; left: 40%; width: 100%; height: 50px; top: 85px;">
-                            <form action="#">
-                                <%
-                                HttpSession hsPid = request.getSession();
-                                hs.setAttribute("hsPid", rset.getInt("imageUpload_id")); 
-                                %>
+                            <form action="redirectToProductDetail" method="post">
+                                <input type="hidden" id="laptopId" name="laptopId" value="<%=rset.getString("imageUpload_id")%>">
                                 <input class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; "/>
                             </form>
-                            <!--<a class="btn btn-info" type="submit" value="More" style="width: 100px; background-color: #00cc33; height: 35px; color: #ffffff" href="productDetails.jsp">More</a>-->
                         </div>
                     </td>
                     </tr>
@@ -151,16 +144,29 @@
             </div>
         </div>
         <!--filter area-->
-        <div class="sidenav" >
+        <div class="sidenav">
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
                  border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
             <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div>
-
+            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px;">
+                <%
+                    ResultSet set = imageUploadController.getAllDistinctRbandNames();
+                %>
+                <select id="brand" class="form-control" name="brand" style="width: 210px;">
+                    <option>ALL BRANDS</option>
+                    <%while (set.next()) {%>
+                    <option><%=set.getString("imageupload_item_desc")%></option> 
+                    <%}%>
+                </select>
+            </div>
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;">
+                <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
+            </div>
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
                 <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
                 <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
-                <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
+                <input type="submit" class="btn btn-default" value="PRICE FILTER" style="width: 210px;"/>
             </div>
         </div>
         <script type="text/javascript">
@@ -176,7 +182,6 @@
                     header.classList.remove("sticky");
                 }
             }
-
         </script>
         <div class="footer"></div>
     </body>
