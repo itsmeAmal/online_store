@@ -5,9 +5,8 @@
  */
 
 import ifix.controller.CartReferenceController;
-import ifix.controller.userController;
 import ifix.core.MethodStatus;
-import ifix.model.User;
+import ifix.core.Validations;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,14 +17,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Amal
  */
-@WebServlet(urlPatterns = {"/invoiceServlet"})
-public class invoiceServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/removeItemServlet"})
+public class removeItemServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,19 +69,14 @@ public class invoiceServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-
-            HttpSession hs = request.getSession();
-            String email = (String) hs.getAttribute("loggedIn");
-            User user = userController.getuserByUserEmail(email);
-
-            MethodStatus status = CartReferenceController.setProductsAsInvoiced(Integer.toString(user.getUserId()));
+            String itemId = request.getParameter("hdnItemId");
+            MethodStatus status = CartReferenceController.removeCartProductByItemId(Validations.getIntOrZeroFromString(itemId));
             if (status == MethodStatus.SUCCESS) {
                 response.sendRedirect("userProfile.jsp");
-            } else {
-                response.sendRedirect("userProfile.jsp");
             }
+
         } catch (SQLException ex) {
-            Logger.getLogger(invoiceServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(removeItemServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

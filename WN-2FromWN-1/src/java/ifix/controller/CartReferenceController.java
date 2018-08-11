@@ -70,4 +70,8 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().setProductsAsInvoiced(userId);
     }
 
+    public static MethodStatus removeCartProductByItemId(int itemId) throws SQLException {
+        return new CartReferencesDaoImpl().removeCartProductByItemId(itemId);
+    }
+
 }

@@ -4,28 +4,20 @@
  * and open the template in the editor.
  */
 
-import ifix.controller.CartReferenceController;
-import ifix.controller.userController;
-import ifix.core.MethodStatus;
-import ifix.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Amal
  */
-@WebServlet(urlPatterns = {"/invoiceServlet"})
-public class invoiceServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/paymentGatewayResirectServlet"})
+public class paymentGatewayResirectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,23 +61,8 @@ public class invoiceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-
-            HttpSession hs = request.getSession();
-            String email = (String) hs.getAttribute("loggedIn");
-            User user = userController.getuserByUserEmail(email);
-
-            MethodStatus status = CartReferenceController.setProductsAsInvoiced(Integer.toString(user.getUserId()));
-            if (status == MethodStatus.SUCCESS) {
-                response.sendRedirect("userProfile.jsp");
-            } else {
-                response.sendRedirect("userProfile.jsp");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(invoiceServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        processRequest(request, response);
+        response.sendRedirect("paymentGateway.jsp");
     }
 
     /**

@@ -163,7 +163,8 @@
                         <td style="width: 300px; height: 100px; font-size: medium; text-align: left; top: 30%; font-weight: 100; "><%=rset.getString("cart_references_model_brand")%> 
                             <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
                                 Date added : <%= rset.getDate("cart_references_date").toString()%> 
-                            </div>                        
+                            </div>
+                                
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
                             1 Pcs                      
@@ -172,8 +173,9 @@
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
                         <td>
-                            <form action="addToDatabaseCart" method="post">
+                            <form action="removeItemServlet" method="post">
                                 <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
+                                    <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id")) %>"> 
                                     <input class="btn btn-success" type="submit" value="REMOVE" style="width: 100px; background-color: #990099;"/>
                                 </div>
                             </form>  

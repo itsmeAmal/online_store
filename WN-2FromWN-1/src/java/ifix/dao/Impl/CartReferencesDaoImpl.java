@@ -112,7 +112,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand,"
-                + " cart_references_date from cart_references where cart_references_user_id=?");
+                + " cart_references_date from cart_references where cart_references_user_id=? and cart_references_status=1");
         ps.setString(1, userId);
         return ps.executeQuery();
     }
@@ -157,6 +157,15 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_status=? where cart_references_user_id=?");
         ps.setInt(1, 2);
         ps.setString(2, userId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
+    }
+
+    public MethodStatus removeCartProductByItemId(int itemId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("delete from cart_references where cart_references_item_id=?");
+        ps.setInt(1, itemId);
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;

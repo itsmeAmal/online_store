@@ -63,7 +63,7 @@
             left: 35%; 
             top: 26%; 
             width: 30%; 
-            height: 60%; 
+            height: 40%; 
             border: groove;
             padding: 8px 0;   
             z-index: 1;
@@ -115,10 +115,6 @@
         <%
             BigDecimal value = CartReferenceController.getTotalByUserId(Integer.toString(user.getUserId()));
         %>
-        <div style="position: absolute; left: 35%; top: 22%; width: 600px; height: 40px;">
-           
-        </div>
-
         <div class="sidenav-6">
             <%
                 ResultSet rset = CartReferenceController.getCartProductsByUserId(Integer.toString(user.getUserId()));
@@ -151,7 +147,11 @@
                 </table>
             </div>
         </div>
-
+        <div style="position: absolute; left: 59%; top: 70%; width: 600px; height: 40px;">
+            <form action="paymentGatewayResirectServlet" method="post"> 
+                <input class="btn btn-primary" type="submit" value="PAY ONLINE">
+            </form>
+        </div>
         <script type="text/javascript">
             window.onscroll = function () {
                 myFunction()
