@@ -91,7 +91,17 @@
             </p>
         </div>
         <div class="content" >
-            <%                ResultSet rset = imageUploadController.getAllProducts();
+            <%                
+                HttpSession ses = request.getSession();
+                ses.setAttribute("brand", null); 
+                ResultSet rset = null;
+                if(ses.getAttribute("brand") == null){
+                rset = imageUploadController.getAllProducts();
+                }else{
+                rset = imageUploadController.getProductsByAttribute(ses.getAttribute("brand").toString());
+                }
+                
+                 
             %>
             <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
                 <table class="table">                  
@@ -105,12 +115,10 @@
                             <p id="refCode" style="position:  relative; font-size: x-small; text-align: left; top: 30%; left: 8%; font-weight: 100;">Reference Code : <%= rset.getString("imageUpload_id")%></p>                             
 
                             <div style="position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;"> <%= rset.getString("imageupload_processor")%> / <%= rset.getString("imageupload_memory")%> / 
-                                <%= rset.getString("imageupload_storage")%> / <%= rset.getString("imageupload_os")%> / <%= rset.getString("imageupload_display")%></div>
+                                <%= rset.getString("imageupload_storage")%> </div>
                             <div style="position: absolute; left: 10%; top: 60%; width: 325px; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
                             </div>
-                            <div style="position: absolute; left: 10%; top: 75%; width: 20%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;">
-                                <%= rset.getString("imageupload_price")%>
-                            </div>
+                            <div style="position: absolute; left: 10%; top: 75%; width: 30%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;"><%= rset.getString("imageupload_price")%></div>
                         </td>                         
                     <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
                     <td>
@@ -131,7 +139,6 @@
                     %>
                 </table>
             </div>
-
         </div>
         <!--header-->
         <div class="header" id="myHeader">
@@ -162,8 +169,8 @@
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;">
                 <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
             </div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
+            <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">PRICE</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">
                 <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
                 <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
                 <input type="submit" class="btn btn-default" value="PRICE FILTER" style="width: 210px;"/>

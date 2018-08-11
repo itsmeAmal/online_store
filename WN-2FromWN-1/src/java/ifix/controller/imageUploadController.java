@@ -73,4 +73,8 @@ public class imageUploadController {
         return new imageUploadDaoImpl().getAllDistinctBrandNames();
     }
 
+    public static ResultSet getProductsByAttribute(String value) throws SQLException {
+        return new imageUploadDaoImpl().getItemByAttributes("imageupload_item_desc", CommonConstants.sql.EQUAL, value);
+    }
+
 }

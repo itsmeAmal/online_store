@@ -75,14 +75,20 @@
             <%
                 HttpSession ses = request.getSession();
                 String ss = (String) ses.getAttribute("laptopId");
+                ImageUpload imageUpload = imageUploadController.getLaptopById(ss);
             %>
-            <div style="position: absolute; left: 25%; top: 30%; width: 500px; height: 500px; background-color: #cccccc;">              
+            <div style="position: absolute; left: 25%; top: 30%; width: 500px; height: 500px; border: groove; align-content: center;">  
+                <div style="position: relative; left: 28%; top: 28%; ">
+                    <image src="uploadedImages/<%= imageUpload.getFileName()%>">
+                </div>
             </div>
             <div style="position: absolute; left: 25%; top: 30%; width: 78px; height: 69px; background-image: url(web.pos.ee.images/13_off.PNG)">
             </div>
-            <div style="position: absolute; left: 55%; top: 30%; width: 20%; height: 100px;"><h3><%= ss %> </h3></div>
-            <div style="position: absolute; left: 55%; top: 37%; width: 20%; height: 100px;"><h4 style="color: #009900;"></h4></div>
-            <div style="position: absolute; left: 55%; top: 42%; width: 300px; height: 100px;"><h4 style="color: #ff0000; font-weight: 600;"> RS : 49999.00</h4></div>
+            <div style="position: absolute; left: 55%; top: 30%; width: 20%; height: 100px;"><h3><%= imageUpload.getItemDescription()%> <%= imageUpload.getModel()%> <%= imageUpload.getProcesser()%></h3></div>
+            <div style="position: absolute; left: 55%; top: 37%; width: 20%; height: 100px;">
+                <h4 style="color: #009900;"><%= imageUpload.getMemory()%> / <%= imageUpload.getStorage()%> / <%= imageUpload.getOs()%> / <%= imageUpload.getMemory()%> / <%= imageUpload.getGraphics()%> / <%= imageUpload.getDisplay()%></h4>
+            </div>
+            <div style="position: absolute; left: 55%; top: 42%; width: 300px; height: 100px;"><h4 style="color: #ff0000; font-weight: 600;">Rs <%= imageUpload.getPrice()%></h4></div>
             <div style="position: absolute; left: 55%; top: 52%; width: 150px; height: 50px; background-image: url(web.pos.ee.images/add_to_cart.PNG)"></div>
             <div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>
             <div style="position: absolute; left: 55%; top: 57%; width: 400px; height: 150px; background-image: url(web.pos.ee.images/delivery_info.PNG)" ></div>        
@@ -100,7 +106,6 @@
                     header.classList.remove("sticky");
                 }
             }
-
         </script>
         <div class="footer"></div>
 
