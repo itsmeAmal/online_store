@@ -121,18 +121,8 @@
                 height: 30px;
             }
         </style>
-
-
-
-
-
     </head>
-    <body>
-        <form action="final_pay_2" method="GET">
-
-            
-
-
+    <body>       
             <div id="back_box">
                 <div id="payment_type_d">
                     <h5>Credit Card Type</h5>
@@ -142,6 +132,7 @@
                         <option>AMEX </option>
                     </select>
                 </div>
+                
                 <div id="cart_images"></div>
                 <div id="name_on_card"> <input type="text" name="tf-1" placeholder="Name on credit card"  class="form-control"/> </div>
                 <div id="address_l1"> <input type="text" name="tf-2" placeholder="Address Line 1" class="form-control"/> </div>
@@ -186,19 +177,11 @@
                         For on-time posting on the payment to your account please allow three business days 
                         prior to the due date for processing
                     </p>
-                </div>
+                </div>               
+                <form action="invoiceServlet" method="post"> 
                 <div id="confirm_payment"><input type="submit" name="payment" value="PAY" class="btn btn-success" style="position: absolute; width: 150px;"  /> </div>
-                <div id="cancel_payment"> <a href="Cart_bill.jsp"  class="btn btn-success" style="position: absolute; width: 150px;" >Cancel</a>  </div>
+                </form>
+                <div id="cancel_payment"> <a href="userProfile.jsp"  class="btn btn-success" style="position: absolute; width: 150px;" >Cancel</a>  </div>
             </div>
-
-            <%
-
-                HttpSession hs = request.getSession();
-
-            %>
-
-            <input type="hidden" name="hidden_tot" value="<%= hs.getAttribute("tot")%>"/>
-
-        </form>
     </body>
 </html>

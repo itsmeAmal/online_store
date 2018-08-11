@@ -138,6 +138,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         while (rset.next()) {
             total = rset.getBigDecimal("total_sum");
         }
+        System.out.println(total);
         return total;
     }
 
@@ -150,4 +151,15 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.close();
         return MethodStatus.SUCCESS;
     }
+
+    public MethodStatus setProductsAsInvoiced(String userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_status=? where cart_references_user_id=?");
+        ps.setInt(1, 2);
+        ps.setString(2, userId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
+    }
+
 }

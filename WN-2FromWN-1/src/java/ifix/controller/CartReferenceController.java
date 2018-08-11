@@ -66,4 +66,8 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().setProductAsDelivered(userId);
     }
 
+    public static MethodStatus setProductsAsInvoiced(String userId) throws SQLException {
+        return new CartReferencesDaoImpl().setProductsAsInvoiced(userId);
+    }
+
 }

@@ -4,6 +4,7 @@
     Author     : Amal
 --%>
 
+<%@page import="java.math.BigDecimal"%>
 <%@page import="ifix.model.ImageUpload"%>
 <%@page import="ifix.controller.CartReferenceController"%>
 <%@page import="ifix.controller.userController"%>
@@ -25,7 +26,7 @@
         }
         .top-container{
             /*background-color: #999999;*/
-            padding: 10px;
+            padding: 7px;
             text-align: center;
         }
         .header{
@@ -59,9 +60,9 @@
         }
         .sidenav-6{
             position: fixed; 
-            left: 40%; 
-            top: 30%; 
-            width: 40%; 
+            left: 35%; 
+            top: 26%; 
+            width: 30%; 
             height: 60%; 
             border: groove;
             padding: 8px 0;   
@@ -105,57 +106,30 @@
 
         </div>
         <div class="top-container">          
-            <h1>iFix Laptops.com</h1>
-            <p>
-                Something Different
-            </p>
+            <h1>INVOICE</h1>
+            <p>iFix Laptops</p>
+            <p>SYSTEM GENERATED BILL</p>
+            <p>User Email : <%= user.getEmail()%></p>
+            <p>Name : <%= user.getUserName()%></p>
+        </div>
+        <%
+            BigDecimal value = CartReferenceController.getTotalByUserId(Integer.toString(user.getUserId()));
+        %>
+        <div style="position: absolute; left: 35%; top: 22%; width: 600px; height: 40px;">
+           
         </div>
 
-        <div class="content" >
-
-        </div>
-        <!--header-->
-        <div class="header" id="myHeader">
-            <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;">MY CART</div>
-            <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;" >HOME</div>
-            <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
-                <form action="checkoutServlet" method="post">
-                    <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
-                </form>
-            </div>
-        </div>
-        <!--add detail -->
-        <div class="sidenav" >
-            <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">MY PROFILE</div>
-            <div style="position: relative; left: 18%; width: 200px; top: 10px; height: 200px; background-image: url(web.pos.ee.images/user.png); align-content: center; ">
-            </div>
-
-            <!--            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">SUMMARY</div>-->
-            <div style="position: relative; left: 15%; width: 80%; top: 10%; height: 20px; color: #999999; ">
-                <h4 class="form-control" style=" width: 210px;" type="text" name="email"><%= user.getEmail()%></h4>
-                <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserName()%></h4>
-                <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getContact()%></h4>
-                <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserAddress()%></h4>
-                <input type="submit" class="btn btn-success" value="DEACTIVATE PROFILE" style="width: 210px;"/>
-            </div>
-        </div>
         <div class="sidenav-6">
             <%
                 ResultSet rset = CartReferenceController.getCartProductsByUserId(Integer.toString(user.getUserId()));
             %>
-            <div class="container" style="position: absolute; left: 5%; top: 3%; width: 90%; height: max-content; background-color: #ffffff;">
+            <div class="container" style="position: absolute; left: 5%; top: 10%; width: 90%; height: max-content; background-color: #ffffff;">
                 <table class="table table-responsive">   
                     <th>PRODUCT</th>
                     <th>QUANTITY</th>                   
                     <th>PRICE</th>
-                    <th>ACTION</th>
-
-
-                    <%  while (rset.next()) {
-                    %>
+                        <%  while (rset.next()) {
+                        %>
                     <tr>  
                         <%
                             ImageUpload imageUpload = imageUploadController.getLaptopById(Integer.toString(rset.getInt("cart_references_item_id")));
@@ -170,14 +144,6 @@
                         </td> 
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
-                        </td>
-                        <td>
-                            <form action="addToDatabaseCart" method="post">
-                                <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
-                                    <input class="btn btn-success" type="submit" value="REMOVE" style="width: 100px; background-color: #990099;"/>
-                                </div>
-                            </form>  
-
                         </td>
                     </tr>
                     <%  }

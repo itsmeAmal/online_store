@@ -121,7 +121,7 @@
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" >HOME</div>
             <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
-                <form action="checkoutServlet">
+                <form action="checkoutServlet" method="post">
                     <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
                 </form>
             </div>
