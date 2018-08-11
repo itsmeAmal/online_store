@@ -58,4 +58,12 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().removeCartProductByDateAndItemId(itemId, date);
     }
 
+    public static BigDecimal getTotalByUserId(String userId) throws SQLException {
+        return new CartReferencesDaoImpl().getTotalByUserId(userId);
+    }
+
+    public static MethodStatus setProductAsDelivered(String userId) throws SQLException {
+        return new CartReferencesDaoImpl().setProductAsDelivered(userId);
+    }
+
 }

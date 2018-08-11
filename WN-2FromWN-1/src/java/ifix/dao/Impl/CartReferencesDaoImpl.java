@@ -9,6 +9,7 @@ import ifix.connection.DatabaseConnection2;
 import ifix.core.MethodStatus;
 import ifix.dao.CartReferencesDao;
 import ifix.model.CartReferences;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -110,8 +111,8 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
-                + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand"
-                + " from cart_references where cart_references_user_id=?");
+                + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand,"
+                + " cart_references_date from cart_references where cart_references_user_id=?");
         ps.setString(1, userId);
         return ps.executeQuery();
     }
@@ -124,7 +125,29 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;
-
     }
 
+    public BigDecimal getTotalByUserId(String userId) throws SQLException {
+        BigDecimal total = BigDecimal.ZERO;
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select sum(cart_references_item_price) as total_sum "
+                + " from cart_references where cart_references_user_id=? and cart_references_status=?");
+        ps.setString(1, userId);
+        ps.setInt(2, 1);
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            total = rset.getBigDecimal("total_sum");
+        }
+        return total;
+    }
+
+    public MethodStatus setProductAsDelivered(String userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_delivery_status=? where cart_references_user_id=?");
+        ps.setInt(1, 2);
+        ps.setString(2, userId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
+    }
 }

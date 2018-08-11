@@ -117,11 +117,13 @@
         <!--header-->
         <div class="header" id="myHeader">
             <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;">CATEGORIES</div>
+                 color: #ffffff; font-weight: 500;">MY CART</div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" >HOME</div>
-            <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
-                <input type="text" class="form-control" id="search" placeholder="SEARCH" />
+            <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
+                <form action="checkoutServlet">
+                    <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
+                </form>
             </div>
         </div>
         <!--add detail -->
@@ -150,22 +152,24 @@
                     <th>QUANTITY</th>                   
                     <th>PRICE</th>
                     <th>ACTION</th>
-                    
-                    
+
+
                     <%  while (rset.next()) {
                     %>
                     <tr>  
                         <%
-                        ImageUpload imageUpload = imageUploadController.getLaptopById(Integer.toString(rset.getInt("cart_references_item_id"))); 
-                        
+                            ImageUpload imageUpload = imageUploadController.getLaptopById(Integer.toString(rset.getInt("cart_references_item_id")));
                         %>
-                        <td style="width: 300px; height: 100px; font-size: medium; text-align: left; top: 30%; font-weight: 600; "><%=rset.getString("cart_references_model_brand") %> 
+                        <td style="width: 300px; height: 100px; font-size: medium; text-align: left; top: 30%; font-weight: 100; "><%=rset.getString("cart_references_model_brand")%> 
+                            <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
+                                Date added : <%= rset.getDate("cart_references_date").toString()%> 
+                            </div>                        
                         </td>
-                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600;">
+                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
                             1 Pcs                      
                         </td> 
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
-                           Rs <%=rset.getBigDecimal("cart_references_item_price") %>
+                            Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
                         <td>
                             <form action="addToDatabaseCart" method="post">
@@ -173,7 +177,7 @@
                                     <input class="btn btn-success" type="submit" value="REMOVE" style="width: 100px; background-color: #990099;"/>
                                 </div>
                             </form>  
-                           
+
                         </td>
                     </tr>
                     <%  }
