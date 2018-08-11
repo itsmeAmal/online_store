@@ -23,7 +23,7 @@ public class CartReferenceController {
         CartReferences cartReferences = new CartReferences();
         cartReferences.setItemId(Validations.getIntOrZeroFromString(itemId));
         cartReferences.setQty(1);
-        cartReferences.setStatus(0);
+        cartReferences.setStatus(1);
         cartReferences.setUserId(Validations.getIntOrZeroFromString(userId));
         return new CartReferencesDaoImpl().addReference(cartReferences);
     }

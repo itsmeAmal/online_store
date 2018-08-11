@@ -84,24 +84,26 @@
             Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm
         </div>
         <div class="top-container"> 
-            <div style="position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;">Hi <a href="userProfile.jsp">Amal</a></div>
+            <%
+                HttpSession ses = request.getSession();
+                ses.setAttribute("user", null);
+            %>
+            <div style="position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;">
+                <%
+                    if (ses.getAttribute("user") == null) {
+                %>
+                Hi <a href="login.jsp">Guest</a></div>
+                <%
+                    }
+                %>
             <h1>iFix Laptops.com</h1>
             <p>
-                Something Different
+                Something Different 
             </p>
         </div>
         <div class="content" >
-            <%                
-                HttpSession ses = request.getSession();
-                ses.setAttribute("brand", null); 
-                ResultSet rset = null;
-                if(ses.getAttribute("brand") == null){
-                rset = imageUploadController.getAllProducts();
-                }else{
-                rset = imageUploadController.getProductsByAttribute(ses.getAttribute("brand").toString());
-                }
-                
-                 
+            <%
+                ResultSet rset = imageUploadController.getAllProducts();
             %>
             <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
                 <table class="table">                  
@@ -122,9 +124,10 @@
                         </td>                         
                     <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
                     <td>
-                        <form action="CartReferences">
+                        <form action="addToDatabaseCart" method="post">
                             <div style="position: relative; left: 40%; top: 90px; width: 100%; height: 50px;">
                                 <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
+                                <input type="hidden" id="laptopId" name="laptopId" value="<%=rset.getString("imageUpload_id")%>">
                             </div>
                         </form>  
                         <div style="position: relative; left: 40%; width: 100%; height: 50px; top: 85px;">
@@ -159,15 +162,17 @@
                 <%
                     ResultSet set = imageUploadController.getAllDistinctRbandNames();
                 %>
-                <select id="brand" class="form-control" name="brand" style="width: 210px;">
+                <select class="form-control" name="brand" style="width: 210px;">
                     <option>ALL BRANDS</option>
                     <%while (set.next()) {%>
                     <option><%=set.getString("imageupload_item_desc")%></option> 
                     <%}%>
                 </select>
             </div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;">
-                <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
+            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;"> 
+                <form action="redirectItemFilterByBrand" method="post">
+                    <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
+                </form>               
             </div>
             <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">PRICE</div>
             <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">

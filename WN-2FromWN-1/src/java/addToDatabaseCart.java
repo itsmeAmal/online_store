@@ -4,8 +4,13 @@
  * and open the template in the editor.
  */
 
+import ifix.controller.imageUploadController;
+import ifix.model.ImageUpload;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Amal
  */
-@WebServlet(urlPatterns = {"/redirectItemFilterByBrand"})
-public class redirectItemFilterByBrand extends HttpServlet {
+@WebServlet(urlPatterns = {"/addToDatabaseCart"})
+public class addToDatabaseCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,6 +38,7 @@ public class redirectItemFilterByBrand extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,7 +54,6 @@ public class redirectItemFilterByBrand extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
     /**
@@ -62,15 +67,16 @@ public class redirectItemFilterByBrand extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        HttpSession hs = request.getSession();
-        String selectedBrand = request.getParameter("brand");
-        if (selectedBrand.equals("ALL BRANDS")) {
-            hs.setAttribute("brand", "1");
-        } else {
-            hs.setAttribute("brand", selectedBrand);
+        try {
+            processRequest(request, response);
+            String lapId = request.getParameter("laptopId");
+            ImageUpload imageUpload = imageUploadController.getLaptopById(lapId);
+            HttpSession ses = request.getSession();
+//            CartReferenceController.addcartReference(lapId, lapId)
+
+        } catch (SQLException ex) {
+            Logger.getLogger(addToDatabaseCart.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("productList.jsp");
     }
 
     /**

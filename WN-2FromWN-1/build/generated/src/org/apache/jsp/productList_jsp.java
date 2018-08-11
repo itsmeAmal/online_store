@@ -129,14 +129,33 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm\n");
       out.write("        </div>\n");
       out.write("        <div class=\"top-container\"> \n");
-      out.write("            <div style=\"position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;\">Hi <a href=\"userProfile.jsp\">Amal</a></div>\n");
+      out.write("            ");
+
+                HttpSession ses = request.getSession();
+                ses.setAttribute("user", null);
+            
+      out.write("\n");
+      out.write("            <div style=\"position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;\">\n");
+      out.write("\n");
+      out.write("                ");
+
+                    if (ses.getAttribute("user") == null) {
+                
+      out.write("\n");
+      out.write("                Hi <a href=\"login.jsp\">Guest</a></div>\n");
+      out.write("                ");
+
+                    }
+                
+      out.write("\n");
       out.write("            <h1>iFix Laptops.com</h1>\n");
       out.write("            <p>\n");
-      out.write("                Something Different\n");
+      out.write("                Something Different \n");
       out.write("            </p>\n");
       out.write("        </div>\n");
       out.write("        <div class=\"content\" >\n");
       out.write("            ");
+
                 ResultSet rset = imageUploadController.getAllProducts();
             
       out.write("\n");
@@ -179,9 +198,12 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(rset.getString("imageUpload_id"));
       out.write("\"/>                    \n");
       out.write("                    <td>\n");
-      out.write("                        <form action=\"CartReferences\">\n");
+      out.write("                        <form action=\"addToDatabaseCart\" method=\"post\">\n");
       out.write("                            <div style=\"position: relative; left: 40%; top: 90px; width: 100%; height: 50px;\">\n");
       out.write("                                <input class=\"btn btn-success\" type=\"submit\" value=\"Add to Cart\" style=\"width: 100px; background-color: #990099;\"/>\n");
+      out.write("                                <input type=\"hidden\" id=\"laptopId\" name=\"laptopId\" value=\"");
+      out.print(rset.getString("imageUpload_id"));
+      out.write("\">\n");
       out.write("                            </div>\n");
       out.write("                        </form>  \n");
       out.write("                        <div style=\"position: relative; left: 40%; width: 100%; height: 50px; top: 85px;\">\n");
@@ -222,7 +244,7 @@ public final class productList_jsp extends org.apache.jasper.runtime.HttpJspBase
                     ResultSet set = imageUploadController.getAllDistinctRbandNames();
                 
       out.write("\n");
-      out.write("                <select id=\"brand\" class=\"form-control\" name=\"brand\" style=\"width: 210px;\">\n");
+      out.write("                <select class=\"form-control\" name=\"brand\" style=\"width: 210px;\">\n");
       out.write("                    <option>ALL BRANDS</option>\n");
       out.write("                    ");
 while (set.next()) {
@@ -235,8 +257,10 @@ while (set.next()) {
       out.write("\n");
       out.write("                </select>\n");
       out.write("            </div>\n");
-      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px;\">\n");
-      out.write("                <input type=\"submit\" class=\"btn btn-default\" value=\"BRAND FILTER\" style=\"width: 210px;\"/>\n");
+      out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 10%; height: 20px;\"> \n");
+      out.write("                <form action=\"redirectItemFilterByBrand\" method=\"post\">\n");
+      out.write("                    <input type=\"submit\" class=\"btn btn-default\" value=\"BRAND FILTER\" style=\"width: 210px;\"/>\n");
+      out.write("                </form>               \n");
       out.write("            </div>\n");
       out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; \">PRICE</div>\n");
       out.write("            <div style=\"position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; \">\n");
