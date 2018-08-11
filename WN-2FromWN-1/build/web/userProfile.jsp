@@ -85,8 +85,6 @@
             HttpSession hs = request.getSession();
             String email = (String) hs.getAttribute("loggedIn");
             User user = userController.getuserByUserEmail(email);
-
-
         %>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
             <div> Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm </div> 
@@ -141,7 +139,6 @@
                     header.classList.remove("sticky");
                 }
             }
-
         </script>
         <div class="footer"></div>
     </body>

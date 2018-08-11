@@ -112,7 +112,7 @@
                 <form action="loginServlet" method="post"> 
                     <input type="text" class="form-control" name="uname" placeholder="USER NAME" style=" width: 210px;"/><br>
                     <input type="password" class="form-control" name="pw" placeholder="PASSWORD" style=" width: 210px;"/><br>
-                    <input type="submit" class="btn btn-default" value="LOGIN" style="width: 210px;"/>
+                    <input type="submit" class="btn btn-danger" value="LOGIN" style="width: 210px;"/>
                 </form>
             </div>
         </div>

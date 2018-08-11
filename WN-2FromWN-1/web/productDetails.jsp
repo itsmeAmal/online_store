@@ -4,6 +4,8 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.model.User"%>
+<%@page import="ifix.controller.userController"%>
 <%@page import="ifix.controller.imageUploadController"%>
 <%@page import="ifix.model.ImageUpload"%>
 <%@page import="ifix.core.Validations"%>
@@ -23,6 +25,7 @@
                 /*background-color: #999999;*/
                 padding: 10px;
                 text-align: center;
+                height: 80px;
             }
             .header{
                 padding: 10px 16px;
@@ -62,6 +65,27 @@
                 Something Different
             </p>
         </div>
+        <div style="position: relative; left: 30%; top: 10%; width: 20%; height: 50px; ">
+            <%
+                HttpSession hs = request.getSession();
+                String email = (String) hs.getAttribute("loggedIn");
+                if (hs.getAttribute("loggedIn") != null) {
+                    User user = userController.getuserByUserEmail(email);
+            %>
+            <p style="font-weight: 400;  font-size: 16px;">
+                Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>
+            </p>
+            <%
+            } else {
+            %>
+            <p style="font-weight: 400;  font-size: 16px;">
+                Hi  <a href="login.jsp">Guest</a>
+            </p>
+            <%
+                }
+            %>
+
+        </div> 
         <div class="header" id="myHeader">
             <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;">CATEGORIES</div>

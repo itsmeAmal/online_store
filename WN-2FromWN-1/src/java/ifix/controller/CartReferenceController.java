@@ -10,6 +10,7 @@ import ifix.core.MethodStatus;
 import ifix.core.Validations;
 import ifix.dao.Impl.CartReferencesDaoImpl;
 import ifix.model.CartReferences;
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,12 +20,13 @@ import java.sql.SQLException;
  */
 public class CartReferenceController {
 
-    public static MethodStatus addcartReference(String itemId, String userId) throws SQLException {
+    public static MethodStatus addcartReference(String itemId, String userId, BigDecimal price) throws SQLException {
         CartReferences cartReferences = new CartReferences();
         cartReferences.setItemId(Validations.getIntOrZeroFromString(itemId));
         cartReferences.setQty(1);
         cartReferences.setStatus(1);
-        cartReferences.setUserId(Validations.getIntOrZeroFromString(userId));
+        cartReferences.setUserId(userId);
+        cartReferences.setPrice(price);
         return new CartReferencesDaoImpl().addReference(cartReferences);
     }
 
@@ -41,8 +43,8 @@ public class CartReferenceController {
                 Validations.getIntOrZeroFromString(userId));
     }
 
-    public static MethodStatus updateSessionIdToUserId(String userSessionId) throws SQLException {
-        return new CartReferencesDaoImpl().updateSessionIdToUserId(userSessionId);
+    public static MethodStatus updateSessionIdToUserId(String userSessionId, String userId) throws SQLException {
+        return new CartReferencesDaoImpl().updateSessionIdToUserId(userSessionId, userId);
     }
 
 }

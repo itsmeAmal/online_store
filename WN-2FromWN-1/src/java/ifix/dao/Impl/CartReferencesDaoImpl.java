@@ -33,7 +33,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.setInt(2, cartReferences.getItemId());
         ps.setInt(3, cartReferences.getQty());
         ps.setInt(4, cartReferences.getStatus());
-        ps.setString(5, Integer.toString(cartReferences.getUserId()));
+        ps.setString(5, cartReferences.getUserId());
         ps.setBigDecimal(6, cartReferences.getPrice());
         ps.executeUpdate();
         ps.close();
@@ -66,10 +66,11 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         return true;
     }
 
-    public MethodStatus updateSessionIdToUserId(String userSessionId) throws SQLException {
+    public MethodStatus updateSessionIdToUserId(String userSessionId, String userId) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_user_id=? where cart_references_user_id=? ");
-        ps.setString(1, userSessionId);
+        ps.setString(1, userId);
+        ps.setString(2, userSessionId);
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ifix.servlets;
+package ifix.bin;
 
 import ifix.controller.CartReferenceController;
 import ifix.controller.userController;
@@ -53,7 +53,7 @@ public class CartReferences extends HttpServlet {
 
                 MethodStatus validStatus = CartReferenceController.validateProductForOneLaptop(laptopId, Integer.toString(user.getUserId()));
                 if (validStatus == MethodStatus.SUCCESS) {
-                    MethodStatus status = CartReferenceController.addcartReference(laptopId, Integer.toString(user.getUserId()));
+//                    MethodStatus status = CartReferenceController.addcartReference(laptopId, Integer.toString(user.getUserId()));
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Successfully added to cart');");
                     out.println("location='laptopModelAll.jsp';");

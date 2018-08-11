@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 
+import ifix.controller.CartReferenceController;
 import ifix.controller.imageUploadController;
+import ifix.controller.userController;
+import ifix.core.MethodStatus;
 import ifix.model.ImageUpload;
+import ifix.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -71,8 +75,21 @@ public class addToDatabaseCart extends HttpServlet {
             processRequest(request, response);
             String lapId = request.getParameter("laptopId");
             ImageUpload imageUpload = imageUploadController.getLaptopById(lapId);
-            HttpSession ses = request.getSession();
-//            CartReferenceController.addcartReference(lapId, lapId)
+            HttpSession hs = request.getSession();
+            String email = (String) hs.getAttribute("loggedIn");
+            String userSessionId = "";
+            if (hs.getAttribute("loggedIn") != null) {
+                User user = userController.getuserByUserEmail(email);
+                userSessionId = Integer.toString(user.getUserId());
+            } else {
+                userSessionId = request.getSession().getId();
+            }
+            MethodStatus status = null;
+            status = CartReferenceController.addcartReference(lapId, userSessionId, imageUpload.getPrice());
+            if (status == MethodStatus.SUCCESS) {
+//                response.sendRedirect("productDetails.jsp");
+                response.sendRedirect("productList.jsp");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(addToDatabaseCart.class.getName()).log(Level.SEVERE, null, ex);

@@ -17,7 +17,7 @@ public class CartReferences {
     private int itemId;
     private int qty;
     private int status;
-    private int userId;
+    private String userId;
     private BigDecimal price;
 
     /**
@@ -79,14 +79,14 @@ public class CartReferences {
     /**
      * @return the userId
      */
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
     /**
      * @param userId the userId to set
      */
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

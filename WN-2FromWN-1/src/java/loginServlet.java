@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import ifix.controller.CartReferenceController;
 import ifix.controller.userController;
 import ifix.core.MethodStatus;
 import ifix.model.User;
@@ -50,10 +51,12 @@ public class loginServlet extends HttpServlet {
                 if (user.getSatus() == 2) {
                     ses.setAttribute("loggedIn", userName);
                     response.sendRedirect("controlPanel.jsp");
-
                 } else if (user.getSatus() == 1) {
                     ses.setAttribute("loggedIn", userName);
-                    response.sendRedirect("productList.jsp");
+                    MethodStatus succStatus = CartReferenceController.updateSessionIdToUserId(request.getSession().getId(), Integer.toString(user.getUserId()));
+                    if (succStatus == MethodStatus.SUCCESS) {
+                        response.sendRedirect("productList.jsp");
+                    }
 
 //                    out.println("<script type=\"text/javascript\">");
 //                    out.println("alert('" + userName + "');");
@@ -65,7 +68,6 @@ public class loginServlet extends HttpServlet {
                 out.println("alert('Username or Password is Incorrect');");
                 out.println("location='login.jsp';");
                 out.println("</script>");
-//                response.sendRedirect("login.jsp");
             }
 
         } catch (SQLException ex) {
