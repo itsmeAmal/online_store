@@ -4,6 +4,8 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.controller.userController"%>
+<%@page import="ifix.model.User"%>
 <%@page import="ifix.controller.imageUploadController"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="ifix.controller.laptopPriceDetailController"%>
@@ -79,9 +81,16 @@
         <title>Profile</title>
     </head>
     <body>
+        <%
+            HttpSession hs = request.getSession();
+            String email = (String) hs.getAttribute("loggedIn");
+            User user = userController.getuserByUserEmail(email);
+
+
+        %>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
             <div> Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm </div> 
-           
+
         </div>
         <div class="top-container">          
             <h1>iFix Laptops.com</h1>
@@ -106,17 +115,17 @@
         <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">PROFILE</div>
-            <div style="position: relative; left: 18%;; width: 200px; top: 10px; height: 200px; background-image: url(web.pos.ee.images/user.png); align-content: center; ">
-
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">MY PROFILE</div>
+            <div style="position: relative; left: 18%; width: 200px; top: 10px; height: 200px; background-image: url(web.pos.ee.images/user.png); align-content: center; ">
             </div>
 
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">Change Image</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
-                <!--<input type="file" class="form-control"  style=" width: 210px;"/><br>-->
-                <input class="form-control" style=" width: 210px;" type="file" name="file"/><br>
-                <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
-                <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
+<!--            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">SUMMARY</div>-->
+            <div style="position: relative; left: 15%; width: 80%; top: 10%; height: 20px; color: #999999; ">
+                <h4 class="form-control" style=" width: 210px;" type="text" name="email"><%= user.getEmail() %></h4>
+                <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserName() %></h4>
+                <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getContact() %></h4>
+                <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserAddress() %></h4>
+                <input type="submit" class="btn btn-success" value="DEACTIVATE PROFILE" style="width: 210px;"/>
             </div>
         </div>
         <script type="text/javascript">

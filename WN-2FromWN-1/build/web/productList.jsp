@@ -93,15 +93,16 @@
                 <p>
                     Something Different 
                 </p> 
-            </div>           
+            </div>    
+            <div style="position: relative; left: 40%; top: 10%; width: 20%; height: 30%;">
+
+            </div>
             <div style="position: relative; left: 20%; top: 10%; width: 20%; height: 50px; ">
                 <%
                     HttpSession hs = request.getSession();
                     String email = (String) hs.getAttribute("loggedIn");
                     if (hs.getAttribute("loggedIn") != null) {
-
                         User user = userController.getuserByUserEmail(email);
-
                 %>
                 <p style="font-weight: 400;  font-size: 16px;">
                     Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>

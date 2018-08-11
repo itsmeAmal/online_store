@@ -1,0 +1,14 @@
+SMAP
+userProfile_jsp.java
+JSP
+*S JSP
+*F
++ 0 userProfile.jsp
+userProfile.jsp
+*L
+5,80:52
+85,6:133
+90,34:139
+124:173,3
+125,24:176
+*E
