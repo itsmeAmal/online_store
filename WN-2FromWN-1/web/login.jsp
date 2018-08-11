@@ -43,7 +43,7 @@
         }
         .sidenav{
             position: fixed; 
-            left: 20%; 
+            left: 40%; 
             top: 30%; 
             width: 12%; 
             height: 50%; 
@@ -76,7 +76,7 @@
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Products</title>
+        <title>Login</title>
     </head>
     <body>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
@@ -90,7 +90,7 @@
         </div>
 
         <div class="content" >
-                 
+
         </div>
         <!--header-->
         <div class="header" id="myHeader">
@@ -98,21 +98,22 @@
                  color: #ffffff; font-weight: 500;">CATEGORIES</div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" >HOME</div>
-            <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
-                <input type="text" class="form-control" id="search" placeholder="SEARCH" />
-            </div>
+            <!--            <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
+                            <input type="text" class="form-control" id="search" placeholder="SEARCH" />
+                        </div>-->
         </div>
         <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
-            <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div>
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">USER LOGIN</div>
+            <div style="position: relative; left: 5px; width: 80%; top: 80%; height: 20px; color: #999999; "><a href="userAdd.jsp">Create Account</a></div>
 
-            <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">PRICE</div>
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">
-                <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
-                <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
-                <input type="submit" class="btn btn-default" value="FILTER" style="width: 210px;"/>
+                <form action="loginServlet" method="post"> 
+                    <input type="text" class="form-control" name="uname" placeholder="USER NAME" style=" width: 210px;"/><br>
+                    <input type="password" class="form-control" name="pw" placeholder="PASSWORD" style=" width: 210px;"/><br>
+                    <input type="submit" class="btn btn-default" value="LOGIN" style="width: 210px;"/>
+                </form>
             </div>
         </div>
         <script type="text/javascript">

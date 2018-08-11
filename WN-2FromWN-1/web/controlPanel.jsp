@@ -216,8 +216,8 @@
             <div id="divLeftBlackSpace">
                 <div id="divLeftBlackSpace_management">Management</div>
                 <div id="allUsers"> <a style="color: #ffffff;" href="usersAll.jsp">Users</a></div>
-                <div id="addProducts"> <a style="color: #ffffff;" href="laptopImageUpload.jsp">Laptop Model Add</a></div>
-                <div id="addUser"> <a style="color: #ffffff;" href="userAdd.jsp">User Add</a></div>
+                <div id="addProducts"> <a style="color: #ffffff;" href="laptopImageUpload.jsp">PRODUCT MANAGEMNT</a></div>
+                <div id="addUser"> <a style="color: #ffffff;" href="userAdd.jsp">NEW USER</a></div>
                 <div id="addGrn"> <a style="color: #ffffff;" href="GRN.jsp">Goods Received Note</a></div>
                 <div id="searchUser"> <a style="color: #ffffff;" href="userSearchFromControlPanel.jsp">User Search</a> </div>
 
