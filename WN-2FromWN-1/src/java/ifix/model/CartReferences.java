@@ -6,6 +6,7 @@
 package ifix.model;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 /**
  *
@@ -19,6 +20,8 @@ public class CartReferences {
     private int status;
     private String userId;
     private BigDecimal price;
+    private String modelBrand;
+    private Date date;
 
     /**
      * @return the id
@@ -102,6 +105,34 @@ public class CartReferences {
      */
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    /**
+     * @return the modelBrand
+     */
+    public String getModelBrand() {
+        return modelBrand;
+    }
+
+    /**
+     * @param modelBrand the modelBrand to set
+     */
+    public void setModelBrand(String modelBrand) {
+        this.modelBrand = modelBrand;
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 }

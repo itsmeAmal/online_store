@@ -10,6 +10,7 @@ import ifix.core.MethodStatus;
 import ifix.dao.CartReferencesDao;
 import ifix.model.CartReferences;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,19 +23,23 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
 
     private String selectQuery = "select cart_references_id, cart_references_item_id, "
             + " cart_references_qty, cart_references_status, cart_references_user_id, "
-            + " cart_references_item_price, cart_references_delivery_status from cart_references";
+            + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand, cart_references_date from cart_references";
 
     @Override
     public MethodStatus addReference(CartReferences cartReferences) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("insert into cart_references(cart_references_id, cart_references_item_id,"
-                + " cart_references_qty, cart_references_status, cart_references_user_id, cart_references_item_price) values (?,?,?,?,?,?)");
+                + " cart_references_qty, cart_references_status, cart_references_user_id, cart_references_item_price, "
+                + " cart_references_model_brand, cart_references_date) "
+                + " values (?,?,?,?,?,?,?,?)");
         ps.setInt(1, cartReferences.getId());
         ps.setInt(2, cartReferences.getItemId());
         ps.setInt(3, cartReferences.getQty());
         ps.setInt(4, cartReferences.getStatus());
         ps.setString(5, cartReferences.getUserId());
         ps.setBigDecimal(6, cartReferences.getPrice());
+        ps.setString(7, cartReferences.getModelBrand());
+        ps.setDate(8, cartReferences.getDate());
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;
@@ -100,4 +105,26 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         }
         return status;
     }
+
+    public ResultSet getCartProductsByUserId(String userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id, "
+                + " cart_references_qty, cart_references_status, cart_references_user_id, "
+                + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand"
+                + " from cart_references where cart_references_user_id=?");
+        ps.setString(1, userId);
+        return ps.executeQuery();
+    }
+
+    public MethodStatus removeCartProductByDateAndItemId(int itemId, Date date) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("delete from cart_references where cart_references_item_id=? and cart_references_date=?");
+        ps.setInt(1, itemId);
+        ps.setDate(2, date);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
+
+    }
+
 }

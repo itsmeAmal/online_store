@@ -85,12 +85,12 @@ public class addToDatabaseCart extends HttpServlet {
                 userSessionId = request.getSession().getId();
             }
             MethodStatus status = null;
-            status = CartReferenceController.addcartReference(lapId, userSessionId, imageUpload.getPrice());
+            status = CartReferenceController.addcartReference(lapId, userSessionId,
+                    imageUpload.getPrice(), imageUpload.getItemDescription() + "-" + imageUpload.getModel());
             if (status == MethodStatus.SUCCESS) {
 //                response.sendRedirect("productDetails.jsp");
                 response.sendRedirect("productList.jsp");
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(addToDatabaseCart.class.getName()).log(Level.SEVERE, null, ex);
         }
