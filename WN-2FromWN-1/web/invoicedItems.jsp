@@ -122,7 +122,7 @@
         <!--add detail -->
         <div class="sidenav-6">
             <%
-                ResultSet rset = CartReferenceController.getAllCartPendingItems();
+                ResultSet rset = CartReferenceController.getAllInvoicedItems();
             %>
             <div class="container" style="position: absolute; left: 5%; top: 3%; width: 90%; height: max-content; background-color: #ffffff;">
                 <table class="table table-responsive">   

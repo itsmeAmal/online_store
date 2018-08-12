@@ -4,6 +4,7 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.controller.CartReferenceController"%>
 <%@page import="ifix.controller.userController"%>
 <%@page import="ifix.model.User"%>
 <%@page import="ifix.controller.imageUploadController"%>
@@ -103,22 +104,34 @@
                 <%
                     HttpSession hs = request.getSession();
                     String email = (String) hs.getAttribute("loggedIn");
+                    String loggerId ="";
                     if (hs.getAttribute("loggedIn") != null) {
                         User user = userController.getuserByUserEmail(email);
+                        loggerId = Integer.toString(user.getUserId()); 
                 %>
                 <p style="font-weight: 400;  font-size: 16px;">
                     Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
                 </p>
                 <%
                 } else {
+                     loggerId = hs.getId();
                 %>
                 <p style="font-weight: 400;  font-size: 16px;">
                     Hi  <a href="login.jsp">Guest</a>
                 </p>
                 <%
                     }
+                  int itemCount = CartReferenceController.getCartItemCountBySessionId(loggerId);
                 %>
-            </div>           
+                
+            </div>  
+                <div style="position: absolute; left: 71%; width: 32px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
+                    <%=itemCount
+                    %>
+                </div>
+                <div style="position: absolute; left: 70%; width: 32px; top: 16%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000; background-image: url(web.pos.ee.images/cart_user.png); ">
+                    
+                </div>
         </div>
     </div>
     <div class="content" >

@@ -106,7 +106,7 @@
 
         </div>
         <div class="top-container">          
-            <h1>INVOICE</h1>
+            <p>SUMMARY</p>
             <p>iFix Laptops</p>
             <p>SYSTEM GENERATED BILL</p>
             <p>User Email : <%= user.getEmail()%></p>

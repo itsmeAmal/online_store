@@ -148,7 +148,7 @@
                         </td>
                         <td>
                             <form action="setAsInvoiceCashOnDeliveryItem" method="post">
-                                <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
+                                <div style="position: relative; left: 0%; top: 10px; width: 100%; height: 30px;">
                                     <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id")) %>"> 
                                     <input class="btn btn-success" type="submit" value="INVOICE ITEM" style="width: 150px; background-color: #990099;"/>
                                 </div>

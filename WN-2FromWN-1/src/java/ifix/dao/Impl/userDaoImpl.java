@@ -7,6 +7,7 @@ package ifix.dao.Impl;
 
 import ifix.connection.DatabaseConnection2;
 import ifix.core.MethodStatus;
+import ifix.core.Options;
 import ifix.dao.userDao;
 import ifix.model.User;
 import java.sql.Connection;
@@ -126,4 +127,17 @@ public class userDaoImpl implements userDao {
         ps.close();
         return MethodStatus.SUCCESS;
     }
+
+    public int getAllregisteredUsersCount() throws SQLException {
+        int usersCount = 0;
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select count(user_id) as count from user where user_status =?");
+        ps.setInt(1, Options.getActiveUser());
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            usersCount = rset.getInt("count");
+        }
+        return usersCount;
+    }
+
 }

@@ -22,7 +22,7 @@ import java.sql.SQLException;
  */
 public class userController {
 
-    public static MethodStatus addUser(String name, String address, String Contact, String email, String password) throws SQLException {
+    public static MethodStatus addUser(String name, String address, String Contact, String email, String password, int userType) throws SQLException {
         userDaoImpl userdaDaoImpl = new userDaoImpl();
         MethodStatus status = null;
         if (isExistingEmail(email) && name != null && email != null && password != null) {
@@ -34,7 +34,7 @@ public class userController {
             user.setContact(Contact);
             user.setEmail(email);
             user.setPassword(password);
-            user.setSatus(1);
+            user.setSatus(userType);
             userdaDaoImpl.addUser(user);
             status = MethodStatus.SUCCESS;
         }
@@ -113,7 +113,10 @@ public class userController {
             status = MethodStatus.FAILED;
         }
         return status;
+    }
 
+    public static int getAllregisteredUsersCount() throws SQLException {
+        return new userDaoImpl().getAllregisteredUsersCount();
     }
 
 }

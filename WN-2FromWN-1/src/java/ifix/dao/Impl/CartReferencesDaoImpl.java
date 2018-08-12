@@ -226,4 +226,17 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.close();
         return MethodStatus.SUCCESS;
     }
+
+    public int getCartItemCountBySessionId(String sessionOrUserId) throws SQLException {
+        int count = 0;
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select count(cart_references_id) as cart_count from cart_references where cart_references_user_id=?");
+        ps.setString(1, sessionOrUserId);
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            count = rset.getInt("cart_count");
+        }
+        return count;
+    }
+
 }

@@ -94,4 +94,8 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().getAllInvoicedItems();
     }
 
+    public static int getCartItemCountBySessionId(String sessionOrUserId) throws SQLException {
+        return new CartReferencesDaoImpl().getCartItemCountBySessionId(sessionOrUserId);
+    }
+
 }

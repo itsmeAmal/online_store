@@ -141,7 +141,7 @@ public final class invoicedItems_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("    <head>\n");
       out.write("        <link rel=\"stylesheet\" href=\"com.official.cazzendra.css.common/bootstrap.min.css\">\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Profile</title>\n");
+      out.write("        <title>Invoiced Items</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div style=\"position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;\">               \n");
@@ -161,7 +161,7 @@ public final class invoicedItems_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <!--header-->\n");
       out.write("        <div class=\"header\" id=\"myHeader\">\n");
       out.write("            <div style=\"position: relative; left: 20%; top: 10%; width: 300px; height: 30px; font-size: 20px;\n");
-      out.write("                 color: #ffffff; font-weight: 500;\">CASH ON DELIVERY ITEMS</div>\n");
+      out.write("                 color: #ffffff; font-weight: 500;\">INVOICED ITEMS</div>\n");
       out.write("<!--            <div style=\"position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;\n");
       out.write("                 color: #ffffff; font-weight: 500;\" >HOME</div>-->\n");
       out.write("            <div style=\"position: relative; left: 70%; top: -120%; width: 20%; height: 40px;\" >\n");
@@ -172,7 +172,7 @@ public final class invoicedItems_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <div class=\"sidenav-6\">\n");
       out.write("            ");
 
-                ResultSet rset = CartReferenceController.getAllCartPendingItems();
+                ResultSet rset = CartReferenceController.getAllInvoicedItems();
             
       out.write("\n");
       out.write("            <div class=\"container\" style=\"position: absolute; left: 5%; top: 3%; width: 90%; height: max-content; background-color: #ffffff;\">\n");
@@ -180,7 +180,7 @@ public final class invoicedItems_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                    <th>PRODUCT</th>\n");
       out.write("                    <th>QUANTITY</th>                   \n");
       out.write("                    <th>PRICE</th>\n");
-      out.write("                    <th>ACTION</th>\n");
+      out.write("<!--                    <th>ACTION</th>-->\n");
       out.write("                    ");
   while (rset.next()) {
                     
@@ -207,7 +207,7 @@ public final class invoicedItems_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.print(rset.getBigDecimal("cart_references_item_price"));
       out.write("\n");
       out.write("                        </td>\n");
-      out.write("                        <td>\n");
+      out.write("<!--                        <td>\n");
       out.write("                            <form action=\"setAsInvoiceCashOnDeliveryItem\" method=\"post\">\n");
       out.write("                                <div style=\"position: relative; left: 10%; top: 10px; width: 100%; height: 30px;\">\n");
       out.write("                                    <input type=\"hidden\" name=\"hdnItemId\" value=\"");
@@ -217,7 +217,7 @@ public final class invoicedItems_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                                </div>\n");
       out.write("                            </form>  \n");
       out.write("\n");
-      out.write("                        </td>\n");
+      out.write("                        </td>-->\n");
       out.write("                    </tr>\n");
       out.write("                    ");
   }

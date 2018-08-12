@@ -7,6 +7,7 @@ package ifix.servlets;
 
 import ifix.controller.userController;
 import ifix.core.MethodStatus;
+import ifix.core.Options;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -41,7 +42,7 @@ public class userAdd extends HttpServlet {
             String contact = request.getParameter("contact");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            MethodStatus op = userController.addUser(userName, address, contact, email, password);
+            MethodStatus op = userController.addUser(userName, address, contact, email, password, Options.getUser());
             if (op == MethodStatus.SUCCESS) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Successfully added the user');");

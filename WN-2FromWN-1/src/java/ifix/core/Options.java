@@ -16,6 +16,10 @@ public class Options {
     private static int manager = 3;
     private static int superUser = 4;
 
+    private static int activeUser = 1;
+    private static int pending = 2;
+    private static int inactiveUser = 3;
+
     /**
      * @return the user
      */
@@ -70,6 +74,34 @@ public class Options {
      */
     public static void setSuperUser(int aSuperUser) {
         superUser = aSuperUser;
+    }
+
+    /**
+     * @return the activeUser
+     */
+    public static int getActiveUser() {
+        return activeUser;
+    }
+
+    /**
+     * @param aActiveUser the activeUser to set
+     */
+    public static void setActiveUser(int aActiveUser) {
+        activeUser = aActiveUser;
+    }
+
+    /**
+     * @return the inactiveUser
+     */
+    public static int getInactiveUser() {
+        return inactiveUser;
+    }
+
+    /**
+     * @param aInactiveUser the inactiveUser to set
+     */
+    public static void setInactiveUser(int aInactiveUser) {
+        inactiveUser = aInactiveUser;
     }
 
 }
