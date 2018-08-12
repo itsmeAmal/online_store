@@ -122,10 +122,10 @@
 
             </div>
             <div style="position: absolute; left: 62%; top: 52%; width: 200px; height: 50px; ">
-                <form action="cashOnDelivery" method="post">
+<!--                <form action="cashOnDelivery" method="post">
                     <input class="btn btn-primary" type="submit" value="Cash On Delivery" style="width: 130px; background-color: #990099;"/>
                     <input type="hidden" id="laptopId" name="laptopId" value="<%=imageUpload.getId()%>"> 
-                </form>
+                </form>-->
             </div>
             <!--<div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>-->
             <div style="position: absolute; left: 55%; top: 57%; width: 400px; height: 150px; background-image: url(web.pos.ee.images/delivery_info.PNG)" ></div>        
