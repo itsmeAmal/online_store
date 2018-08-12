@@ -37,7 +37,7 @@
         }
         .sidenav{
             position: fixed; 
-            left: 20%; 
+            left: 7%; 
             top: 30%; 
             width: 12%; 
             height: 50%; 
@@ -49,7 +49,7 @@
         }
         .sidenav-2{
             position: fixed; 
-            left: 33%; 
+            left: 20%; 
             top: 30%; 
             width: 12%; 
             height: 50%; 
@@ -61,7 +61,7 @@
         }
         .sidenav-3{
             position: fixed; 
-            left: 46%; 
+            left: 33%; 
             top: 30%; 
             width: 12%; 
             height: 50%; 
@@ -73,7 +73,7 @@
         }
         .sidenav-4{
             position: fixed; 
-            left: 59%; 
+            left: 46%; 
             top: 30%; 
             width: 12%; 
             height: 50%; 
@@ -84,6 +84,18 @@
             border-width: thin;
         }
         .sidenav-5{
+            position: fixed; 
+            left: 59%; 
+            top: 30%; 
+            width: 12%; 
+            height: 50%; 
+            border: groove;
+            padding: 8px 0;
+            z-index: 1;
+            overflow-x: hidden;
+            border-width: thin;
+        }
+        .sidenav-7{
             position: fixed; 
             left: 72%; 
             top: 30%; 
@@ -139,14 +151,19 @@
             <!--header-->
             <div class="header" id="myHeader">
                 <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-                     color: #ffffff; font-weight: 500;">CATEGORIES</div>
+                     color: #ffffff; font-weight: 500;"></div>
                 <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                     color: #ffffff; font-weight: 500;" >HOME</div>
+                     color: #ffffff; font-weight: 500;" ></div>
                 <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
                     <input type="text" class="form-control" id="search" placeholder="SEARCH" />
                 </div>
             </div>
             <!--add detail -->
+            <div class="sidenav-7">
+                <p style="position: relative; left: 5px; color: #000000; font-weight: 400;"><a href="cashOnDeliveryItems.jsp">CASH ON DELIVERY ITEMS</a></p>
+                    
+                
+            </div>
             <div class="sidenav" >
                 <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
                      border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">DETAIL</div>
@@ -166,11 +183,11 @@
                 </div>
                 <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px; color: #999999; ">MODEL</div>
                 <div style="position: relative; left: 5px; width: 80%; top: 12%; height: 20px; color: #999999; ">
-                    <input type="text" name="model" class="form-control" placeholder="MODEL" style=" width: 210px;"/><br>
+                    <input type="text" name="model" class="form-control" placeholder="MODEL" style=" width: 210px;" required/><br>
                 </div>
                 <div style="position: relative; left: 5px; width: 80%; top: 22%; height: 20px; color: #999999; ">PRICE</div>
                 <div style="position: relative; left: 5px; width: 80%; top: 24%; height: 20px; color: #999999; ">
-                    <input type="text" name="price" class="form-control" placeholder="PRICE" style=" width: 210px;"/><br>
+                    <input type="text" name="price" class="form-control" placeholder="PRICE" style=" width: 210px;" required/><br>
                 </div>
             </div>
             <div class="sidenav-2">

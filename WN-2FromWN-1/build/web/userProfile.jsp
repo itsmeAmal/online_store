@@ -119,7 +119,7 @@
             <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;">MY CART</div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;" >HOME</div>
+                 color: #ffffff; font-weight: 500;" ><a href="productList.jsp">HOME</a></div>
             <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
                 <form action="checkoutServlet" method="post">
                     <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
@@ -164,7 +164,7 @@
                             <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
                                 Date added : <%= rset.getDate("cart_references_date").toString()%> 
                             </div>
-                                
+
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
                             1 Pcs                      
@@ -175,7 +175,7 @@
                         <td>
                             <form action="removeItemServlet" method="post">
                                 <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
-                                    <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id")) %>"> 
+                                    <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id"))%>"> 
                                     <input class="btn btn-success" type="submit" value="REMOVE" style="width: 100px; background-color: #990099;"/>
                                 </div>
                             </form>  

@@ -80,10 +80,8 @@
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Products</title>
-
     </head>
     <body>
-
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
             Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm
         </div>
@@ -94,8 +92,12 @@
                     Something Different 
                 </p> 
             </div>    
-            <div style="position: relative; left: 40%; top: 10%; width: 20%; height: 30%;">
-
+            <div style="position: relative; left: 60%; top: 15%; width: 20%; height: 30%;">
+<!--                <a href="invalidateSession">LOGOUT</a>-->
+<!--                <form action="invalidateSession">
+                    
+                    <input type="hidden" name="tf-1"/>
+                </form>-->
             </div>
             <div style="position: relative; left: 20%; top: 10%; width: 20%; height: 50px; ">
                 <%
@@ -105,7 +107,7 @@
                         User user = userController.getuserByUserEmail(email);
                 %>
                 <p style="font-weight: 400;  font-size: 16px;">
-                    Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>
+                    Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
                 </p>
                 <%
                 } else {
@@ -165,7 +167,7 @@
         <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
              color: #ffffff; font-weight: 500;">CATEGORIES</div>
         <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-             color: #ffffff; font-weight: 500;" >HOME</div>
+             color: #ffffff; font-weight: 500;" ></div>
         <div style="position: relative; left: 44%; top: -120%; width: 20%; height: 40px;" >
             <input type="text" class="form-control" id="search" placeholder="SEARCH" />
         </div>

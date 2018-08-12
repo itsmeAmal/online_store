@@ -50,7 +50,7 @@ public class loginServlet extends HttpServlet {
                 User user = userController.getuserByUserEmail(userName);
                 if (user.getSatus() == 2) {
                     ses.setAttribute("loggedIn", userName);
-                    response.sendRedirect("controlPanel.jsp");
+                    response.sendRedirect("addProduct.jsp");
                 } else if (user.getSatus() == 1) {
                     ses.setAttribute("loggedIn", userName);
                     MethodStatus succStatus = CartReferenceController.updateSessionIdToUserId(request.getSession().getId(), Integer.toString(user.getUserId()));

@@ -73,7 +73,8 @@
                     User user = userController.getuserByUserEmail(email);
             %>
             <p style="font-weight: 400;  font-size: 16px;">
-                Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>
+                Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a> 
+
             </p>
             <%
             } else {
@@ -88,9 +89,9 @@
         </div> 
         <div class="header" id="myHeader">
             <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;">CATEGORIES</div>
+                 color: #ffffff; font-weight: 500;"></div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;" >HOME</div>
+                 color: #ffffff; font-weight: 500;" ><a href="productList.jsp">HOME</a></div>
             <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
                 <input type="text" class="form-control" id="search" placeholder="SEARCH" />
             </div>
@@ -113,8 +114,20 @@
                 <h4 style="color: #009900;"><%= imageUpload.getMemory()%> / <%= imageUpload.getStorage()%> / <%= imageUpload.getOs()%> / <%= imageUpload.getMemory()%> / <%= imageUpload.getGraphics()%> / <%= imageUpload.getDisplay()%></h4>
             </div>
             <div style="position: absolute; left: 55%; top: 42%; width: 300px; height: 100px;"><h4 style="color: #ff0000; font-weight: 600;">Rs <%= imageUpload.getPrice()%></h4></div>
-            <div style="position: absolute; left: 55%; top: 52%; width: 150px; height: 50px; background-image: url(web.pos.ee.images/add_to_cart.PNG)"></div>
-            <div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>
+            <div style="position: absolute; left: 55%; top: 52%; width: 150px; height: 50px; ">
+                <form action="addToDatabaseCart" method="post">
+                    <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
+                    <input type="hidden" id="laptopId" name="laptopId" value="<%=imageUpload.getId()%>">    
+                </form>
+
+            </div>
+            <div style="position: absolute; left: 62%; top: 52%; width: 200px; height: 50px; ">
+                <form action="cashOnDelivery" method="post">
+                    <input class="btn btn-primary" type="submit" value="Cash On Delivery" style="width: 130px; background-color: #990099;"/>
+                    <input type="hidden" id="laptopId" name="laptopId" value="<%=imageUpload.getId()%>"> 
+                </form>
+            </div>
+            <!--<div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>-->
             <div style="position: absolute; left: 55%; top: 57%; width: 400px; height: 150px; background-image: url(web.pos.ee.images/delivery_info.PNG)" ></div>        
         </div>
         <script type="text/javascript">

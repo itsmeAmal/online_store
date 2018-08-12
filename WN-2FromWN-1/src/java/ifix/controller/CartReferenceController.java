@@ -74,4 +74,16 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().removeCartProductByItemId(itemId);
     }
 
+    public static ResultSet getAllCashOnDeliveryItems() throws SQLException {
+        return new CartReferencesDaoImpl().getAllCashOnDeliveryItems();
+    }
+
+    public static MethodStatus setProductsAsInvoicedByItemId(String itemId) throws SQLException {
+        return new CartReferencesDaoImpl().setProductsAsInvoicedByItemId(itemId);
+    }
+
+    public static MethodStatus setProductsAsCashOnDeliveryItemByItemId(String itemId) throws SQLException {
+        return new CartReferencesDaoImpl().setProductsAsCashOnDeliveryItemByItemId(itemId);
+    }
+
 }
