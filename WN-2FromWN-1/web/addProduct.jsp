@@ -159,12 +159,12 @@
                 </div>
             </div>
             <!--add detail -->
-            <div class="sidenav-7">
+<!--            <div class="sidenav-7">
                 <p style="position: relative; left: 5px; color: #000000; font-weight: 400;"><a href="cashOnDeliveryItems.jsp">CASH ON DELIVERY ITEMS</a></p>
                 <p style="position: relative; left: 5px; color: #000000; font-weight: 400;"><a href="invoicedItems.jsp">INVOICED ITEMS</a></p>
                     
                 
-            </div>
+            </div>-->
             <div class="sidenav" >
                 <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
                      border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">DETAIL</div>
