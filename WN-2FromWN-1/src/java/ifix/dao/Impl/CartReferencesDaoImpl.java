@@ -187,7 +187,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id,"
                 + " user_id, user_name, user_address, user_contact, user_email, user_password, user_status,"
-                + " user_img_path, user_img_name "
+                + " user_img_path, user_img_name, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, "
                 + " cart_references_model_brand, cart_references_date from cart_references join user on cart_references_user_id= user_id where cart_references_status=?");
@@ -202,7 +202,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
                 + " user_img_path, user_img_name "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, "
-                + " cart_references_model_brand, cart_references_date from cart_references join user on cart_references_user_id= user_id where cart_references_status=?");
+                + " cart_references_model_brand, cart_references_date from cart_references left join user on cart_references_user_id= user_id where cart_references_status=?");
         ps.setInt(1, 2);
         return ps.executeQuery();
     }
@@ -230,7 +230,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
     public int getCartItemCountBySessionId(String sessionOrUserId) throws SQLException {
         int count = 0;
         Connection con = DatabaseConnection2.getDatabaseConnection();
-        PreparedStatement ps = con.prepareStatement("select count(cart_references_id) as cart_count from cart_references where cart_references_user_id=?");
+        PreparedStatement ps = con.prepareStatement("select count(cart_references_id) as cart_count from cart_references where cart_references_user_id=? and cart_references_status=1");
         ps.setString(1, sessionOrUserId);
         ResultSet rset = ps.executeQuery();
         while (rset.next()) {

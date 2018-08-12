@@ -112,6 +112,7 @@
                 <p style="font-weight: 400;  font-size: 16px;">
                     Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
                 </p>
+                <a href="invalidateSession">Logout</a>
                 <%
                 } else {
                      loggerId = hs.getId();

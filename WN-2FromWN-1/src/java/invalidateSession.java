@@ -33,7 +33,9 @@ public class invalidateSession extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        HttpSession hs = request.getSession();
+        hs.invalidate();
+        response.sendRedirect("productList.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,9 +65,7 @@ public class invalidateSession extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        HttpSession hs = request.getSession();
-        hs.invalidate();
-        response.sendRedirect("productList.jsp");
+        PrintWriter out = response.getWriter();
 
     }
 
