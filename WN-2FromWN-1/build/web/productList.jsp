@@ -94,20 +94,20 @@
                 </p> 
             </div>    
             <div style="position: relative; left: 60%; top: 15%; width: 20%; height: 30%;">
-<!--                <a href="invalidateSession">LOGOUT</a>-->
-<!--                <form action="invalidateSession">
-                    
-                    <input type="hidden" name="tf-1"/>
-                </form>-->
+                <!--                <a href="invalidateSession">LOGOUT</a>-->
+                <!--                <form action="invalidateSession">
+                                    
+                                    <input type="hidden" name="tf-1"/>
+                                </form>-->
             </div>
             <div style="position: relative; left: 20%; top: 10%; width: 20%; height: 50px; ">
                 <%
                     HttpSession hs = request.getSession();
                     String email = (String) hs.getAttribute("loggedIn");
-                    String loggerId ="";
+                    String loggerId = "";
                     if (hs.getAttribute("loggedIn") != null) {
                         User user = userController.getuserByUserEmail(email);
-                        loggerId = Integer.toString(user.getUserId()); 
+                        loggerId = Integer.toString(user.getUserId());
                 %>
                 <p style="font-weight: 400;  font-size: 16px;">
                     Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
@@ -115,24 +115,23 @@
                 <a href="invalidateSession">Logout</a>
                 <%
                 } else {
-                     loggerId = hs.getId();
+                    loggerId = hs.getId();
                 %>
                 <p style="font-weight: 400;  font-size: 16px;">
                     Hi  <a href="login.jsp">Guest</a>
                 </p>
                 <%
                     }
-                  int itemCount = CartReferenceController.getCartItemCountBySessionId(loggerId);
+                    int itemCount = CartReferenceController.getCartItemCountBySessionId(loggerId);
                 %>
-                
+
             </div>  
-                <div style="position: absolute; left: 71%; width: 32px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
-                    <%=itemCount
-                    %>
-                </div>
-                <div style="position: absolute; left: 70%; width: 32px; top: 16%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000; background-image: url(web.pos.ee.images/cart_user.png); ">
-                    
-                </div>
+            <div style="position: absolute; left: 71%; width: 32px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
+                <%=itemCount%>
+            </div>
+            <div style="position: absolute; left: 70%; width: 32px; top: 16%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000; background-image: url(web.pos.ee.images/cart_user.png); ">
+
+            </div>
         </div>
     </div>
     <div class="content" >
@@ -204,15 +203,17 @@
             </select>
         </div>
         <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;"> 
-            <form action="redirectItemFilterByBrand" method="post">
-                <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
-            </form>               
+            <!--<form action="redirectItemFilterByBrand" method="post">-->               
+            <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
+            <!--</form>-->               
         </div>
         <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">PRICE</div>
         <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">
-            <input type="text" class="form-control" placeholder="Lower Price" style=" width: 210px;"/><br>
-            <input type="text" class="form-control" placeholder="Highest Price" style=" width: 210px;"/><br>
-            <input type="submit" class="btn btn-default" value="PRICE FILTER" style="width: 210px;"/>
+            <input type="text" name="lowerPrice" class="form-control" placeholder="Lower Price" style=" width: 210px;" required /><br>
+            <input type="text" name="highestPrice" class="form-control" placeholder="Highest Price" style=" width: 210px;" required/><br>
+            <form action="searchByBrandServlet" method="post">
+                <input type="submit" class="btn btn-default" value="PRICE FILTER" style="width: 210px;"/>
+            </form>
         </div>
     </div>
     <script type="text/javascript">

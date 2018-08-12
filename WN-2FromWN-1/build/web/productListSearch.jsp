@@ -4,6 +4,9 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.model.User"%>
+<%@page import="ifix.controller.userController"%>
+<%@page import="ifix.controller.CartReferenceController"%>
 <%@page import="ifix.controller.imageUploadController"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="ifix.controller.laptopPriceDetailController"%>
@@ -84,17 +87,58 @@
             Working Hours : Monday - Friday : 8.30 am - 5.30 pm / Saturday : 8.30 am - 1.30 pm
         </div>
         <div class="top-container"> 
-            <div style="position: relative; left: 25%; width: 20%; height: 40px; top: 10%; text-align: left;">Hi <a href="userProfile.jsp">Amal</a></div>
-            <h1>iFix Laptops.com</h1>
-            <p>
-                Something Different 
-            </p>
+          <div style="position: relative; left: 40%; top: 10%; width: 20%; height: 30%;">
+                <h1>iFix Laptops.com</h1>
+                <p>
+                    Something Different 
+                </p> 
+            </div>    
+            <div style="position: relative; left: 60%; top: 15%; width: 20%; height: 30%;">
+                <!--                <a href="invalidateSession">LOGOUT</a>-->
+                <!--                <form action="invalidateSession">
+                                    
+                                    <input type="hidden" name="tf-1"/>
+                                </form>-->
+            </div>
+            <div style="position: relative; left: 20%; top: 10%; width: 20%; height: 50px; ">
+                <%
+                    HttpSession hs = request.getSession();
+                    String email = (String) hs.getAttribute("loggedIn");
+                    String loggerId = "";
+                    if (hs.getAttribute("loggedIn") != null) {
+                        User user = userController.getuserByUserEmail(email);
+                        loggerId = Integer.toString(user.getUserId());
+                %>
+                <p style="font-weight: 400;  font-size: 16px;">
+                    Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
+                </p>
+                <a href="invalidateSession">Logout</a>
+                <%
+                } else {
+                    loggerId = hs.getId();
+                %>
+                <p style="font-weight: 400;  font-size: 16px;">
+                    Hi  <a href="login.jsp">Guest</a>
+                </p>
+                <%
+                    }
+                    int itemCount = CartReferenceController.getCartItemCountBySessionId(loggerId);
+                %>
+
+            </div>  
+            <div style="position: absolute; left: 71%; width: 32px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
+                <%=itemCount%>
+            </div>
+            <div style="position: absolute; left: 70%; width: 32px; top: 16%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000; background-image: url(web.pos.ee.images/cart_user.png); ">
+
+            </div>
         </div>
         <div class="content">
             <%
                 
-                ResultSet rset = imageUploadController.getProductsByAttribute("APPLE");
-               
+                String lowerP = (String) hs.getAttribute("lwrP");
+                String higherP = (String) hs.getAttribute("higher");
+                ResultSet rset = imageUploadController.getProductsByPriceRange(lowerP, higherP);
             %>
             <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
                 <table class="table">                  
@@ -161,7 +205,7 @@
             </div>
             <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;"> 
                 <form action="redirectItemFilterByBrand" method="post">
-                     <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
+                    <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
                 </form>               
             </div>
             <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">PRICE</div>

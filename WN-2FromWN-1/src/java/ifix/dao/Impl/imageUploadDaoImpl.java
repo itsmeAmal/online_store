@@ -105,4 +105,15 @@ public class imageUploadDaoImpl implements imageUploadDao {
         return ps.executeQuery();
     }
 
+    public ResultSet getProductsByPriceRange(String lowerPrice, String highestPrice) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("SELECT imageUpload_id, imageUpload_path, imageUpload_file_name,"
+                + " imageupload_item_desc, imageupload_price, imageupload_model, imageupload_processor,"
+                + " imageupload_os, imageupload_graphics, imageupload_webcam, imageupload_memory,"
+                + " imageupload_storage, imageupload_display FROM imageupload where imageupload_price between ? and ?");
+        ps.setString(1, lowerPrice);
+        ps.setString(2, highestPrice);
+        return ps.executeQuery();
+    }
+
 }

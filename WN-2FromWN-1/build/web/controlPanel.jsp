@@ -219,7 +219,7 @@
                 <div id="allUsers"> <a style="color: #ffffff;" href="addAdminUserAccount.jsp">ADD ADMIN USER ACCOUNT</a></div>
                 <div id="addProducts"> <a style="color: #ffffff;" href="addProduct.jsp">PRODUCT MANAGEMNT</a></div>
                 <div id="addUser"> <a style="color: #ffffff;" href="userAdd.jsp">ADD USER ACCOUNT</a></div>
-                <div id="addGrn"> <a style="color: #ffffff;" href="cashOnDeliveryItems.jsp"></a></div>
+                <div id="addGrn"> <a style="color: #ffffff;" href="invoicedItems.jsp">INVOICED ITEMS</a></div>
                 <!--<div id="searchUser"> <a style="color: #ffffff;" href="userSearchFromControlPanel.jsp">User Search</a> </div>-->
 
             </div>

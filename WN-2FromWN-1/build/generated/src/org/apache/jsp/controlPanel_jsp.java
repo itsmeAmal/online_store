@@ -259,9 +259,9 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <div id=\"divLeftBlackSpace_management\">Management</div>\r\n");
       out.write("                <div id=\"allUsers\"> <a style=\"color: #ffffff;\" href=\"addAdminUserAccount.jsp\">ADD ADMIN USER ACCOUNT</a></div>\r\n");
       out.write("                <div id=\"addProducts\"> <a style=\"color: #ffffff;\" href=\"addProduct.jsp\">PRODUCT MANAGEMNT</a></div>\r\n");
-      out.write("                <div id=\"addUser\"> <a style=\"color: #ffffff;\" href=\"userAdd.jsp\">NEW USER</a></div>\r\n");
-      out.write("                <div id=\"addGrn\"> <a style=\"color: #ffffff;\" href=\"cashOnDeliveryItems.jsp\">CASH ON DELIVERY ITEMS</a></div>\r\n");
-      out.write("                <div id=\"searchUser\"> <a style=\"color: #ffffff;\" href=\"userSearchFromControlPanel.jsp\">User Search</a> </div>\r\n");
+      out.write("                <div id=\"addUser\"> <a style=\"color: #ffffff;\" href=\"userAdd.jsp\">ADD USER ACCOUNT</a></div>\r\n");
+      out.write("                <div id=\"addGrn\"> <a style=\"color: #ffffff;\" href=\"invoicedItems.jsp\">INVOICED ITEMS</a></div>\r\n");
+      out.write("                <!--<div id=\"searchUser\"> <a style=\"color: #ffffff;\" href=\"userSearchFromControlPanel.jsp\">User Search</a> </div>-->\r\n");
       out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("            <div id=\"divTopWhiteSpece\">\r\n");
