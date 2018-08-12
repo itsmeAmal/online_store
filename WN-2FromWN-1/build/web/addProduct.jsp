@@ -161,6 +161,7 @@
             <!--add detail -->
             <div class="sidenav-7">
                 <p style="position: relative; left: 5px; color: #000000; font-weight: 400;"><a href="cashOnDeliveryItems.jsp">CASH ON DELIVERY ITEMS</a></p>
+                <p style="position: relative; left: 5px; color: #000000; font-weight: 400;"><a href="invoicedItems.jsp">INVOICED ITEMS</a></p>
                     
                 
             </div>

@@ -165,7 +165,7 @@
     <!--header-->
     <div class="header" id="myHeader">
         <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-             color: #ffffff; font-weight: 500;">CATEGORIES</div>
+             color: #ffffff; font-weight: 500;"></div>
         <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
              color: #ffffff; font-weight: 500;" ></div>
         <div style="position: relative; left: 44%; top: -120%; width: 20%; height: 40px;" >

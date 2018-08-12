@@ -92,7 +92,7 @@
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Profile</title>
+        <title>Invoiced Items</title>
     </head>
     <body>
         <div style="position: relative; left: 0px; width: 100%; height: 30px; top: 0px; background-color: #cccccc; font-family: Arial; text-align: center; color: #333333;">               
@@ -112,9 +112,9 @@
         <!--header-->
         <div class="header" id="myHeader">
             <div style="position: relative; left: 20%; top: 10%; width: 300px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;">CASH ON DELIVERY ITEMS</div>
-            <div style="position: relative; left: 40%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;" ><a href="addProduct.jsp">ADMIN PANEL</a></div>
+                 color: #ffffff; font-weight: 500;">INVOICED ITEMS</div>
+<!--            <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
+                 color: #ffffff; font-weight: 500;" >HOME</div>-->
             <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
                 
             </div>
@@ -122,14 +122,14 @@
         <!--add detail -->
         <div class="sidenav-6">
             <%
-                ResultSet rset = CartReferenceController.getAllCashOnDeliveryItems();
+                ResultSet rset = CartReferenceController.getAllCartPendingItems();
             %>
             <div class="container" style="position: absolute; left: 5%; top: 3%; width: 90%; height: max-content; background-color: #ffffff;">
                 <table class="table table-responsive">   
                     <th>PRODUCT</th>
                     <th>QUANTITY</th>                   
                     <th>PRICE</th>
-                    <th>ACTION</th>
+<!--                    <th>ACTION</th>-->
                     <%  while (rset.next()) {
                     %>
                     <tr>                       
@@ -146,7 +146,7 @@
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
-                        <td>
+<!--                        <td>
                             <form action="setAsInvoiceCashOnDeliveryItem" method="post">
                                 <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
                                     <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id")) %>"> 
@@ -154,7 +154,7 @@
                                 </div>
                             </form>  
 
-                        </td>
+                        </td>-->
                     </tr>
                     <%  }
                     %>
