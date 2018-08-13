@@ -4,6 +4,7 @@
     Author     : 4m4l
 --%>
 
+<%@page import="ifix.model.User"%>
 <%@page import="ifix.controller.userController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -196,7 +197,7 @@
             }
             #searchUser{
                 position: absolute;
-                left: 22%;
+                left: 20%;
                 width: 80%;
                 height: 30px;
                 top: 30%;
@@ -207,6 +208,26 @@
         </style>
     </head>
     <body>
+        <%
+            HttpSession hs = request.getSession();
+            String email = (String) hs.getAttribute("loggedIn");
+
+            if (hs.getAttribute("loggedIn") != null) {
+                User user = userController.getuserByUserEmail(email);
+        %>
+        <p style="font-weight: 400;  font-size: 16px;">
+            Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
+        </p>
+        <a href="invalidateSession" style="position: absolute; left: 80%; top: 1%; width: 100px; height: 50px;">Logout</a>
+        <%
+        } else {
+        %>
+        <p style="font-weight: 400;  font-size: 16px;">
+            Hi  <a href="login.jsp">Guest</a>
+        </p>
+        <%
+            }
+        %>
         <div id="divOuter"> 
             <%--<jsp:include page='buttonGroup.jsp'></jsp:include>--%>
             <div id="divTopBlueLine"></div>
@@ -220,7 +241,7 @@
                 <div id="addProducts"> <a style="color: #ffffff;" href="addProduct.jsp">PRODUCT MANAGEMNT</a></div>
                 <div id="addUser"> <a style="color: #ffffff;" href="userAdd.jsp">ADD USER ACCOUNT</a></div>
                 <div id="addGrn"> <a style="color: #ffffff;" href="invoicedItems.jsp">INVOICED ITEMS</a></div>
-                <!--<div id="searchUser"> <a style="color: #ffffff;" href="userSearchFromControlPanel.jsp">User Search</a> </div>-->
+                <div id="searchUser"> <a style="color: #ffffff;" href="activeUsers.jsp">ACTIVE USERS</a></div> 
 
             </div>
             <div id="divTopWhiteSpece">

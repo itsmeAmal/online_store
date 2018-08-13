@@ -23,6 +23,8 @@ public class userDaoImpl implements userDao {
 
     private String selectQuery = "SELECT user_id, user_name, user_address, user_contact, user_status, user_email, "
             + " user_password, user_img_path, user_img_name FROM user";
+    private String selectQueryWithFilter = "SELECT user_id, user_name, user_address, user_contact, user_status, user_email, "
+            + " user_password, user_img_path, user_img_name FROM user where user_status=1";
 
     @Override
     public MethodStatus addUser(User user) throws SQLException {
@@ -73,7 +75,7 @@ public class userDaoImpl implements userDao {
     @Override
     public ResultSet getAllUsers() throws SQLException {
         commonDaoImpl commonDaoImpl = new commonDaoImpl();
-        return commonDaoImpl.getAllRecords(selectQuery);
+        return commonDaoImpl.getAllRecords(selectQueryWithFilter);
     }
 
     @Override
@@ -138,6 +140,16 @@ public class userDaoImpl implements userDao {
             usersCount = rset.getInt("count");
         }
         return usersCount;
+    }
+
+    public MethodStatus deactivateUser(int userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update user set user_status=? where user_id =?");
+        ps.setInt(1, 3);
+        ps.setInt(2, userId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
     }
 
 }

@@ -76,7 +76,7 @@ public class userController {
         return userDaoImpl1.getFirstUserFromResultset(userDaoImpl1.getUsersByOneAttribute("user_email", CommonConstants.sql.EQUAL, email));
     }
 
-    public static ResultSet getAllUsers() throws SQLException {
+    public static ResultSet getAllActiveUsers() throws SQLException {
         userDaoImpl useDaoImpl = new userDaoImpl();
         return useDaoImpl.getAllUsers();
     }
@@ -117,6 +117,10 @@ public class userController {
 
     public static int getAllregisteredUsersCount() throws SQLException {
         return new userDaoImpl().getAllregisteredUsersCount();
+    }
+
+    public static MethodStatus deactivateUser(int userId) throws SQLException {
+        return new userDaoImpl().deactivateUser(userId);
     }
 
 }

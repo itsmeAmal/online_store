@@ -236,7 +236,7 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            }\r\n");
       out.write("            #searchUser{\r\n");
       out.write("                position: absolute;\r\n");
-      out.write("                left: 22%;\r\n");
+      out.write("                left: 20%;\r\n");
       out.write("                width: 80%;\r\n");
       out.write("                height: 30px;\r\n");
       out.write("                top: 30%;\r\n");
@@ -261,7 +261,7 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <div id=\"addProducts\"> <a style=\"color: #ffffff;\" href=\"addProduct.jsp\">PRODUCT MANAGEMNT</a></div>\r\n");
       out.write("                <div id=\"addUser\"> <a style=\"color: #ffffff;\" href=\"userAdd.jsp\">ADD USER ACCOUNT</a></div>\r\n");
       out.write("                <div id=\"addGrn\"> <a style=\"color: #ffffff;\" href=\"invoicedItems.jsp\">INVOICED ITEMS</a></div>\r\n");
-      out.write("                <!--<div id=\"searchUser\"> <a style=\"color: #ffffff;\" href=\"userSearchFromControlPanel.jsp\">User Search</a> </div>-->\r\n");
+      out.write("                <div id=\"searchUser\"> <a style=\"color: #ffffff;\" href=\"activeUsers.jsp\">ACTIVE USERS</a></div> \r\n");
       out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("            <div id=\"divTopWhiteSpece\">\r\n");
