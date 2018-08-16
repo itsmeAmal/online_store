@@ -5,9 +5,11 @@
  */
 package ifix.controller;
 
+import ifix.core.MethodStatus;
 import ifix.core.Validations;
 import ifix.dao.Impl.invoiceDaoImpl;
 import ifix.model.Invoice;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -17,7 +19,8 @@ import java.text.ParseException;
  */
 public class invoiceController {
 
-    public static boolean addInvoice(String invoiceId, String Date, String invoiceUserId, String status, String deliverStatus) throws SQLException, ParseException {
+    public static MethodStatus addInvoice(String invoiceId, String Date, String invoiceUserId, String status, String deliverStatus,
+            BigDecimal total, String address, String city, String country, int itemQty, String customerName) throws SQLException, ParseException {
         if (Validations.isNotEmpty(invoiceId) && Validations.isNotEmpty(Date) && Validations.isNotEmpty(invoiceUserId)) {
             invoiceDaoImpl invoiDaoImpl = new invoiceDaoImpl();
             Invoice invoice = new Invoice();
@@ -26,10 +29,16 @@ public class invoiceController {
             invoice.setInvoiceUserId(Validations.getIntOrZeroFromString(invoiceUserId));
             invoice.setInvoiceStatus(Validations.getIntOrZeroFromString(status));
             invoice.setInvoiceDeleverStatus(Validations.getIntOrZeroFromString(deliverStatus));
-            return true;
-
+            invoice.setInvoiceTotal(total);
+            invoice.setAddress(address);
+            invoice.setCity(city);
+            invoice.setCountry(country);
+            invoice.setQty(itemQty);
+            invoice.setCustName(customerName);
+            invoiDaoImpl.addInvoice(invoice);
+            return MethodStatus.SUCCESS;
         } else {
-            return false;
+            return MethodStatus.FAILED;
         }
     }
 
@@ -38,7 +47,8 @@ public class invoiceController {
         invoiDaoImpl.getAllInvoices();
         return true;
     }
-    public static boolean  removeInvoice(String invoiceId)throws SQLException{
+
+    public static boolean removeInvoice(String invoiceId) throws SQLException {
         invoiceDaoImpl invoiDaoImpl = new invoiceDaoImpl();
         invoiDaoImpl.deleteInvoice(Validations.getIntOrZeroFromString(invoiceId));
         return true;

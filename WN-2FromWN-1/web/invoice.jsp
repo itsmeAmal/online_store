@@ -148,9 +148,12 @@
             </div>
         </div>
         <div style="position: absolute; left: 59%; top: 70%; width: 600px; height: 40px;">
-            <form action="paymentGatewayResirectServlet" method="post"> 
+            <form action="https://sandbox.payhere.lk/pay/oe3853fb0" method="post"> 
                 <input class="btn btn-primary" type="submit" value="PAY ONLINE">
             </form>
+<!--            <form action="paymentGatewayResirectServlet" method="post"> 
+                <input class="btn btn-primary" type="submit" value="PAY ONLINE">
+            </form>-->
         </div>
         <script type="text/javascript">
             window.onscroll = function () {

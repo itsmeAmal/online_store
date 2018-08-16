@@ -5,6 +5,7 @@
  */
 package ifix.dao;
 
+import ifix.core.MethodStatus;
 import ifix.model.Invoice;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import java.sql.SQLException;
  */
 public interface invoiceDao {
 
-    void addInvoice(Invoice invoice) throws SQLException;
+    MethodStatus addInvoice(Invoice invoice) throws SQLException;
 
     void deleteInvoice(int invoice) throws SQLException;
 
