@@ -4,13 +4,25 @@
  * and open the template in the editor.
  */
 
+import ifix.controller.CartReferenceController;
+import ifix.controller.CommonController;
+import ifix.controller.invoiceController;
+import ifix.controller.userController;
+import ifix.core.MethodStatus;
+import ifix.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -61,8 +73,27 @@ public class checkoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        response.sendRedirect("invoice.jsp");
+        try {
+            MethodStatus status = null;
+            processRequest(request, response);
+            HttpSession ses = request.getSession();
+            String email = (String) ses.getAttribute("loggedIn");
+            User user = userController.getuserByUserEmail(email);
+            BigDecimal totalInvoiceValue = CartReferenceController.getTotalByUserId(Integer.toString(user.getUserId()));
+            int userId = user.getUserId();
+            try {
+                status = invoiceController.addInvoice(CommonController.getCurrentJavaSqlDate().toString(), String.valueOf(userId),
+                        "1", "1", totalInvoiceValue, user.getUserAddress(), "", "Sri Lanka", 0, user.getUserName());
+            } catch (ParseException ex) {
+                Logger.getLogger(checkoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (status == MethodStatus.SUCCESS) {
+                response.sendRedirect("invoice.jsp");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(checkoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

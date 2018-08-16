@@ -19,12 +19,11 @@ import java.text.ParseException;
  */
 public class invoiceController {
 
-    public static MethodStatus addInvoice(String invoiceId, String Date, String invoiceUserId, String status, String deliverStatus,
+    public static MethodStatus addInvoice(String Date, String invoiceUserId, String status, String deliverStatus,
             BigDecimal total, String address, String city, String country, int itemQty, String customerName) throws SQLException, ParseException {
-        if (Validations.isNotEmpty(invoiceId) && Validations.isNotEmpty(Date) && Validations.isNotEmpty(invoiceUserId)) {
+        if (Validations.isNotEmpty(Date) && Validations.isNotEmpty(invoiceUserId)) {
             invoiceDaoImpl invoiDaoImpl = new invoiceDaoImpl();
             Invoice invoice = new Invoice();
-            invoice.setInvoiceId(Validations.getIntOrZeroFromString(invoiceId));
             invoice.setInvoiceDate(Validations.getSqlDateByString(Date));
             invoice.setInvoiceUserId(Validations.getIntOrZeroFromString(invoiceUserId));
             invoice.setInvoiceStatus(Validations.getIntOrZeroFromString(status));
