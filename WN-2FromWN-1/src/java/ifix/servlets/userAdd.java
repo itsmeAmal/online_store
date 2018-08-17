@@ -46,7 +46,7 @@ public class userAdd extends HttpServlet {
             if (op == MethodStatus.SUCCESS) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Successfully added the user');");
-                out.println("location='dashBoard.jsp';");
+                out.println("location='productList.jsp';");
                 out.println("</script>");
 
             } else {
