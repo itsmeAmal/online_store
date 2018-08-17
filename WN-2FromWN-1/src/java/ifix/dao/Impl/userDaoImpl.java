@@ -41,7 +41,7 @@ public class userDaoImpl implements userDao {
         ps.setString(5, user.getEmail());
         ps.setString(6, user.getPassword());
         ps.setString(7, user.getImagePath());
-        ps.setString(8, user.getImageName());
+        ps.setString(8, "1");
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;

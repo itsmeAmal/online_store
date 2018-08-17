@@ -232,10 +232,47 @@
                     %>
                 </table>
             </div>
-
         </div>
         <div class="sidenav-2">
-
+            <%
+                
+            %>
+            <div class="container" style="position: absolute; left: 0px; top: 10%; width: 300px; height: max-content; background-color: #ffffff;">
+                <H4> USERS</H4>
+                <table class="table table-condensed">   
+                    <th>USER EMAIL</th>
+                    <th style="padding-left: 50px;">ACTION</th>                                          
+                        <%  while (rset.next()) {
+                        %>
+                    <tr>  
+                        <td style="width: 200px; height: 50px; font-size: small; text-align: left; font-weight: 100; "> 
+                            <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
+                                <%= rset.getString("user_email")%>  
+                            </div>                        
+                        </td>
+                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
+                            <form action="changeUserStatus" method="post">
+                                <div style="position: relative; top: 10px; width: 200px; left: 0px; height: 50px;">
+                                    <%
+                                        int value = rset.getInt("user_img_name");
+                                        String activeState = "";
+                                        if (value == 1) {
+                                            activeState = "DEACTIVATE";
+                                        } else {
+                                            activeState = "ACTIVATE";
+                                        }
+                                    %>                                    
+                                    <input type="submit" name="changeStatus" value="<%=activeState%>" class="btn btn-info" style="width: 130px;">
+                                    <input type="hidden" name="changeStatusHidden" value="<%=rset.getInt("user_img_name")%>">
+                                    <input type="hidden" name="userEmail" value="<%=rset.getString("user_email")%>">
+                                </div>   
+                            </form>
+                        </td>                             
+                    </tr>
+                    <%  }
+                    %>
+                </table>
+            </div>
         </div>
         <div class="sidenav-3">
 
