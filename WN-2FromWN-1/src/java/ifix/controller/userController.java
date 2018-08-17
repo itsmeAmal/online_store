@@ -131,4 +131,8 @@ public class userController {
         return new userDaoImpl().updateUserStatusByEmail(email, status);
     }
 
+    public static int getActiveUserAccountCount() throws SQLException {
+        return new userDaoImpl().getActiveUserAccountCount();
+    }
+
 }

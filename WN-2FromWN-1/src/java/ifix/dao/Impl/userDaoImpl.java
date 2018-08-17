@@ -170,4 +170,15 @@ public class userDaoImpl implements userDao {
         return MethodStatus.SUCCESS;
     }
 
+    public int getActiveUserAccountCount() throws SQLException {
+        int count = 0;
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select count(user_img_name) as user_img_name from user where user_img_name=1");
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            count = rset.getInt("user_img_name");
+        }
+        return count;
+    }
+
 }

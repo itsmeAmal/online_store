@@ -4,6 +4,7 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.core.Validations"%>
 <%@page import="ifix.controller.CartReferenceController"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="ifix.model.ImageUpload"%>
@@ -63,27 +64,29 @@
         }
         .sidenav-2{
             position: fixed; 
-            left: 26%; 
-            top: 20%; 
-            width: 23%; 
-            height: 50%; 
+            left: 83%; 
+            top: 13%; 
+            width: 16%; 
+            height: 81%; 
             border: groove;
             padding: 8px 0;
             z-index: 1;
             overflow-x: hidden;
             border-width: thin;
+            background-color: #333333;
         }
         .sidenav-3{
             position: fixed; 
-            left: 50%; 
+            left: 28%; 
             top: 20%; 
-            width: 23%; 
+            width: 50%; 
             height: 50%; 
             border: groove;
             padding: 8px 0;
             z-index: 1;
             overflow-x: hidden;
             border-width: thin;
+            background-color: #cccccc;
         }
         .sidenav-4{
             position: fixed; 
@@ -154,6 +157,7 @@
         a:hover, a:active {
             background-color: red;
         }
+
     </style>
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
@@ -192,13 +196,12 @@
             </div>
         </div>
         <div class="sidenav" >
-
             <%
                 ResultSet rset = userController.getAllActiveAndDeactiveUsersWithoutAdmins();
             %>
             <div class="container" style="position: absolute; left: 0px; top: 10%; width: 300px; height: max-content; background-color: #ffffff;">
                 <H4> USERS</H4>
-                <table class="table table-condensed">   
+                <table class="table table-condensed" style="position: relative;  width: 100%;">   
                     <th>USER EMAIL</th>
                     <th style="padding-left: 50px;">ACTION</th>                                          
                         <%  while (rset.next()) {
@@ -221,7 +224,7 @@
                                             activeState = "ACTIVATE";
                                         }
                                     %>                                    
-                                    <input type="submit" name="changeStatus" value="<%=activeState%>" class="btn btn-info" style="width: 130px;">
+                                    <input type="submit" name="changeStatus" value="<%=activeState%>" class="btn btn-info" style="width: 130px; ">
                                     <input type="hidden" name="changeStatusHidden" value="<%=rset.getInt("user_img_name")%>">
                                     <input type="hidden" name="userEmail" value="<%=rset.getString("user_email")%>">
                                 </div>   
@@ -234,52 +237,30 @@
             </div>
         </div>
         <div class="sidenav-2">
-            <%
-                
-            %>
-            <div class="container" style="position: absolute; left: 0px; top: 10%; width: 300px; height: max-content; background-color: #ffffff;">
-                <H4> USERS</H4>
-                <table class="table table-condensed">   
-                    <th>USER EMAIL</th>
-                    <th style="padding-left: 50px;">ACTION</th>                                          
-                        <%  while (rset.next()) {
-                        %>
-                    <tr>  
-                        <td style="width: 200px; height: 50px; font-size: small; text-align: left; font-weight: 100; "> 
-                            <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
-                                <%= rset.getString("user_email")%>  
-                            </div>                        
-                        </td>
-                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
-                            <form action="changeUserStatus" method="post">
-                                <div style="position: relative; top: 10px; width: 200px; left: 0px; height: 50px;">
-                                    <%
-                                        int value = rset.getInt("user_img_name");
-                                        String activeState = "";
-                                        if (value == 1) {
-                                            activeState = "DEACTIVATE";
-                                        } else {
-                                            activeState = "ACTIVATE";
-                                        }
-                                    %>                                    
-                                    <input type="submit" name="changeStatus" value="<%=activeState%>" class="btn btn-info" style="width: 130px;">
-                                    <input type="hidden" name="changeStatusHidden" value="<%=rset.getInt("user_img_name")%>">
-                                    <input type="hidden" name="userEmail" value="<%=rset.getString("user_email")%>">
-                                </div>   
-                            </form>
-                        </td>                             
-                    </tr>
-                    <%  }
-                    %>
-                </table>
-            </div>
+            <a style="position: relative; top: 10px; width: 270px; background-color: #6666ff; text-align: left;"   href="addAdminUserAccount.jsp">REGISTER ADMIN USER ACCOUNT</a><br>
+            <a style="position: relative; top: 20px; width: 270px; background-color: #6666ff; text-align: left;"  href="addProduct.jsp">REGISTER LAPTOP</a><br>
+            <a style="position: relative; top: 30px; width: 270px; background-color: #6666ff; text-align: left;"  href="userAdd.jsp">REGISTER USER ACCOUNT</a><br>
+            <a style="position: relative; top: 40px; width: 270px; background-color: #6666ff; text-align: left;"  href="invoicedItems.jsp">INVOICED ITEMS</a><br>
+            <a style="position: relative; top: 50px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE USERS</a><br>
+            <a style="position: relative; top: 60px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE LAPTOPS</a><br>
+            <a style="position: relative; top: 70px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE INVOICES</a><br>
+            <a style="position: relative; top: 80px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">DELIVERY STATUS</a><br>
         </div>
         <div class="sidenav-3">
-
+            <%
+                int totalRegisteredUsers = userController.getAllregisteredUsersCount();
+            %>
+            <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">GLOBALLY REGISTERED :</h3> <br>
+            <h1 style=" padding-left: 40%; background-color: #ccccff; "><%=totalRegisteredUsers%> USER ACCOUNTS </h1>
+        
+            <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">ACTIVE STATE :</h3> <br>
+             <%
+                int activeUsers = userController.getActiveUserAccountCount(); 
+            %>
+            <h1 style=" padding-left: 40%; background-color: #ccccff; "><%=activeUsers%> USER ACCOUNTS </h1>
         </div>
-        <div class="sidenav-4">
 
-        </div>
+
         <script type="text/javascript">
             window.onscroll = function () {
                 myFunction()
