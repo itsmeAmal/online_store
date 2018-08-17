@@ -246,6 +246,18 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                font-weight: 200;\r\n");
       out.write("                font-family: serif;\r\n");
       out.write("            }\r\n");
+      out.write("            .sidenav-6{\r\n");
+      out.write("                position: fixed; \r\n");
+      out.write("                left: 17%; \r\n");
+      out.write("                top: 27%; \r\n");
+      out.write("                width: 30%; \r\n");
+      out.write("                height: 30%; \r\n");
+      out.write("                border: groove;\r\n");
+      out.write("                padding: 8px 0;   \r\n");
+      out.write("                z-index: 1;\r\n");
+      out.write("                overflow-x: hidden;\r\n");
+      out.write("                border-width: thin;\r\n");
+      out.write("            }\r\n");
       out.write("        </style>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>   \r\n");
@@ -264,7 +276,6 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <div id=\"addUser\"> <a style=\"color: #ffffff;\" href=\"userAdd.jsp\">ADD USER ACCOUNT</a></div>\r\n");
       out.write("                <div id=\"addGrn\"> <a style=\"color: #ffffff;\" href=\"invoicedItems.jsp\">INVOICED ITEMS</a></div>\r\n");
       out.write("                <div id=\"searchUser\"> <a style=\"color: #ffffff;\" href=\"activeUsers.jsp\">ACTIVE USERS</a></div> \r\n");
-      out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("            <div id=\"divTopWhiteSpece\">\r\n");
       out.write("                <div id=\"divTopWhiteSpece_lblDashBoard\">\r\n");
@@ -280,16 +291,11 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                    Dashboard   /    <a href=\"userProfile.jsp\">");
       out.print( user.getUserName());
       out.write("</a>  \r\n");
-      out.write("                    <a href=\"invalidateSession\" style=\"position: absolute; left: 80%; top: 1%; width: 100px; height: 50px;\">Logout</a>\r\n");
+      out.write("                    <a href=\"invalidateSession\" style=\"position: relative; left: 1200px; top: 1%; width: 100px; height: 50px;\">Logout</a>\r\n");
       out.write("                    ");
 
                         }
                     
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
       out.write("\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
@@ -313,6 +319,27 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            </div>\r\n");
       out.write("            <div id=\"divMenuBox4\">\r\n");
       out.write("                <div id=\"divMenuBox4_dataBases\"></div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div class=\"sidenav-6\">\r\n");
+      out.write("                <table class=\"table table-responsive\">   \r\n");
+      out.write("                    <th>PRODUCT</th>\r\n");
+      out.write("                    <th>QUANTITY</th>                   \r\n");
+      out.write("                    <th>PRICE</th>\r\n");
+      out.write("                      \r\n");
+      out.write("                    <tr>  \r\n");
+      out.write("                       \r\n");
+      out.write("                        <td style=\"width: 300px; height: 100px; font-size: medium; text-align: left; top: 30%; font-weight: 100; \"> \r\n");
+      out.write("                            <div style=\"position: relative; top: 10px; width: 200px; left: 10%; height: 50px;\">\r\n");
+      out.write("                            </div>                        \r\n");
+      out.write("                        </td>\r\n");
+      out.write("                        <td style=\"position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;\">\r\n");
+      out.write("                            1 Pcs                      \r\n");
+      out.write("                        </td> \r\n");
+      out.write("                        <td style=\"position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;\">\r\n");
+      out.write("                        </td>\r\n");
+      out.write("                    </tr>\r\n");
+      out.write("                    \r\n");
+      out.write("                </table>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("    </body>\r\n");

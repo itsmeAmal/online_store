@@ -4,6 +4,7 @@
     Author     : 4m4l
 --%>
 
+<%@page import="java.sql.ResultSet"%>
 <%@page import="ifix.model.User"%>
 <%@page import="ifix.controller.userController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,7 +18,7 @@
                 position: absolute;
                 left: 0px;
                 width: 100%;
-                height: 100%;
+                height: 940px;
                 top: 0px;    
                 background-color: #cccccc;
             }
@@ -205,6 +206,18 @@
                 font-weight: 200;
                 font-family: serif;
             }
+            .sidenav-6{
+                position: fixed; 
+                left: 17%; 
+                top: 27%; 
+                width: 30%; 
+                height: 30%; 
+                border: groove;
+                padding: 8px 0;   
+                z-index: 1;
+                overflow-x: hidden;
+                border-width: thin;
+            }
         </style>
     </head>
     <body>   
@@ -237,7 +250,7 @@
                     <%
                         }
                     %>
-               </div>
+                </div>
             </div>
             <div id="divMenuBox1">
                 <%
@@ -255,6 +268,23 @@
             </div>
             <div id="divMenuBox4">
                 <div id="divMenuBox4_dataBases"></div>
+            </div>
+            <div class="sidenav-6">
+                <table class="table table-responsive">   
+                    <%
+                        ResultSet rset = userController.getAllActiveUsers();
+                    %>
+                    <th>USER</th>
+                    <th>STATE</th>                                                            
+                    <tr>
+                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
+                            <%=rset.getString("user_email")%> 
+                        </td> 
+                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
+                        </td>
+                    </tr>
+
+                </table>
             </div>
         </div>
     </body>
