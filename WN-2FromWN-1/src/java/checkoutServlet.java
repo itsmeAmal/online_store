@@ -74,8 +74,8 @@ public class checkoutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            MethodStatus status = null;
             processRequest(request, response);
+            MethodStatus status = null;
             HttpSession ses = request.getSession();
             String email = (String) ses.getAttribute("loggedIn");
             User user = userController.getuserByUserEmail(email);

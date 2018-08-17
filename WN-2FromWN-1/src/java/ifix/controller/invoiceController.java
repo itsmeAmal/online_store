@@ -12,6 +12,7 @@ import ifix.model.Invoice;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  *
@@ -51,6 +52,10 @@ public class invoiceController {
         invoiceDaoImpl invoiDaoImpl = new invoiceDaoImpl();
         invoiDaoImpl.deleteInvoice(Validations.getIntOrZeroFromString(invoiceId));
         return true;
+    }
+
+    public static Invoice getInvoiceByMoreAttributes(ArrayList<String[]> attributeConditionValueList, String operator) throws SQLException {
+        return new invoiceDaoImpl().getInvoiceByMoreAttributes(attributeConditionValueList, operator);
     }
 
 }

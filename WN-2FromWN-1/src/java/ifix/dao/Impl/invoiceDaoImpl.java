@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -66,5 +67,25 @@ public class invoiceDaoImpl implements invoiceDao {
     public ResultSet getInvoiceByOneAttribute(String attribute, String condition, String value) throws SQLException {
         commonDaoImpl commonDaoImpl = new commonDaoImpl();
         return commonDaoImpl.getResultByAttribute(selectQuery, attribute, condition, value);
+    }
+
+    public Invoice getInvoiceByMoreAttributes(ArrayList<String[]> attributeConditionValueList, String operator) throws SQLException {
+        commonDaoImpl daoImpl = new commonDaoImpl();
+        ResultSet rset = daoImpl.getResultByAttributesWithJoinOperator(selectQuery, attributeConditionValueList, operator);
+        Invoice invoice = null;
+        while (rset.next()) {
+            invoice = new Invoice();
+            invoice.setAddress(rset.getString("invoice_address"));
+            invoice.setInvoiceId(rset.getInt("invoice_id"));
+            invoice.setInvoiceDate(rset.getDate("invoice_date"));
+            invoice.setInvoiceUserId(rset.getInt("invoice_user_id"));
+            invoice.setInvoiceStatus(rset.getInt("invoice_status"));
+            invoice.setInvoiceDeleverStatus(rset.getInt("invoice_delever_status"));
+            invoice.setInvoiceTotal(rset.getBigDecimal("invoice_total"));
+            invoice.setCountry(rset.getString("invoice_country"));
+            invoice.setQty(rset.getInt("invoice_items_qty"));
+            invoice.setCustName(rset.getString("invoice_name"));
+        }
+        return invoice;
     }
 }

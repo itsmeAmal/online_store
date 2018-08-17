@@ -4,6 +4,8 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.controller.invoiceController"%>
+<%@page import="ifix.model.Invoice"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="ifix.model.ImageUpload"%>
 <%@page import="ifix.controller.CartReferenceController"%>
@@ -48,8 +50,8 @@
         }
         .sidenav{
             position: fixed; 
-            left: 57%; 
-            top: 26%; 
+            left: 59%; 
+            top: 56%; 
             width: 30%; 
             height: 40%; 
             /*border: groove;*/
@@ -60,7 +62,7 @@
         }
         .sidenav-6{
             position: fixed; 
-            left: 25%; 
+            left: 35%; 
             top: 26%; 
             width: 30%; 
             height: 40%; 
@@ -106,15 +108,14 @@
 
         </div>
         <div class="top-container">          
-            <p>SUMMARY</p>
+            <h4>SUMMARY</h4>
             <p>iFix Laptops</p>
-            <p>SYSTEM GENERATED BILL</p>
-            <p>User Email : <%= user.getEmail()%></p>
-            <p>Name : <%= user.getUserName()%></p>        
+
+
             <%
                 BigDecimal value = CartReferenceController.getTotalByUserId(Integer.toString(user.getUserId()));
             %>
-            <p>Total : <%=value%></p>
+
         </div>
         <div class="sidenav-6">
             <%
@@ -149,7 +150,8 @@
             </div>
         </div>
         <div class="sidenav">
-            <form action="https://sandbox.payhere.lk/pay/checkout" method="post"> 
+            <form action="https://sandbox.payhere.lk/pay/o6d4cd779" method="post"> 
+                <!--<form action="https://sandbox.payhere.lk/pay/checkout" method="post">--> 
                 <!--                merchant_id - PayHere Merchant ID
                 return_url - URL to redirect users when success
                 cancel_url - URL to redirect users when cancelled
@@ -166,23 +168,23 @@
                 currency - Currency Code (LKR/USD)
                 amount - Total Payment Amount
                 -->
-                <input type="hidden" name="merchant_id" value="121XXXX">    <!-- Replace your Merchant ID -->
+                <input type="hidden" name="merchant_id" value="4532130216962013">    <!-- Replace your Merchant ID -->
                 <input type="hidden" name="return_url" value="http://localhost:8084/WN-2FromWN-1/userProfile.jsp?success=true">
                 <input type="hidden" name="cancel_url" value="http://localhost:8084/WN-2FromWN-1/invoice.jsp">
-                <!--<input type="hidden" name="notify_url" value="http://sample.com/notify">-->              
-                <input type="text" name="order_id" value="ItemNo12345">
-                <input type="text" name="items" value="Door bell wireless"><br>
-                <input type="text" name="currency" value="LKR">
-                <input type="text" name="amount" value="1000">  
-                <br><br>Customer Details<br>
-                <input type="text" name="first_name" value="Saman">
-                <input type="text" name="last_name" value="Perera"><br>
-                <input type="text" name="email" value="samanp@gmail.com">
-                <input type="text" name="phone" value="0771234567"><br>
-                <input type="text" name="address" value="No.1, Galle Road">
-                <input type="text" name="city" value="Colombo">
+                <input type="hidden" name="notify_url" value="http://sample.com/notify">              
+                <input type="hidden" name="order_id" value="InvoiceNo12345">
+                <input type="hidden" name="items" value="Laptop"><br>
+                <input type="hidden" name="currency" value="LKR">
+                <input type="hidden" name="amount" value="<%=value%>">  
+                <!--<br><br>Customer Details<br>-->
+                <input type="hidden" name="first_name" value="<%= user.getUserName()%>">
+                <input type="hidden" name="last_name" value=""><br>
+                <input type="hidden" name="email" value="<%= user.getEmail()%>">
+                <input type="hidden" name="phone" value="<%= user.getContact()%> "><br>
+                <input type="hidden" name="address" value="<%= user.getUserAddress()%> ">
+                <input type="hidden" name="city" value="">
                 <input type="hidden" name="country" value="Sri Lanka"><br><br> 
-                
+
                 <input class="btn btn-primary" type="submit" value="PAY ONLINE">
             </form>
             <!--            <form action="paymentGatewayResirectServlet" method="post"> 
