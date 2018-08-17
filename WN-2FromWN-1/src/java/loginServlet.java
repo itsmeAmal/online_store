@@ -50,18 +50,13 @@ public class loginServlet extends HttpServlet {
                 User user = userController.getuserByUserEmail(userName);
                 if (user.getSatus() == 2) {
                     ses.setAttribute("loggedIn", userName);
-                    response.sendRedirect("controlPanel.jsp");
+                    response.sendRedirect("dashBoard.jsp");
                 } else if (user.getSatus() == 1) {
                     ses.setAttribute("loggedIn", userName);
                     MethodStatus succStatus = CartReferenceController.updateSessionIdToUserId(request.getSession().getId(), Integer.toString(user.getUserId()));
                     if (succStatus == MethodStatus.SUCCESS) {
                         response.sendRedirect("productList.jsp");
                     }
-
-//                    out.println("<script type=\"text/javascript\">");
-//                    out.println("alert('" + userName + "');");
-//                    out.println("location='login.jsp';");
-//                    out.println("</script>");
                 }
             } else if (status == MethodStatus.FAILED) {
                 out.println("<script type=\"text/javascript\">");

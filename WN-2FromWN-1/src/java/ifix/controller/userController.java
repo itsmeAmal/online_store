@@ -102,7 +102,7 @@ public class userController {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("select user_id, user_name, "
                 + " user_address, user_contact, user_email, user_password, "
-                + " user_status from user where user_email=? and user_password=?");
+                + " user_status from user where user_email=? and user_password=? and user_img_name=1");
         ps.setString(1, email);
         ps.setString(2, pw);
         ResultSet rset = ps.executeQuery();
@@ -121,6 +121,14 @@ public class userController {
 
     public static MethodStatus deactivateUser(int userId) throws SQLException {
         return new userDaoImpl().deactivateUser(userId);
+    }
+
+    public static ResultSet getAllActiveAndDeactiveUsersWithoutAdmins() throws SQLException {
+        return new userDaoImpl().getAllActiveAndDeactiveUsersWithoutAdmins();
+    }
+
+    public static MethodStatus updateUserStatusByEmail(String email, int status) throws SQLException {
+        return new userDaoImpl().updateUserStatusByEmail(email, status);
     }
 
 }
