@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import ifix.model.User;
 import ifix.controller.userController;
 
 public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
@@ -42,6 +43,7 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -246,7 +248,7 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            }\r\n");
       out.write("        </style>\r\n");
       out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
+      out.write("    <body>   \r\n");
       out.write("        <div id=\"divOuter\"> \r\n");
       out.write("            ");
       out.write("\r\n");
@@ -265,7 +267,31 @@ public final class controlPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("            <div id=\"divTopWhiteSpece\">\r\n");
-      out.write("                <div id=\"divTopWhiteSpece_lblDashBoard\">Dashboard   /</div>\r\n");
+      out.write("                <div id=\"divTopWhiteSpece_lblDashBoard\">\r\n");
+      out.write("                    ");
+
+                        HttpSession hs = request.getSession();
+                        String email = (String) hs.getAttribute("loggedIn");
+
+                        if (hs.getAttribute("loggedIn") != null) {
+                            User user = userController.getuserByUserEmail(email);
+                    
+      out.write("\r\n");
+      out.write("                    Dashboard   /    <a href=\"userProfile.jsp\">");
+      out.print( user.getUserName());
+      out.write("</a>  \r\n");
+      out.write("                    <a href=\"invalidateSession\" style=\"position: absolute; left: 80%; top: 1%; width: 100px; height: 50px;\">Logout</a>\r\n");
+      out.write("                    ");
+
+                        }
+                    
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("            <div id=\"divMenuBox1\">\r\n");
       out.write("                ");

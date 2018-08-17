@@ -207,27 +207,7 @@
             }
         </style>
     </head>
-    <body>
-        <%
-            HttpSession hs = request.getSession();
-            String email = (String) hs.getAttribute("loggedIn");
-
-            if (hs.getAttribute("loggedIn") != null) {
-                User user = userController.getuserByUserEmail(email);
-        %>
-        <p style="font-weight: 400;  font-size: 16px;">
-            Hi  <a href="userProfile.jsp"><%= user.getUserName()%></a>  
-        </p>
-        <a href="invalidateSession" style="position: absolute; left: 80%; top: 1%; width: 100px; height: 50px;">Logout</a>
-        <%
-        } else {
-        %>
-        <p style="font-weight: 400;  font-size: 16px;">
-            Hi  <a href="login.jsp">Guest</a>
-        </p>
-        <%
-            }
-        %>
+    <body>   
         <div id="divOuter"> 
             <%--<jsp:include page='buttonGroup.jsp'></jsp:include>--%>
             <div id="divTopBlueLine"></div>
@@ -242,10 +222,22 @@
                 <div id="addUser"> <a style="color: #ffffff;" href="userAdd.jsp">ADD USER ACCOUNT</a></div>
                 <div id="addGrn"> <a style="color: #ffffff;" href="invoicedItems.jsp">INVOICED ITEMS</a></div>
                 <div id="searchUser"> <a style="color: #ffffff;" href="activeUsers.jsp">ACTIVE USERS</a></div> 
-
             </div>
             <div id="divTopWhiteSpece">
-                <div id="divTopWhiteSpece_lblDashBoard">Dashboard   /</div>
+                <div id="divTopWhiteSpece_lblDashBoard">
+                    <%
+                        HttpSession hs = request.getSession();
+                        String email = (String) hs.getAttribute("loggedIn");
+
+                        if (hs.getAttribute("loggedIn") != null) {
+                            User user = userController.getuserByUserEmail(email);
+                    %>
+                    Dashboard   /    <a href="userProfile.jsp"><%= user.getUserName()%></a>  
+                    <a href="invalidateSession" style="position: relative; left: 1200px; top: 1%; width: 100px; height: 50px;">Logout</a>
+                    <%
+                        }
+                    %>
+               </div>
             </div>
             <div id="divMenuBox1">
                 <%

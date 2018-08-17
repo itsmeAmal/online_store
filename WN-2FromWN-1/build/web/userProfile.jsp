@@ -164,7 +164,6 @@
                             <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
                                 Date added : <%= rset.getDate("cart_references_date").toString()%> 
                             </div>
-
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
                             1 Pcs                      
