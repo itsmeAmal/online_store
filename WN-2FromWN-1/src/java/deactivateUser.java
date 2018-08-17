@@ -6,7 +6,6 @@
 
 import ifix.controller.userController;
 import ifix.core.MethodStatus;
-import ifix.core.Validations;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -17,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -67,19 +67,21 @@ public class deactivateUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        String userId = request.getParameter("hdnUid");
+        MethodStatus status = null;
         try {
-            processRequest(request, response);
-            PrintWriter out = response.getWriter();
-            String userId = request.getParameter("hdnUid");
-
-            MethodStatus status = userController.deactivateUser(Validations.getIntOrZeroFromString(userId));
-            if (status == MethodStatus.SUCCESS) {
-                response.sendRedirect("activeUsers.jsp");
-            }
-
+            status = userController.deactivateUser(userId);
         } catch (SQLException ex) {
             Logger.getLogger(deactivateUser.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if (status == MethodStatus.SUCCESS) {
+            HttpSession hs = request.getSession();
+            hs.invalidate();
+        }
+        response.sendRedirect("productList.jsp");
+
     }
 
     /**

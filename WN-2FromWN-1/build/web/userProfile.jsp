@@ -139,7 +139,10 @@
                 <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserName()%></h4>
                 <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getContact()%></h4>
                 <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserAddress()%></h4>
-                <input type="submit" class="btn btn-success" value="DEACTIVATE PROFILE" style="width: 210px;"/>
+                <form action="deactivateUser" method="post">
+                     <input type="submit" class="btn btn-success" value="DEACTIVATE PROFILE" style="width: 210px;"/>
+                     <input type="hidden" class="btn btn-success" name="hdnUid" value="<%= user.getEmail()%>" style="width: 210px;"/>                      
+                </form>
             </div>
         </div>
         <div class="sidenav-6">

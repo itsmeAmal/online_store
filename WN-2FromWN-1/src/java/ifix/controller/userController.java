@@ -119,7 +119,7 @@ public class userController {
         return new userDaoImpl().getAllregisteredUsersCount();
     }
 
-    public static MethodStatus deactivateUser(int userId) throws SQLException {
+    public static MethodStatus deactivateUser(String userId) throws SQLException {
         return new userDaoImpl().deactivateUser(userId);
     }
 

@@ -145,11 +145,11 @@ public class userDaoImpl implements userDao {
         return usersCount;
     }
 
-    public MethodStatus deactivateUser(int userId) throws SQLException {
+    public MethodStatus deactivateUser(String userId) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
-        PreparedStatement ps = con.prepareStatement("update user set user_img_name=? where user_id =?");
-        ps.setInt(1, 3);
-        ps.setInt(2, userId);
+        PreparedStatement ps = con.prepareStatement("update user set user_img_name=? where user_email=?");
+        ps.setInt(1, 2);
+        ps.setString(2, userId);
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;
