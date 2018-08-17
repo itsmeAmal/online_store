@@ -6,6 +6,7 @@
 package ifix.dao.Impl;
 
 import ifix.connection.DatabaseConnection2;
+import ifix.core.MethodStatus;
 import ifix.dao.imageUploadDao;
 import ifix.model.ImageUpload;
 import java.sql.Connection;
@@ -24,6 +25,12 @@ public class imageUploadDaoImpl implements imageUploadDao {
             + " imageupload_model, imageupload_processor, imageupload_os, "
             + " imageupload_graphics, imageupload_webcam, imageupload_memory, "
             + " imageupload_storage, imageupload_display from imageupload";
+
+    private String selectQueryExtended = "select imageUpload_id, imageUpload_path, "
+            + " imageUpload_file_name, imageupload_item_desc, imageupload_price, "
+            + " imageupload_model, imageupload_processor, imageupload_os, "
+            + " imageupload_graphics, imageupload_webcam, imageupload_memory, "
+            + " imageupload_storage, imageupload_display from imageupload where imageupload_webcam=1";
 
     @Override
     public boolean addItem(ImageUpload imageUpload) throws SQLException {
@@ -94,6 +101,10 @@ public class imageUploadDaoImpl implements imageUploadDao {
         return new commonDaoImpl().getAllRecords(selectQuery);
     }
 
+    public ResultSet getAllActiveItems() throws SQLException {
+        return new commonDaoImpl().getAllRecords(selectQueryExtended);
+    }
+
     @Override
     public ResultSet getItemByAttributes(String attribute, String condition, String value) throws SQLException {
         return new commonDaoImpl().getResultByAttribute(selectQuery, attribute, condition, value);
@@ -114,6 +125,39 @@ public class imageUploadDaoImpl implements imageUploadDao {
         ps.setString(1, lowerPrice);
         ps.setString(2, highestPrice);
         return ps.executeQuery();
+    }
+
+    public int getAllProductCount() throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select count(imageupload_webcam) as imageupload_webcam from imageupload");
+        int itemCount = 0;
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            itemCount = rset.getInt("imageupload_webcam");
+        }
+        return itemCount;
+    }
+
+    public int getAllActiveProductCount() throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select count(imageupload_webcam) as imageupload_webcam from imageupload where imageupload_webcam=1");
+        int itemCount = 0;
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            itemCount = rset.getInt("imageupload_webcam");
+        }
+        return itemCount;
+    }
+
+    public MethodStatus changeActiveState(String brand, String model, int parameter) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update imageupload set imageupload_webcam=? where imageupload_item_desc=? and imageupload_model=?");
+        ps.setInt(1, parameter);
+        ps.setString(2, brand);
+        ps.setString(3, model);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
     }
 
 }

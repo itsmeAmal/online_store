@@ -197,26 +197,26 @@
         </div>
         <div class="sidenav" >
             <%
-                ResultSet rset = userController.getAllActiveAndDeactiveUsersWithoutAdmins();
+                ResultSet rset = imageUploadController.getAllProducts();
             %>
             <div class="container" style="position: absolute; left: 0px; top: 10%; width: 300px; height: max-content; background-color: #ffffff;">
-                <H4> USERS</H4>
+                <H4> PRODUCTS</H4>
                 <table class="table table-condensed" style="position: relative;  width: 100%;">   
-                    <th>USER EMAIL</th>
+                    <th>BRAND AND MODEL</th>
                     <th style="padding-left: 50px;">ACTION</th>                                          
                         <%  while (rset.next()) {
                         %>
                     <tr>  
                         <td style="width: 200px; height: 50px; font-size: small; text-align: left; font-weight: 100; "> 
                             <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
-                                <%= rset.getString("user_email")%>  
+                                <%= rset.getString("imageupload_item_desc")%><%= rset.getString("imageupload_model")%>  
                             </div>                        
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
-                            <form action="changeUserStatus" method="post">
+                            <form action="changeStatusImgUpload" method="post">
                                 <div style="position: relative; top: 10px; width: 200px; left: 0px; height: 50px;">
                                     <%
-                                        int value = rset.getInt("user_img_name");
+                                        int value = rset.getInt("imageupload_webcam");
                                         String activeState = "";
                                         if (value == 1) {
                                             activeState = "DEACTIVATE";
@@ -224,9 +224,10 @@
                                             activeState = "ACTIVATE";
                                         }
                                     %>                                    
-                                    <input type="submit" name="changeStatus" value="<%=activeState%>" class="btn btn-info" style="width: 130px; ">
-                                    <input type="hidden" name="changeStatusHidden" value="<%=rset.getInt("user_img_name")%>">
-                                    <input type="hidden" name="userEmail" value="<%=rset.getString("user_email")%>">
+                                    <input type="submit" name="changeStatusImgUpload" value="<%=activeState%>" class="btn btn-info" style="width: 130px; ">
+                                    <input type="hidden" name="laptopModel" value="<%=rset.getString("imageupload_model")%>">
+                                    <input type="hidden" name="laptopBrand" value="<%=rset.getString("imageupload_item_desc")%>">
+                                    <input type="hidden" name="statusId" value="<%=rset.getString("imageupload_webcam")%>">
                                 </div>   
                             </form>
                         </td>                             
@@ -248,16 +249,16 @@
         </div>
         <div class="sidenav-3">
             <%
-                int totalRegisteredUsers = userController.getAllregisteredUsersCount();
+                int totalItems = imageUploadController.getAllProductCount();
             %>
-            <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">GLOBALLY REGISTERED :</h3> <br>
-            <h1 style=" padding-left: 40%; background-color: #ccccff; "><%=totalRegisteredUsers%> USER ACCOUNTS </h1>
-        
-            <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">ACTIVE STATE :</h3> <br>
-             <%
-                int activeUsers = userController.getActiveUserAccountCount(); 
+            <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;"> REGISTERED PRODUCT COUNT :</h3> <br>
+            <h1 style=" padding-left: 30%; background-color: #ccccff; "><%=totalItems%> PRODUCTS </h1>
+
+            <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">ON SALE  :</h3> <br>
+            <%
+                int itemsOnBoard = imageUploadController.getAllActiveProductCount();
             %>
-            <h1 style=" padding-left: 40%; background-color: #ccccff; "><%=activeUsers%> USER ACCOUNTS </h1>
+            <h1 style=" padding-left: 30%; background-color: #ccccff; "><%=itemsOnBoard%> LAPTOPS ARE SELLING IN SITE </h1>
         </div>
 
 

@@ -242,7 +242,7 @@
             <a style="position: relative; top: 30px; width: 270px; background-color: #6666ff; text-align: left;"  href="userAdd.jsp">REGISTER USER ACCOUNT</a><br>
             <a style="position: relative; top: 40px; width: 270px; background-color: #6666ff; text-align: left;"  href="invoicedItems.jsp">INVOICED ITEMS</a><br>
             <a style="position: relative; top: 50px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE USERS</a><br>
-            <a style="position: relative; top: 60px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE LAPTOPS</a><br>
+            <a style="position: relative; top: 60px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard2.jsp">MANAGE LAPTOPS</a><br>
             <a style="position: relative; top: 70px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE INVOICES</a><br>
             <a style="position: relative; top: 80px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">DELIVERY STATUS</a><br>
         </div>

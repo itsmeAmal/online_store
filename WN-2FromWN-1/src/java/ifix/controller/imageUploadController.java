@@ -6,6 +6,7 @@
 package ifix.controller;
 
 import ifix.core.CommonConstants;
+import ifix.core.MethodStatus;
 import ifix.core.Validations;
 import ifix.dao.Impl.imageUploadDaoImpl;
 import ifix.model.ImageUpload;
@@ -79,6 +80,22 @@ public class imageUploadController {
 
     public static ResultSet getProductsByPriceRange(String lowerPrice, String highestPrice) throws SQLException {
         return new imageUploadDaoImpl().getProductsByPriceRange(lowerPrice, highestPrice);
+    }
+
+    public static int getAllProductCount() throws SQLException {
+        return new imageUploadDaoImpl().getAllProductCount();
+    }
+
+    public static int getAllActiveProductCount() throws SQLException {
+        return new imageUploadDaoImpl().getAllActiveProductCount();
+    }
+
+    public static MethodStatus changeActiveState(String brand, String model, int parameter) throws SQLException {
+        return new imageUploadDaoImpl().changeActiveState(brand, model, parameter);
+    }
+
+    public static ResultSet getAllActiveItems() throws SQLException {
+        return new imageUploadDaoImpl().getAllActiveItems();
     }
 
 }

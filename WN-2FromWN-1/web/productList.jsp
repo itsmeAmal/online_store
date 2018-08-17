@@ -135,7 +135,7 @@
         </div>
     </div>
     <div class="content" >
-        <%            ResultSet rset = imageUploadController.getAllProducts();
+        <%            ResultSet rset = imageUploadController.getAllActiveItems();
         %>
         <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
             <table class="table">                  
