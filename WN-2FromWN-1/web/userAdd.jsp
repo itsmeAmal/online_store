@@ -96,8 +96,9 @@
     </head>
     <body style="background-color: #000000;">
         <form action="userAdd" method="post">
-            <div style="position: absolute; left: 20%; width: 60%; top: 5%; height: 85%; background-color: #ffffff;" />
+            <div style="position: absolute; left: 20%; width: 60%; top: 5%; height: 85%; background-color: #ffffff;">
             <div id="logo"></div>
+            <a href="productList.jsp" style="position: absolute; left: 100px; top: 150px;"><h4>HOME</h4></a>
 
             <div id="uname">
                 <input type="text" name="uname" placeholder="Name" class="form-control" required />
