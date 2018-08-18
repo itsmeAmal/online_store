@@ -129,7 +129,8 @@
                     <th>PRODUCT</th>
                     <th>QUANTITY</th>                   
                     <th>PRICE</th>
-                    <th>ACTION</th>
+                    <th>ADMIN NOTIFICATION</th>
+                    <th>NOTIFY CUSTOMER</th>
                         <%  while (rset.next()) {
                         %>
                     <tr>                       
@@ -138,7 +139,6 @@
                                 Location : <%= rset.getString("user_address").toString()%> 
                                 Customer Name : <%= rset.getString("user_name").toString()%> 
                             </div>
-
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
                             1 Pcs                      
@@ -146,7 +146,7 @@
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
-                        <td>
+                        <td style="padding-left: 0px;"> 
                             <form action="setAsInvoiceCashOnDeliveryItem" method="post">
                                 <%
                                     int value = rset.getInt("cart_references_delivery_status");
@@ -165,7 +165,25 @@
                                     <input class="btn btn-success" type="submit" value="<%=activeState%>" style="width: 150px; background-color: #990099;"/>
                                 </div>
                             </form>  
-
+                        </td>
+                        <td>
+                            <%
+                                int customerNotification = rset.getInt("cart_references_customer_ui_status");
+                                String custNotification = "";
+                                if (customerNotification == 1) {
+                                    custNotification = "DELIVER NOTIFICATION";
+                                } else if (customerNotification == 2) {
+                                    custNotification = "FINISH PROCESS";
+                                } else if (customerNotification == 3) {
+                                    custNotification = "DONE";
+                                }
+                            %>
+                            <form action="changeCustomerBillingNotification" method="post">
+                                <input type="hidden" value="<%=customerNotification %>" name="hdnBtn"/>
+                                <input type="hidden" value="<%= rset.getString("cart_references_user_id")%>" name="hdnUserId"/>                               
+                                <input type="hidden" value="<%= rset.getString("cart_references_item_id")%>" name="hdnItemId"/>                               
+                                <input class="btn btn-success" type="submit" value="<%= custNotification%>" style="position: relative;  width: 200px; top: 9px; background-color: #009900;"/>
+                            </form>
                         </td>
                     </tr>
                     <%  }

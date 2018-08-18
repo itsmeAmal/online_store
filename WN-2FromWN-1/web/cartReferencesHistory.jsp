@@ -4,6 +4,7 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.core.Options"%>
 <%@page import="ifix.model.ImageUpload"%>
 <%@page import="ifix.controller.CartReferenceController"%>
 <%@page import="ifix.controller.userController"%>
@@ -122,8 +123,8 @@
                  color: #ffffff; font-weight: 500;" ><a href="productList.jsp">HOME</a></div>
             <div style="position: relative; left: 80%; top: -102%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" ><a href="invalidateSession">LOGOUT</a></div>
-                 
-                 
+
+
             <!--            <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
                             <form action="checkoutServlet" method="post">
                                 <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
@@ -158,6 +159,7 @@
                     <th>PRODUCT</th>
                     <th>PRICE </th>                   
                     <th>DATE</th>              
+                    <th>CURRENT STATE</th>              
                         <%  while (rset.next()) {
                         %>
                     <tr>  
@@ -172,11 +174,22 @@
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
-                        <td>
+
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             <%=rset.getDate("cart_references_date")%>
                         </td> 
-
+                        <td>
+                            <%  int status = rset.getInt("cart_references_customer_ui_status");
+                                String paymentState = "";
+                                if (status == 1) {
+                                    paymentState = "PAYMENT SUCCESS";
+                                } else if (status == 2) {
+                                    paymentState = "PRODUCT HAS BEEN ISSUED";
+                                } else if (status == 3) {
+                                    paymentState = "PRODUCT DELIVERED";
+                                } 
+                            %>
+                            <h5 style="background-color: #ffff00;"><b><%=paymentState%></b></h5>
                         </td>
                     </tr>
                     <%  }

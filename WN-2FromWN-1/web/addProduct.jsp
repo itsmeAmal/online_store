@@ -155,7 +155,7 @@
                 <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                      color: #ffffff; font-weight: 500;" ></div>
                 <div style="position: relative; left: 54%; top: -120%; width: 20%; height: 40px;" >
-                    <input type="text" class="form-control" id="search" placeholder="SEARCH" />
+                    <!--<input type="text" class="form-control" id="search" placeholder="SEARCH" />-->
                 </div>
             </div>
             <!--add detail -->

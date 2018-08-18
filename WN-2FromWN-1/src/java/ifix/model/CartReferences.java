@@ -22,6 +22,7 @@ public class CartReferences {
     private BigDecimal price;
     private String modelBrand;
     private Date date;
+    private int customerUiStatus;
 
     /**
      * @return the id
@@ -133,6 +134,20 @@ public class CartReferences {
      */
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /**
+     * @return the customerUiStatus
+     */
+    public int getCustomerUiStatus() {
+        return customerUiStatus;
+    }
+
+    /**
+     * @param customerUiStatus the customerUiStatus to set
+     */
+    public void setCustomerUiStatus(int customerUiStatus) {
+        this.customerUiStatus = customerUiStatus;
     }
 
 }

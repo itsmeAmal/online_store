@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 
-import ifix.controller.userController;
-import ifix.core.MethodStatus;
-import ifix.core.Options;
+import ifix.controller.CartReferenceController;
+import ifix.core.Validations;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Amal
  */
-@WebServlet(urlPatterns = {"/addAdminUser"})
-public class addAdminUser extends HttpServlet {
+@WebServlet(urlPatterns = {"/changeCustomerBillingNotification"})
+public class changeCustomerBillingNotification extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -67,31 +66,43 @@ public class addAdminUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
         PrintWriter out = response.getWriter();
-        try {
-            processRequest(request, response);
-            String userName = request.getParameter("uname");
-            String address = request.getParameter("address");
-            String contact = request.getParameter("contact");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            MethodStatus op = userController.addUser(userName, address, contact, email, password, Options.getAdmin());
-            if (op == MethodStatus.SUCCESS) {
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Successfully added the user');");
-                out.println("location='dashBoard.jsp';");
-                out.println("</script>");
-            } else {
+        String stateValue = request.getParameter("hdnBtn");
+        String userIdString = request.getParameter("hdnUserId");
+        String itemIdString = request.getParameter("hdnItemId");
 
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Email already exsist');");
-                out.println("location='userAdd.jsp';");
-                out.println("</script>");
+        int intStateValue = Validations.getIntOrZeroFromString(stateValue);
+        int intUserId = Validations.getIntOrZeroFromString(userIdString);
+        int itemId = Validations.getIntOrZeroFromString(itemIdString);
 
+        switch (intStateValue) {
+            case 1:
+                try {
+                    CartReferenceController.updateCustomerDeliveryNotification(2, itemId, intUserId);
+                } catch (SQLException ex) {
+                    Logger.getLogger(changeCustomerBillingNotification.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 2:
+                try {
+                    CartReferenceController.updateCustomerDeliveryNotification(3, itemId, intUserId);
+                } catch (SQLException ex) {
+                    Logger.getLogger(changeCustomerBillingNotification.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 3: {
+                try {
+                    CartReferenceController.updateCustomerDeliveryNotification(1, itemId, intUserId);
+                } catch (SQLException ex) {
+                    Logger.getLogger(changeCustomerBillingNotification.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(addAdminUser.class.getName()).log(Level.SEVERE, null, ex);
+            break;
+            default:
+                break;
         }
+        response.sendRedirect("invoicedItems.jsp");
     }
 
     /**

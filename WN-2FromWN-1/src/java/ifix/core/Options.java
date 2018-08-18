@@ -20,6 +20,10 @@ public class Options {
     private static int pending = 2;
     private static int inactiveUser = 3;
 
+    public static int PAYMENT_SUCCESS = 1;
+    public static int PRODUCT_ISSUED = 2;
+    public static int PRODUCT_DELIVERED = 3;
+
     /**
      * @return the user
      */

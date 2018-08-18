@@ -7,6 +7,7 @@ package ifix.dao.Impl;
 
 import ifix.connection.DatabaseConnection2;
 import ifix.core.MethodStatus;
+import ifix.core.Options;
 import ifix.dao.CartReferencesDao;
 import ifix.model.CartReferences;
 import java.math.BigDecimal;
@@ -24,15 +25,16 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
 
     private String selectQuery = "select cart_references_id, cart_references_item_id, "
             + " cart_references_qty, cart_references_status, cart_references_user_id, "
-            + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand, cart_references_date from cart_references";
+            + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand, cart_references_date,"
+            + " cart_references_customer_ui_status from cart_references";
 
     @Override
     public MethodStatus addReference(CartReferences cartReferences) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("insert into cart_references(cart_references_id, cart_references_item_id,"
                 + " cart_references_qty, cart_references_status, cart_references_user_id, cart_references_item_price, "
-                + " cart_references_model_brand, cart_references_date) "
-                + " values (?,?,?,?,?,?,?,?)");
+                + " cart_references_model_brand, cart_references_date, cart_references_customer_ui_status) "
+                + " values (?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, cartReferences.getId());
         ps.setInt(2, cartReferences.getItemId());
         ps.setInt(3, cartReferences.getQty());
@@ -41,6 +43,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         ps.setBigDecimal(6, cartReferences.getPrice());
         ps.setString(7, cartReferences.getModelBrand());
         ps.setDate(8, cartReferences.getDate());
+        ps.setInt(9, Options.PAYMENT_SUCCESS);
         ps.executeUpdate();
         ps.close();
         return MethodStatus.SUCCESS;
@@ -112,7 +115,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, cart_references_model_brand,"
-                + " cart_references_date from cart_references where cart_references_user_id=? and cart_references_status=1");
+                + " cart_references_date, cart_references_customer_ui_status from cart_references where cart_references_user_id=? and cart_references_status=1");
         ps.setString(1, userId);
         return ps.executeQuery();
     }
@@ -175,7 +178,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id,"
                 + " user_id, user_name, user_address, user_contact, user_email, user_password, user_status,"
-                + " user_img_path, user_img_name "
+                + " user_img_path, user_img_name, cart_references_customer_ui_status, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, "
                 + " cart_references_model_brand, cart_references_date from cart_references join user on cart_references_user_id= user_id where cart_references_status=?");
@@ -187,7 +190,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id,"
                 + " user_id, user_name, user_address, user_contact, user_email, user_password, user_status,"
-                + " user_img_path, user_img_name, "
+                + " user_img_path, user_img_name,cart_references_customer_ui_status, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, "
                 + " cart_references_model_brand, cart_references_date from cart_references join user on cart_references_user_id= user_id where cart_references_status=?");
@@ -199,7 +202,7 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("select cart_references_id, cart_references_item_id,"
                 + " user_id, user_name, user_address, user_contact, user_email, user_password, user_status,"
-                + " user_img_path, user_img_name "
+                + " user_img_path, user_img_name, cart_references_customer_ui_status, "
                 + " cart_references_qty, cart_references_status, cart_references_user_id, "
                 + " cart_references_item_price, cart_references_delivery_status, "
                 + " cart_references_model_brand, cart_references_date from cart_references left join user on cart_references_user_id= user_id where cart_references_status=?");
@@ -259,4 +262,15 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         return MethodStatus.SUCCESS;
     }
 
+    public MethodStatus updateCustomerDeliveryNotification(int notifyStatus, int itemId, int userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_customer_ui_status=? where"
+                + " cart_references_item_id=? and cart_references_user_id=?");
+        ps.setInt(1, notifyStatus);
+        ps.setInt(2, itemId);
+        ps.setInt(3, userId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
+    }
 }

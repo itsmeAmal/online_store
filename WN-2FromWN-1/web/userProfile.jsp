@@ -155,8 +155,6 @@
                     <th>QUANTITY</th>                   
                     <th>PRICE</th>
                     <th>ACTION</th>
-
-
                     <%  while (rset.next()) {
                     %>
                     <tr>  
