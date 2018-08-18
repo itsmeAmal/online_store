@@ -102,4 +102,8 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().getCartReferencesHistoryByUserId(userId);
     }
 
+    public static MethodStatus updateDeliveryStatus(int deliveryStatus, int itemid, int userId) throws SQLException {
+        return new CartReferencesDaoImpl().updateDeliveryStatus(deliveryStatus, itemid, userId);
+    }
+
 }

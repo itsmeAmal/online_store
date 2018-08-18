@@ -4,12 +4,10 @@
  * and open the template in the editor.
  */
 
-import ifix.controller.CartReferenceController;
-import ifix.controller.userController;
-import ifix.core.MethodStatus;
-import ifix.model.User;
+import ifix.controller.imageUploadController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Amal
  */
-@WebServlet(urlPatterns = {"/invoiceServlet"})
-public class invoiceServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/advanceSearch"})
+public class advanceSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,26 +69,18 @@ public class invoiceServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+            PrintWriter out = response.getWriter();
+            String paramValue = request.getParameter("searchValue");
 
-            HttpSession hs = request.getSession();
-            String email = (String) hs.getAttribute("loggedIn");
-            User user = userController.getuserByUserEmail(email);
-
-            MethodStatus status = CartReferenceController.setProductsAsInvoiced(Integer.toString(user.getUserId()));
-            if (status == MethodStatus.SUCCESS) {
-//                response.sendRedirect("userProfile.jsp");
-                PrintWriter out = response.getWriter();
-                out.println("<script type=\"text/javascript\">");
-                out.println("alert('Payment Successful');");
-                out.println("location='userProfile.jsp';");
-                out.println("</script>");
+            ResultSet rset = imageUploadController.getResultBySearchValue(paramValue);
+            HttpSession ses = request.getSession();
+            ses.setAttribute("rset", rset);
+            if (rset.next()) {
+                response.sendRedirect("advancedSearch.jsp");
             }
 
-//            else {
-//                response.sendRedirect("userProfile.jsp");
-//            }
         } catch (SQLException ex) {
-            Logger.getLogger(invoiceServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(advanceSearch.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

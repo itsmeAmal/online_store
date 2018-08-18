@@ -6,6 +6,7 @@
 
 import ifix.controller.CartReferenceController;
 import ifix.core.MethodStatus;
+import ifix.core.Validations;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -68,10 +69,24 @@ public class setAsInvoiceCashOnDeliveryItem extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-            String itemId = request.getParameter("hdnItemId");
-            MethodStatus status = CartReferenceController.setProductsAsInvoicedByItemId(itemId);
+            MethodStatus status = null;
+            String deliveryStatus = request.getParameter("dlveryStatus");
+            String date = request.getParameter("date");
+            String itemId = request.getParameter("itemId");
+            String userId = request.getParameter("userId");
+
+            int deliveStatus = Validations.getIntOrZeroFromString(deliveryStatus);
+            int itemIdInt = Validations.getIntOrZeroFromString(itemId);
+            int userIdInt = Validations.getIntOrZeroFromString(userId);
+
+            if (deliveStatus == 0) {
+                status = CartReferenceController.updateDeliveryStatus(1, itemIdInt, userIdInt);
+            } else {
+                status = CartReferenceController.updateDeliveryStatus(0, itemIdInt, userIdInt);
+            }
+
             if (status == MethodStatus.SUCCESS) {
-                response.sendRedirect("cashOnDeliveryItems.jsp");
+                response.sendRedirect("invoicedItems.jsp");
             }
 
         } catch (SQLException ex) {

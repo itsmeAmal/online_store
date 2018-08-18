@@ -247,4 +247,16 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         return ps.executeQuery();
     }
 
+    public MethodStatus updateDeliveryStatus(int deliveryStatus, int itemid, int userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("update cart_references set cart_references_delivery_status=? "
+                + " where cart_references_item_id=? and cart_references_user_id=? ");
+        ps.setInt(1, deliveryStatus);
+        ps.setInt(2, itemid);
+        ps.setInt(3, userId);
+        ps.executeUpdate();
+        ps.close();
+        return MethodStatus.SUCCESS;
+    }
+
 }

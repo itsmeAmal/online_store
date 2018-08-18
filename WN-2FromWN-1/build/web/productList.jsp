@@ -214,7 +214,7 @@
         <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">
             <input type="text" name="lowerPrice" class="form-control" placeholder="Lower Price" style=" width: 210px;" required /><br>
             <input type="text" name="highestPrice" class="form-control" placeholder="Highest Price" style=" width: 210px;" required/><br>
-            <form action="searchByBrandServlet" method="post">
+            <form action="#" method="post">
                 <input type="submit" class="btn btn-default" value="PRICE FILTER" style="width: 210px;"/>
             </form>
         </div>

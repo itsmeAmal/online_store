@@ -113,10 +113,10 @@
         <div class="header" id="myHeader">
             <div style="position: relative; left: 20%; top: 10%; width: 300px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;">INVOICED ITEMS</div>
-<!--            <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;" >HOME</div>-->
+            <!--            <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
+                             color: #ffffff; font-weight: 500;" >HOME</div>-->
             <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
-                
+                <a href="dashBoard.jsp">HOME</a>
             </div>
         </div>
         <!--add detail -->
@@ -129,16 +129,16 @@
                     <th>PRODUCT</th>
                     <th>QUANTITY</th>                   
                     <th>PRICE</th>
-<!--                    <th>ACTION</th>-->
-                    <%  while (rset.next()) {
-                    %>
+                    <th>ACTION</th>
+                        <%  while (rset.next()) {
+                        %>
                     <tr>                       
                         <td style="width: 300px; height: 100px; font-size: medium; text-align: left; top: 30%; font-weight: 100; "><%=rset.getString("cart_references_model_brand")%> 
                             <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
                                 Location : <%= rset.getString("user_address").toString()%> 
                                 Customer Name : <%= rset.getString("user_name").toString()%> 
                             </div>
-                                
+
                         </td>
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
                             1 Pcs                      
@@ -146,15 +146,27 @@
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
-<!--                        <td>
+                        <td>
                             <form action="setAsInvoiceCashOnDeliveryItem" method="post">
+                                <%
+                                    int value = rset.getInt("cart_references_delivery_status");
+                                    String activeState = "";
+                                    if (value == 0) {
+                                        activeState = "NOT DELIVERED";
+                                    } else {
+                                        activeState = "DELIVERED";
+                                    }
+                                %> 
                                 <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
-                                    <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id")) %>"> 
-                                    <input class="btn btn-success" type="submit" value="INVOICE ITEM" style="width: 150px; background-color: #990099;"/>
+                                    <input type="hidden" name="dlveryStatus" value="<%=Integer.toString(rset.getInt("cart_references_delivery_status"))%>"> 
+                                    <input type="hidden" name="date" value="<%=Integer.toString(rset.getInt("cart_references_date"))%>"> 
+                                    <input type="hidden" name="itemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id"))%>"> 
+                                    <input type="hidden" name="userId" value="<%=Integer.toString(rset.getInt("cart_references_user_id"))%>">                                  
+                                    <input class="btn btn-success" type="submit" value="<%=activeState%>" style="width: 150px; background-color: #990099;"/>
                                 </div>
                             </form>  
 
-                        </td>-->
+                        </td>
                     </tr>
                     <%  }
                     %>

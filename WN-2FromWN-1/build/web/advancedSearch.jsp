@@ -127,7 +127,8 @@
                 %>
 
             </div>  
-            <div style="position: absolute; left: 71%; width: 32px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
+            <div style="position: absolute; left: 71%; width: 3
+                 2px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
                 <%=itemCount%>
             </div>
             <div style="position: absolute; left: 70%; width: 32px; top: 16%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000; background-image: url(web.pos.ee.images/cart_user.png); ">
@@ -135,8 +136,14 @@
             </div>
         </div>
     </div>
-    <div class="content" >
-        <%            ResultSet rset = imageUploadController.getAllActiveItems();
+    <div class="content">
+        <%
+            ResultSet rset = null;
+            rset = (ResultSet) request.getAttribute("rset");
+            if (rset.next()) {
+            } else {
+                rset = imageUploadController.getAllActiveItems();
+            }
         %>
         <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
             <table class="table">                  
@@ -182,9 +189,12 @@
              color: #ffffff; font-weight: 500;"></div>
         <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
              color: #ffffff; font-weight: 500;" ></div>
-        <form>
+        <form action="advanceSearch" method="post">
             <div style="position: relative; left: 44%; top: -120%; width: 20%; height: 40px;" >
-                <input type="text" class="form-control" name="" id="search" placeholder="SEARCH" /> <input type="submit" name="search"
+                <input type="text" class="form-control" name="searchValue" id="search" placeholder="SEARCH" /> 
+            </div>
+            <div style="position: relative; left: 44%; top: 50%; width: 400px; height: 40px;" >
+                <input style="width: 375px;" class="btn btn-info" type="submit" name="search"> 
             </div>
         </form>
 

@@ -47,9 +47,9 @@
         }
         .sidenav{
             position: fixed; 
-            left: 20%; 
+            left: 5%; 
             top: 30%; 
-            width: 12%; 
+            width: 27%; 
             height: 50%; 
             border: groove;
             padding: 8px 0;
@@ -127,8 +127,7 @@
                 %>
 
             </div>  
-            <div style="position: absolute; left: 71%; width: 3
-                 2px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
+            <div style="position: absolute; left: 71%; width: 32px; top: 15%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000;">
                 <%=itemCount%>
             </div>
             <div style="position: absolute; left: 70%; width: 32px; top: 16%; height: 32px; font-weight: 600; font-size: medium; color: #ff0000; background-image: url(web.pos.ee.images/cart_user.png); ">
@@ -138,14 +137,9 @@
     </div>
     <div class="content">
         <%
-            ResultSet rset = null;
-            rset = (ResultSet) request.getAttribute("rset");
-            if (rset.next()) {
-            } else {
-                rset = imageUploadController.getAllActiveItems();
-            }
+            ResultSet rset = imageUploadController.getAllActiveItems();
         %>
-        <div class="container" style="position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;">
+        <div class="container" style="position: absolute; left: 35%; top: 50%; width: 40%; height: max-content; background-color: #ffffff;">          
             <table class="table">                  
                 <%  while (rset.next()) {
                 %>
@@ -197,8 +191,8 @@
                 <input style="width: 375px;" class="btn btn-info" type="submit" name="search"> 
             </div>
         </form>
-
     </div>
+
     <!--filter area-->
 
     <script type="text/javascript">

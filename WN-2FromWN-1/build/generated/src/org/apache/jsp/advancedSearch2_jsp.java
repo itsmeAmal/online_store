@@ -13,7 +13,7 @@ import ifix.dao.Impl.laptopPriceDetailDaoImpl;
 import ifix.model.laptopPriceDetail;
 import java.util.List;
 
-public final class advancedSearch_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class advancedSearch2_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -196,14 +196,7 @@ public final class advancedSearch_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("    <div class=\"content\">\n");
       out.write("        ");
 
-            ResultSet rset = null;
-            rset = (ResultSet) request.getAttribute("rset");
-            if (rset.next()) {
-
-            } else {
-                rset = imageUploadController.getAllActiveItems();
-            }
-
+            ResultSet rset = imageUploadController.getAllActiveItems();
         
       out.write("\n");
       out.write("        <div class=\"container\" style=\"position: absolute; left: 35%; top: 30%; width: 40%; height: max-content; background-color: #ffffff;\">\n");
