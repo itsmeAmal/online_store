@@ -98,4 +98,8 @@ public class CartReferenceController {
         return new CartReferencesDaoImpl().getCartItemCountBySessionId(sessionOrUserId);
     }
 
+    public static ResultSet getCartReferencesHistoryByUserId(int userId) throws SQLException {
+        return new CartReferencesDaoImpl().getCartReferencesHistoryByUserId(userId);
+    }
+
 }

@@ -57,7 +57,7 @@ public class addItemServlet extends HttpServlet {
         File fileSaveDir = new File(savepath);
         part.write(savepath + File.separator);
         try {
-            boolean status = imageUploadController.addItem(fileName, savepath, brand, price, model, processor, OS, graphics, "", ram, storage, display);
+            boolean status = imageUploadController.addItem(fileName, savepath, brand, price, model, processor, OS, graphics, "1", ram, storage, display);
 //            boolean status = imageUploadController.addItem(fileName, savepath, description, "", "", "", "", "", "", "", "", "");
             if (status) {
                 response.sendRedirect("addProduct.jsp");

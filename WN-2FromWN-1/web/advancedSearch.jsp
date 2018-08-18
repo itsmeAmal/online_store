@@ -79,6 +79,7 @@
     </style>
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Products</title>
     </head>
@@ -181,44 +182,15 @@
              color: #ffffff; font-weight: 500;"></div>
         <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
              color: #ffffff; font-weight: 500;" ></div>
-        <div style="position: relative; left: 44%; top: -120%; width: 20%; height: 40px;" >
-            <!--<input type="text" class="form-control" id="search" placeholder="SEARCH" />-->
-        </div>
+        <form>
+            <div style="position: relative; left: 44%; top: -120%; width: 20%; height: 40px;" >
+                <input type="text" class="form-control" name="" id="search" placeholder="SEARCH" /> <input type="submit" name="search"
+            </div>
+        </form>
 
     </div>
     <!--filter area-->
-    <div class="sidenav">
-        <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-             border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">FILTER SELECTION</div>
-        <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px; color: #999999; ">BRANDS</div><!--
-        -->        <div style="position: relative; left: 5px; width: 80%; top: 10px; height: 20px;">
 
-            <%
-                ResultSet rset2 = imageUploadController.getAllDistinctRbandNames();
-            %>
-            <select class="form-control" style="width: 210px;">
-                <% while (rset2.next()) {
-                %>
-                <option><%=rset2.getString("imageupload_item_desc")%></option> 
-                <%
-                    }
-                %>
-            </select>  
-        </div>
-        <div style="position: relative; left: 5px; width: 80%; top: 10%; height: 20px;"> 
-            <form action="#" method="post">               
-                <input type="submit" class="btn btn-default" value="BRAND FILTER" style="width: 210px;"/>
-            </form>               
-        </div>
-        <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">PRICE</div>
-        <div style="position: relative; left: 5px; width: 80%; top: 20%; height: 20px; color: #999999; ">
-            <input type="text" name="lowerPrice" class="form-control" placeholder="Lower Price" style=" width: 210px;" required /><br>
-            <input type="text" name="highestPrice" class="form-control" placeholder="Highest Price" style=" width: 210px;" required/><br>
-            <form action="searchByBrandServlet" method="post">
-                <input type="submit" class="btn btn-default" value="PRICE FILTER" style="width: 210px;"/>
-            </form>
-        </div>
-    </div>
     <script type="text/javascript">
         window.onscroll = function () {
             myFunction()

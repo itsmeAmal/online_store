@@ -98,4 +98,8 @@ public class imageUploadController {
         return new imageUploadDaoImpl().getAllActiveItems();
     }
 
+    public static ResultSet getResultBySearchValue(String searchValue) throws SQLException {
+        return new imageUploadDaoImpl().getResultBySearchValue(searchValue);
+    }
+
 }

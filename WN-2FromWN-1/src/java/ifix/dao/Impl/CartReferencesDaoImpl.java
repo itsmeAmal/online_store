@@ -239,4 +239,12 @@ public class CartReferencesDaoImpl implements CartReferencesDao {
         return count;
     }
 
+    public ResultSet getCartReferencesHistoryByUserId(int userId) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM cart_references where cart_references_status =? and cart_references_user_id =?");
+        ps.setInt(1, 2);
+        ps.setInt(2, userId);
+        return ps.executeQuery();
+    }
+
 }

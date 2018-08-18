@@ -160,4 +160,12 @@ public class imageUploadDaoImpl implements imageUploadDao {
         return MethodStatus.SUCCESS;
     }
 
+    public ResultSet getResultBySearchValue(String searchValue) throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select * from imageupload where imageupload_item_desc like ? or imageupload_model like ?");
+        ps.setString(1, "%" + searchValue + "%");
+        ps.setString(2, "%" + searchValue + "%");
+        return ps.executeQuery();
+    }
+
 }

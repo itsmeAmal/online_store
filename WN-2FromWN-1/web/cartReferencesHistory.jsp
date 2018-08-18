@@ -92,7 +92,7 @@
     <head>
         <link rel="stylesheet" href="com.official.cazzendra.css.common/bootstrap.min.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Profile</title>
+        <title>Billing History</title>
     </head>
     <body>
         <%
@@ -116,20 +116,20 @@
         </div>
         <!--header-->
         <div class="header" id="myHeader">
-            <div style="position: relative; left: 20%; top: 10%; width: 200px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;"><a href="cartReferencesHistory.jsp">BILLING HISTORY</a></div>
+            <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
+                 color: #ffffff; font-weight: 500;">MY CART</div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" ><a href="productList.jsp">HOME</a></div>
-            <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
-                <form action="checkoutServlet" method="post">
-                    <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
-                </form>
-            </div>
+            <!--            <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
+                            <form action="checkoutServlet" method="post">
+                                <input type="submit" class="btn btn-danger" name="checkout" value="PROCEED TO CHECKOUT" />
+                            </form>
+                        </div>-->
         </div>
         <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin; ">PROFILE</div>
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">MY PROFILE</div>
             <div style="position: relative; left: 18%; width: 200px; top: 10px; height: 200px; background-image: url(web.pos.ee.images/user.png); align-content: center; ">
             </div>
 
@@ -140,47 +140,38 @@
                 <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getContact()%></h4>
                 <h4 class="form-control" style=" width: 210px;" type="text" name="name"><%= user.getUserAddress()%></h4>
                 <form action="deactivateUser" method="post">
-                     <input type="submit" class="btn btn-success" value="DEACTIVATE PROFILE" style="width: 210px;"/>
-                     <input type="hidden" class="btn btn-success" name="hdnUid" value="<%= user.getEmail()%>" style="width: 210px;"/>                      
+                    <input type="submit" class="btn btn-success" value="DEACTIVATE PROFILE" style="width: 210px;"/>
+                    <input type="hidden" class="btn btn-success" name="hdnUid" value="<%= user.getEmail()%>" style="width: 210px;"/>                      
                 </form>
             </div>
         </div>
         <div class="sidenav-6">
             <%
-                ResultSet rset = CartReferenceController.getCartProductsByUserId(Integer.toString(user.getUserId()));
+                ResultSet rset = CartReferenceController.getCartReferencesHistoryByUserId(user.getUserId());
             %>
             <div class="container" style="position: absolute; left: 5%; top: 3%; width: 90%; height: max-content; background-color: #ffffff;">
                 <table class="table table-responsive">   
                     <th>PRODUCT</th>
-                    <th>QUANTITY</th>                   
-                    <th>PRICE</th>
-                    <th>ACTION</th>
-
-
-                    <%  while (rset.next()) {
-                    %>
+                    <th>PRICE </th>                   
+                    <th>DATE</th>              
+                        <%  while (rset.next()) {
+                        %>
                     <tr>  
                         <%
                             ImageUpload imageUpload = imageUploadController.getLaptopById(Integer.toString(rset.getInt("cart_references_item_id")));
                         %>
                         <td style="width: 300px; height: 100px; font-size: medium; text-align: left; top: 30%; font-weight: 100; "><%=rset.getString("cart_references_model_brand")%> 
                             <div style="position: relative; top: 10px; width: 200px; left: 10%; height: 50px;">
-                                Date added : <%= rset.getDate("cart_references_date").toString()%> 
+                                Date added : <%= rset.getString("cart_references_model_brand").toString()%> 
                             </div>
                         </td>
-                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 100;">
-                            1 Pcs                      
-                        </td> 
                         <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
                             Rs <%=rset.getBigDecimal("cart_references_item_price")%>
                         </td>
                         <td>
-                            <form action="removeItemServlet" method="post">
-                                <div style="position: relative; left: 10%; top: 10px; width: 100%; height: 30px;">
-                                    <input type="hidden" name="hdnItemId" value="<%=Integer.toString(rset.getInt("cart_references_item_id"))%>"> 
-                                    <input class="btn btn-success" type="submit" value="REMOVE" style="width: 100px; background-color: #990099;"/>
-                                </div>
-                            </form>  
+                        <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600; color: #ff0000;">
+                            <%=rset.getDate("cart_references_date")%>
+                        </td> 
 
                         </td>
                     </tr>

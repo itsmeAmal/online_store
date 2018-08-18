@@ -116,8 +116,8 @@
         </div>
         <!--header-->
         <div class="header" id="myHeader">
-            <div style="position: relative; left: 20%; top: 10%; width: 150px; height: 30px; font-size: 20px;
-                 color: #ffffff; font-weight: 500;">MY CART</div>
+            <div style="position: relative; left: 20%; top: 10%; width: 200px; height: 30px; font-size: 20px;
+                 color: #ffffff; font-weight: 500;"><a href="cartReferencesHistory.jsp">BILLING HISTORY</a></div>
             <div style="position: relative; left: 30%; top: -52%; width: 150px; height: 30px; font-size: 20px;
                  color: #ffffff; font-weight: 500;" ><a href="productList.jsp">HOME</a></div>
             <div style="position: relative; left: 70%; top: -120%; width: 20%; height: 40px;" >
@@ -129,7 +129,7 @@
         <!--add detail -->
         <div class="sidenav" >
             <div style="position: relative; left: 0px; width: 100%; top: 0px; height: 40px;
-                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin;">MY PROFILE</div>
+                 border-bottom: groove; font-weight: 700; color: #999999; text-align: center; border-width: thin; ">PROFILE</div>
             <div style="position: relative; left: 18%; width: 200px; top: 10px; height: 200px; background-image: url(web.pos.ee.images/user.png); align-content: center; ">
             </div>
 
