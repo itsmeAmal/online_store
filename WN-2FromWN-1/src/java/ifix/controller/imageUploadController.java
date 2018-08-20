@@ -102,4 +102,8 @@ public class imageUploadController {
         return new imageUploadDaoImpl().getResultBySearchValue(searchValue);
     }
 
+    public static ResultSet getAllDistinctModels() throws SQLException {
+        return new imageUploadDaoImpl().getAllDistinctModels();
+    }
+
 }

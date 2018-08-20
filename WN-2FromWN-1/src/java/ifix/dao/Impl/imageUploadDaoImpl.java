@@ -168,4 +168,10 @@ public class imageUploadDaoImpl implements imageUploadDao {
         return ps.executeQuery();
     }
 
+    public ResultSet getAllDistinctModels() throws SQLException {
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select distinct imageupload_model from imageUpload");
+        return ps.executeQuery();
+    }
+
 }
