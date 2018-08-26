@@ -6,10 +6,10 @@
             <file>file:/E:/personel_git/WN-2FromWN-1/web/stocks.jsp</file>
             <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/model/Stocks.java</file>
             <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/dao/Impl/stocksDaoImpl.java</file>
-            <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/dao/Impl/imageUploadDaoImpl.java</file>
             <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/controller/stocksController.java</file>
-            <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/dao/stocksDao.java</file>
+            <file>file:/E:/personel_git/WN-2FromWN-1/web/dashBoard2.jsp</file>
             <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/controller/imageUploadController.java</file>
+            <file>file:/E:/personel_git/WN-2FromWN-1/src/java/ifix/dao/stocksDao.java</file>
         </group>
     </open-files>
 </project-private>
