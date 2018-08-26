@@ -41,4 +41,8 @@ public class stocksController {
         return new stocksDaoImpl().getStockByModelNo(modelNo);
     }
 
+    public static int getCurrentStockByModelNo(String modelNo) throws SQLException {
+        return new stocksDaoImpl().getCurrentStockByModelNo(modelNo);
+    }
+
 }

@@ -26,7 +26,7 @@ public class stocksDaoImpl implements stocksDao {
     public MethodStatus addStock(Stocks stocks) throws SQLException {
         Connection con = DatabaseConnection2.getDatabaseConnection();
         PreparedStatement ps = con.prepareStatement("insert into stocks(stocks_model_id, stocks_model_no, stocks_qty, stocks_status) values (?,?,?,?)");
-        ps.setInt(1, stocks.getModelId());
+        ps.setInt(1, 1);
         ps.setString(2, stocks.getModelNo());
         ps.setInt(3, stocks.getQty());
         ps.setInt(4, 1);
@@ -65,6 +65,18 @@ public class stocksDaoImpl implements stocksDao {
             stocks.setStatus(rset.getInt("stocks_status"));
         }
         return stocks;
+    }
+
+    public int getCurrentStockByModelNo(String modelNo) throws SQLException {
+        int qty = 0;
+        Connection con = DatabaseConnection2.getDatabaseConnection();
+        PreparedStatement ps = con.prepareStatement("select sum(stocks_qty) as total_stocks from stocks where stocks_model_no=?");
+        ps.setString(1, modelNo);
+        ResultSet rset = ps.executeQuery();
+        while (rset.next()) {
+            qty = rset.getInt("total_stocks");
+        }
+        return qty;
     }
 
 }

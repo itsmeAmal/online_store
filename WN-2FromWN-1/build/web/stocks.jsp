@@ -15,22 +15,21 @@
         <title>Stocks</title>
     </head>
     <body>
-        <h4>Stocks</h4> 
-        <%
-            ResultSet rset = imageUploadController.getAllDistinctModels();
-            while (rset.next()) {
-
-
-        %>
-
-        <select>
-            <option></option>
-        </select>
-        <%            }
-        %>
-
-        <div>
-            <input type="text" name="stockQty" />
-        </div>
+        <form action="addStock" method="POST">
+            <h4>Stocks</h4> 
+            <select name="model">
+                <%
+                    ResultSet rset = imageUploadController.getAllDistinctModels();
+                    while (rset.next()) {
+                %>            
+                <option><%=rset.getString("imageupload_model")%></option> 
+                <%            }
+                %>
+            </select>
+            <div>
+                <input type="text" name="stockQty"/>
+                <input type="submit" value="ADD STOCK" placeholder="Quantity"/>
+            </div>
+        </form>
     </body>
 </html>
