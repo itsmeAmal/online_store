@@ -4,6 +4,7 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.controller.stocksController"%>
 <%@page import="ifix.model.User"%>
 <%@page import="ifix.controller.userController"%>
 <%@page import="ifix.controller.imageUploadController"%>
@@ -115,17 +116,24 @@
             </div>
             <div style="position: absolute; left: 55%; top: 42%; width: 300px; height: 100px;"><h4 style="color: #ff0000; font-weight: 600;">Rs <%= imageUpload.getPrice()%></h4></div>
             <div style="position: absolute; left: 55%; top: 52%; width: 150px; height: 50px; ">
+                <%
+                    String model = imageUpload.getModel();
+                    int qty = stocksController.getCurrentStockByModelNo(model);
+                    if (qty != 0) {
+                %>
                 <form action="addToDatabaseCart" method="post">
                     <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
                     <input type="hidden" id="laptopId" name="laptopId" value="<%=imageUpload.getId()%>">    
                 </form>
-
+                <%
+                    }
+                %>
             </div>
             <div style="position: absolute; left: 62%; top: 52%; width: 200px; height: 50px; ">
-<!--                <form action="cashOnDelivery" method="post">
-                    <input class="btn btn-primary" type="submit" value="Cash On Delivery" style="width: 130px; background-color: #990099;"/>
-                    <input type="hidden" id="laptopId" name="laptopId" value="<%=imageUpload.getId()%>"> 
-                </form>-->
+                <!--                <form action="cashOnDelivery" method="post">
+                                    <input class="btn btn-primary" type="submit" value="Cash On Delivery" style="width: 130px; background-color: #990099;"/>
+                                    <input type="hidden" id="laptopId" name="laptopId" value="<%=imageUpload.getId()%>"> 
+                                </form>-->
             </div>
             <!--<div style="position: absolute; left: 63%; top: 52%; width: 145px; height: 48px; background-image: url(web.pos.ee.images/buy_now.PNG)"></div>-->
             <div style="position: absolute; left: 55%; top: 57%; width: 400px; height: 150px; background-image: url(web.pos.ee.images/delivery_info.PNG)" ></div>        

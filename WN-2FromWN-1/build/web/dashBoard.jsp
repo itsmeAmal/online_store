@@ -243,7 +243,9 @@
             <a style="position: relative; top: 40px; width: 270px; background-color: #6666ff; text-align: left;"  href="invoicedItems.jsp">INVOICE HISTORY</a><br>
             <a style="position: relative; top: 50px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE USERS</a><br>
             <a style="position: relative; top: 60px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard2.jsp">MANAGE LAPTOPS</a><br>
-<!--            <a style="position: relative; top: 70px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE INVOICES</a><br>
+            <a style="position: relative; top: 70px; width: 270px; background-color: #6666ff; text-align: left;"  href="stocks.jsp">STOCK MANAGEMENT</a><br>
+
+            <!--            <a style="position: relative; top: 70px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">MANAGE INVOICES</a><br>
             <a style="position: relative; top: 80px; width: 270px; background-color: #6666ff; text-align: left;"  href="dashBoard.jsp">DELIVERY STATUS</a><br>-->
         </div>
         <div class="sidenav-3">
@@ -252,10 +254,10 @@
             %>
             <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">GLOBALLY REGISTERED :</h3> <br>
             <h1 style=" padding-left: 40%; background-color: #ccccff; "><%=totalRegisteredUsers%> USER ACCOUNTS </h1>
-        
+
             <h3 style="padding-left: 20%; font-family: ubuntu; color: #009900;">ACTIVE STATE :</h3> <br>
-             <%
-                int activeUsers = userController.getActiveUserAccountCount(); 
+            <%
+                int activeUsers = userController.getActiveUserAccountCount();
             %>
             <h1 style=" padding-left: 40%; background-color: #ccccff; "><%=activeUsers%> USER ACCOUNTS </h1>
         </div>

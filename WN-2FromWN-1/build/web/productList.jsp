@@ -4,6 +4,7 @@
     Author     : Amal
 --%>
 
+<%@page import="ifix.controller.stocksController"%>
 <%@page import="ifix.controller.CartReferenceController"%>
 <%@page import="ifix.controller.userController"%>
 <%@page import="ifix.model.User"%>
@@ -147,21 +148,40 @@
                     </td>
                     <td style="position:  relative; font-size: medium; text-align: left; top: 30%; font-weight: 600;"><%= rset.getString("imageupload_item_desc")%> <%= rset.getString("imageupload_model")%> 
                         <p id="refCode" style="position:  relative; font-size: x-small; text-align: left; top: 30%; left: 8%; font-weight: 100;">Reference Code : <%= rset.getString("imageUpload_id")%></p>                             
-
                         <div style="position: absolute; left: 10%; top: 20%; font-weight: 200; font-size: smaller;"> <%= rset.getString("imageupload_processor")%> / <%= rset.getString("imageupload_memory")%> / 
                             <%= rset.getString("imageupload_storage")%> </div>
+                        <div  style="position: absolute; left: 10%; top: 28%; font-weight: 200; font-size: smaller;">
+                            <%
+                                String modelNo = rset.getString("imageupload_model");
+                                int qty = stocksController.getCurrentStockByModelNo(modelNo);
+                            %>
+                            Available Qty : <%=qty%>
+                            <%
+                                if (qty == 0) {
+                            %>
+                            <h5 style="color: #cc0000;">SOLD OUT</h5>
+                            <%
+                                }
+                            %>
+                        </div>
                         <div style="position: absolute; left: 10%; top: 60%; width: 325px; height: 25px; background-image: url(web.pos.ee.images/cash_on_delivery.PNG)">            
                         </div>
                         <div style="position: absolute; left: 10%; top: 75%; width: 30%; height: 20px; font-size: large; font-weight: 600; color: #ff0000; font-family: Arial;"><%= rset.getString("imageupload_price")%></div>
                     </td>                         
                 <input type="hidden" name="itemId" value="<%=rset.getString("imageUpload_id")%>"/>                    
                 <td>
+                    <%
+                        if (qty != 0) {
+                    %>   
                     <form action="addToDatabaseCart" method="post">
                         <div style="position: relative; left: 40%; top: 90px; width: 100%; height: 50px;">
                             <input class="btn btn-success" type="submit" value="Add to Cart" style="width: 100px; background-color: #990099;"/>
                             <input type="hidden" id="laptopId" name="laptopId" value="<%=rset.getString("imageUpload_id")%>">
                         </div>
-                    </form>  
+                    </form>
+                    <%
+                        }
+                    %>
                     <div style="position: relative; left: 40%; width: 100%; height: 50px; top: 85px;">
                         <form action="redirectToProductDetail" method="post">
                             <input type="hidden" id="laptopId" name="laptopId" value="<%=rset.getString("imageUpload_id")%>">
